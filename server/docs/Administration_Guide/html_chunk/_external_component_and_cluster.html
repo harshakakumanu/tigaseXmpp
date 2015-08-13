@@ -1,0 +1,26 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>External Component and Cluster</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="_load_balancing_external_components_in_cluster_mode.html" title="Chapter&nbsp;62.&nbsp;Load Balancing External Components in Cluster Mode"><link rel="prev" href="_load_balancing_external_components_in_cluster_mode.html" title="Chapter&nbsp;62.&nbsp;Load Balancing External Components in Cluster Mode"><link rel="next" href="_packet_filtering.html" title="Chapter&nbsp;63.&nbsp;Packet Filtering"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">External Component and Cluster</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_load_balancing_external_components_in_cluster_mode.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;62.&nbsp;Load Balancing External Components in Cluster Mode</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_packet_filtering.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_external_component_and_cluster"></a>External Component and Cluster</h2></div></div></div><p>If you want to use Tigase&#8217;s component in a cluster mode which does not have clustering implemented yet there is a way to make it kind of cluster-able. In the previous section we connected many MUC components to a single Tigase server. Now we want to connect a single MUC component to many Tigase servers (or many Tigase cluster nodes).</p><p>Let&#8217;s say we have Tigase XMPP Server working for domain: <span class="strong"><strong>xmpp-test.org</strong></span> and the server is installed on three cluster nodes: <span class="strong"><strong>red.xmpp-test.org,</strong></span> <span class="strong"><strong>green.xmpp-test.org</strong></span> and <span class="strong"><strong>blue.xmpp-test.org.</strong></span></p><p><span class="inlinemediaobject"><img src="./images/ExternalCompClustering003_0.png" alt="ExternalCompClustering003_0"></span></p><p>We want to make it possible to connect the MUC component to all nodes, so here is configuration for the server (for each node is the same):</p><pre class="programlisting">config-type=--gen-config-def
+--admins=admin@xmpp-test.org
+--virt-hosts = xmpp-test.org
+
+--cluster-mode = true
+--cluster-nodes=red.xmpp-test.org,green.xmpp-test.org,blue.xmpp-test.org
+
+--auth-db=tigase-auth
+--user-db=mysql
+--user-db-uri=jdbc:mysql://localhost/db?user=tigase&amp;password=tigase
+
+--comp-name-1 = ext
+--comp-class-1 = tigase.server.ext.ComponentProtocol
+--external = muc.xmpp-test.org:muc-secret:listen:5270:\
+       xmpp-test.org:accept:ReceiverBareJidLB</pre><p>As you can see there is nothing special here. The most interesting part comes on the MUC side.</p><pre class="programlisting">config-type = --gen-config-comp
+--user-db = mysql
+--admins = admin@xmpp-test.orgg
+--user-db-uri = jdbc:mysql://localhost/db?user=tigase&amp;password=tigase
+
+--virt-hosts = xmpp-test.org
+
+--comp-name-1 = muc
+--comp-class-1 = tigase.muc.MUCComponent
+--external = muc.xmpp-test.org:muc-secret:connect:5270:xmpp-test.org;blue.xmpp-test.org;green.xmpp-test.org,red.xmpp-test.org:accept</pre><p>As you can see remote host name is not a simple domain but a character string with a few comma separated parts. The first part is our remote domain and the rest are addresses of the host to connect to. This can be a list of domain names or IP addresses.</p><p>Of course it is possible to connect multiple external component to all cluster nodes, this way the whole installation would be really working in the cluster and also load balanced.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_load_balancing_external_components_in_cluster_mode.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="_load_balancing_external_components_in_cluster_mode.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_packet_filtering.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;62.&nbsp;Load Balancing External Components in Cluster Mode&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;63.&nbsp;Packet Filtering</td></tr></table></div></body></html>

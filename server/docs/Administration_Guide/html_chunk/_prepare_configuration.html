@@ -1,0 +1,33 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Prepare Configuration</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="_manual_installation_in_console_mode.html" title="Chapter&nbsp;9.&nbsp;Manual Installation in Console Mode"><link rel="prev" href="_unpack_the_package.html" title="Unpack the Package"><link rel="next" href="_prepare_database.html" title="Prepare Database"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Prepare Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_unpack_the_package.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;9.&nbsp;Manual Installation in Console Mode</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_prepare_database.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_prepare_configuration"></a>Prepare Configuration</h2></div></div></div><p>If you look inside the new directory, it should like this output:</p><pre class="programlisting"> $ ls -l
+total 316K
+-rw-r--r--  1 265K 2008-12-15 22:24 ChangeLog
+-rw-r--r--  1  37K 2008-12-15 22:24 License.html
+-rw-r--r--  1 1.1K 2008-12-15 22:24 README
+drwxr-xr-x  6  204 2009-02-03 13:25 certs/
+drwxr-xr-x 22  748 2009-02-03 13:25 database/
+drwxr-xr-x  3  102 2008-12-15 22:24 docs/
+drwxr-xr-x  4  136 2009-02-03 13:25 etc/
+drwxr-xr-x  3  102 2009-02-03 13:25 jars/
+drwxr-xr-x 12  408 2009-02-03 13:25 libs/
+drwxr-xr-x  2   68 2008-12-15 22:24 logs/
+-rw-r--r--  1 1.5K 2008-12-15 22:24 package.html
+drwxr-xr-x  7  238 2009-02-03 13:25 scripts/</pre><p>At the moment the most important is the etc/ directory with 2 files:</p><pre class="programlisting"> $ ls -l etc/
+total 8.0K
+-rw-r--r-- 1  97 2008-12-15 22:24 init.properties
+-rw-r--r-- 1 333 2008-12-15 22:24 tigase.conf</pre><p>Small change in the tigase.conf file is needed. Find a line setting correct <span class="strong"><strong>JAVA_HOME</strong></span>:</p><pre class="programlisting">JAVA_HOME="${JDKPath}"</pre><p>and replace <span class="strong"><strong>${JDKPath}</strong></span> with a path to Java installation on your system.</p><p>You need also to edit the init.properties file. It contains initial parameters normally set by the configuration program. As you do the installation manually you have to edit this file yourself. It contains already a few lines:</p><pre class="programlisting"> $ cat etc/init.properties
+config-type=--gen-config-def
+--admins=admin@$HOST_NAME
+--virt-hosts = $HOST_NAME
+--debug=server</pre><p>You have to replace <span class="strong"><strong>$HOST_NAME</strong></span> with a domain name used for your XMPP (Jabber) installation. Let&#8217;s say this is \'<span class="strong"><strong>jabber.your-great.net</strong></span>'. Your init.properties should look like this then:</p><pre class="programlisting"> $ cat etc/init.properties
+config-type=--gen-config-def
+--admins=admin@jabber.your-great.net
+--virt-hosts = jabber.your-great.net
+--debug=server</pre><p>You can also use multiple virtual domains if you want. Please have a look at the detailed description for <span class="strong"><strong>--virt-hosts</strong></span> property in the ////&lt;&lt;initPropertiesGuide,////init.properties guide and also more detailed information in the ////&lt;&lt;VHtigaseServerGuide,////Virtual Hosts in the Tigase Server guide.</p><p>Unfortunately this is not all. You also need to configure connection to the database. First you have to decide what database you want to use: <span class="strong"><strong>Derby</strong></span>, <span class="strong"><strong>MySQL</strong></span> or <span class="strong"><strong>PostgreSQL</strong></span>. Then there are to more properties you have to add to the <span class="strong"><strong>init.properties:</strong></span> <span class="strong"><strong>--user-db</strong></span> and <span class="strong"><strong>--user-db-uri.</strong></span> The first property specifies the database type you use and the second the database connection string. For simplicity let&#8217;s assume you want to use <span class="strong"><strong>Derby</strong></span> database with files located in directory <span class="strong"><strong>/var/lib/tigase/derby</strong></span>. 2 more lines need to be added to the <span class="strong"><strong>init.properties</strong></span> file:</p><pre class="programlisting"> $ cat etc/init.properties
+config-type=--gen-config-def
+--admins=admin@jabber.your-great.net
+--virt-hosts = jabber.your-great.net
+--debug=server
+--user-db=derby
+--user-db-uri=jdbc:derby:/var/lib/tigase/derby</pre><p>This is enough basic configuration to have your Tigase server installation running.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_unpack_the_package.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="_manual_installation_in_console_mode.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_prepare_database.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Unpack the Package&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Prepare Database</td></tr></table></div></body></html>

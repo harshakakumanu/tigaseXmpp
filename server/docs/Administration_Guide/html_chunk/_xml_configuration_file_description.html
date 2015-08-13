@@ -1,0 +1,49 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;19.&nbsp;XML Configuration File Description</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="index.html" title="Tigase Administration Guide"><link rel="prev" href="_init_properties.html" title="Chapter&nbsp;18.&nbsp;init.properties"><link rel="next" href="_old_way_editing_configuration_file_manually.html" title="Chapter&nbsp;20.&nbsp;Old Way - Editing Configuration File Manually"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;19.&nbsp;XML Configuration File Description</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_init_properties.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_old_way_editing_configuration_file_manually.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="_xml_configuration_file_description"></a>Chapter&nbsp;19.&nbsp;XML Configuration File Description</h1></div></div></div><p>Artur Hefczyc &lt;<a class="link" href="mailto:artur.hefczyc@tigase.net" target="_top">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a class="link" href="http://tigase.net" target="_top">http://tigase.net</a>
+:Date: 2010-04-06 21:18</p><p>If you look inside configuration file you can see that this is just normal XML file with a few top-level separate sections. These sections are called components.</p><p>This is it. Tigase server consists of components and without components there is no application at all. This is why the only configuration settings you can find there are only under some component level.</p><p>More precisely top level element in this XML file is called: &amp;lt;tigase-config/&amp;gt; and it doesn&#8217;t contain any top level configuration settings.</p><p>Under the top level element there are at least 2 or more &amp;lt;component/&amp;gt; elements. Each component can be distinguished from others by it&#8217;s 'name'. That is, 'name' attribute is mandatory and must be distinct within configuration file. It is just component ID. Each component can be named any way you like it doesn&#8217;t need to mean anything. It is just easier to manage configuration if you select sensible names.</p><p>&amp;lt;component/&amp;gt; elements keep configuration settings for server modules.</p><p>Example 1:</p><pre class="programlisting">&lt;tigase-config&gt;
+  &lt;component name="basic-conf"&gt;
+    .... settings
+  &lt;/component&gt;
+  &lt;component name="message-router"&gt;
+    .... settings
+  &lt;/component&gt;
+&lt;/tigase-config&gt;</pre><p>Configuration settings are kept in "simple" maps like structures (key, values, type) triplets.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><span class="strong"><strong>key</strong></span> is a configuration parameter identifier or a name of the parameter.</li><li class="listitem"><span class="strong"><strong>values</strong></span> are just values of the parameter identified by the key. Usually this is just a single value but in some cases there can me more than just one value.</li><li class="listitem"><span class="strong"><strong>type</strong></span> all configuration parameters have a type. In most cases this is just a String. Other possible types are: Boolean, Integer, Long and corresponding array types: String[], Boolean[], int[], long[].</li></ul></div><p>Configuration settings are stored in &amp;lt;map/&amp;gt; element which contains list of &amp;lt;entry/&amp;gt; elements. If there are multiple values for a parameter they are stored as a list of &amp;lt;item&amp;gt; elements.</p><p>Example 2:</p><pre class="programlisting">&lt;map&gt;
+   &lt;entry value="localhost" type="String" key="remote-host"/&gt;
+   &lt;entry value="false" type="Boolean" key="demo-mode"/&gt;
+   &lt;entry value="1000" type="Integer" key="max-queue-size"/&gt;
+   &lt;entry type="String[]" key="hostnames"&gt;
+      &lt;item value="test-a"/&gt;
+      &lt;item value="localhost"/&gt;
+   &lt;/entry&gt;
+   &lt;entry type="int[]" key="ports"&gt;
+      &lt;item value="5222"/&gt;
+      &lt;item value="5223"/&gt;
+   &lt;/entry&gt;
+&lt;/map&gt;</pre><p>Configuration settings can be organised hierarchically using &amp;lt;node&amp;gt; elements:</p><p>Example 3:</p><pre class="programlisting">&lt;component name="c2s"&gt;
+  &lt;map&gt;
+    &lt;entry type="String[]" key="hostnames"&gt;
+      &lt;item value="test-d"/&gt;
+      &lt;item value="localhost"/&gt;
+    &lt;/entry&gt;
+  &lt;/map&gt;
+  &lt;node name="connections"&gt;
+    &lt;map&gt;
+      &lt;entry type="int[]" key="ports"&gt;
+         &lt;item value="5222"/&gt;
+         &lt;item value="5223"/&gt;
+      &lt;/entry&gt;
+    &lt;/map&gt;
+    &lt;node name="5222"&gt;
+      &lt;map&gt;
+         &lt;entry value="localhost" type="String" key="remote-host"/&gt;
+         &lt;entry value="plain" type="String" key="socket"/&gt;
+         &lt;entry value="accept" type="String" key="type"/&gt;
+      &lt;/map&gt;
+    &lt;/node&gt;
+  &lt;/node&gt;
+&lt;/component&gt;</pre><p>Detailed description for all possible settings is split to per-component chapter. Please look for particular component description for details.</p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_init_properties.html">Prev</a>&nbsp;</td><td width="20%" align="center">&nbsp;</td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_old_way_editing_configuration_file_manually.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;18.&nbsp;init.properties&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;20.&nbsp;Old Way - Editing Configuration File Manually</td></tr></table></div></body></html>

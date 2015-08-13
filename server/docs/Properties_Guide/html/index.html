@@ -1,0 +1,2737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="author" content="Tigase Team">
+<title>Tigase Properties Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Tigase Properties Guide</h1>
+<div class="details">
+<span id="author" class="author">Tigase Team</span><br>
+<span id="email" class="email"><a href="mailto:team@tigase.net">team@tigase.net</a></span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">July 2014</span>
+<br><span id="revremark">Initial</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#admins">1. --admins</a></li>
+<li><a href="#authDb">2. --auth-db</a></li>
+<li><a href="#authDbUri">3. --auth-db-uri</a></li>
+<li><a href="#authDomainRepoPool">4. --auth-domain-repo-pool</a></li>
+<li><a href="#authRepoPool">5. --auth-repo-pool</a></li>
+<li><a href="#authRepoPoolSize">6. --auth-repo-pool-size</a></li>
+<li><a href="#bindExtHostnames">7. --bind-ext-hostnames</a></li>
+<li><a href="#boshCloseConnection">8. --bosh-close-connection</a></li>
+<li><a href="#boshExtraHeadersFile">9. --bosh-extra-headers-file</a></li>
+<li><a href="#clConnRepoClass">10. --cl-conn-repo-class</a></li>
+<li><a href="#clientAccessPolicyFile">11. --client-access-policy-file</a></li>
+<li><a href="#clusterConnectAll">12. --cluster-connect-all</a></li>
+<li><a href="#clusterMode">13. --cluster-mode</a></li>
+<li><a href="#clusterNodes">14. --cluster-nodes</a></li>
+<li><a href="#cmHtTrafficThrottling">15. --cm-ht-traffic-throttling</a></li>
+<li><a href="#cmSeeOtherHost">16. --cm-see-other-host</a></li>
+<li><a href="#cmTrafficThrottling">17. --cm-traffic-throttling</a></li>
+<li><a href="#cmpnamePorts">18. --cmpname-ports</a></li>
+<li><a href="#compClass">19. --comp-class</a></li>
+<li><a href="#compName">20. --comp-name</a></li>
+<li><a href="#crossDomainPolicyFile">21. --cross-domain-policy-file</a></li>
+<li><a href="#dataRepoPoolSize">22. --data-repo-pool-size</a></li>
+<li><a href="#debug">23. --debug</a></li>
+<li><a href="#debugPackages">24. --debug-packages</a></li>
+<li><a href="#domainFilterPolicy">25. --domain-filter-policy</a></li>
+<li><a href="#elementsNumberLimit">26. --elements-number-limit</a></li>
+<li><a href="#extComp">27. --ext-comp</a></li>
+<li><a href="#extcompRepoClass">28. --extcomp-repo-class</a></li>
+<li><a href="#external">29. --external</a></li>
+<li><a href="#hardenedMode">30. --hardened-mode</a></li>
+<li><a href="#maxQueueSize">31. --max-queue-size</a></li>
+<li><a href="#monitoring">32. --monitoring</a></li>
+<li><a href="#netBuffHighThroughput">33. --net-buff-high-throughput</a></li>
+<li><a href="#netBuffStandard">34. --net-buff-standard</a></li>
+<li><a href="#newConnectionsThrottling">35. --new-connections-throttling</a></li>
+<li><a href="#nonpriorityQueue">36. --nonpriority-queue</a></li>
+<li><a href="#queueImplementation">37. --queue-implementation</a></li>
+<li><a href="#rosterImplementation">38. --roster-implementation</a></li>
+<li><a href="#s2sEjabberdBugWorkaroundActive">39. --s2s-ejabberd-bug-workaround-active</a></li>
+<li><a href="#s2sSecret">40. --s2s-secret</a></li>
+<li><a href="#s2sSkipTlsHostnames">41. --s2s-skip-tls-hostnames</a></li>
+<li><a href="#scriptDir">42. --script-dir</a></li>
+<li><a href="#smClusterStrategyClass">43. --sm-cluster-strategy-class</a></li>
+<li><a href="#smPlugins">44. --sm-plugins</a></li>
+<li><a href="#smThreadsPool">45. --sm-threads-pool</a></li>
+<li><a href="#sslCertsLocation">46. --ssl-certs-location</a></li>
+<li><a href="#sslContainerClass">47. --ssl-container-class</a></li>
+<li><a href="#sslDefCertDomain">48. --ssl-def-cert-domain</a></li>
+<li><a href="#statsArchiv">49. --stats-archiv</a></li>
+<li><a href="#statsHistory">50. --stats-history</a></li>
+<li><a href="#stringprepProcessor">51. --stringprep-processor</a></li>
+<li><a href="#test">52. --test</a></li>
+<li><a href="#tigaseConfigRepoClass">53. --tigase-config-repo-class</a></li>
+<li><a href="#tigaseConfigRepoUri">54. --tigase-config-repo-uri</a></li>
+<li><a href="#tlsJdkNssBugWorkaroundActive">55. --tls-jdk-nss-bug-workaround-active</a></li>
+<li><a href="#trusted">56. --trusted</a></li>
+<li><a href="#userdb">57. --user-db</a></li>
+<li><a href="#userDbUri">58. --user-db-uri</a></li>
+<li><a href="#userDomainRepoPool">59. --user-domain-repo-pool</a></li>
+<li><a href="#userRepoPool">60. --user-repo-pool</a></li>
+<li><a href="#userRepoPoolSize">61. --user-repo-pool-size</a></li>
+<li><a href="#vhostAnonymousEnabled">62. --vhost-anonymous-enabled</a></li>
+<li><a href="#vhostMaxUsers">63. --vhost-max-users</a></li>
+<li><a href="#vhostMessageForwardJid">64. --vhost-message-forward-jid</a></li>
+<li><a href="#vhostPresenceForwardJid">65. --vhost-presence-forward-jid</a></li>
+<li><a href="#vhostRegisterEnabled">66. --vhost-register-enabled</a></li>
+<li><a href="#vhostTlsRequired">67. --vhost-tls-required</a></li>
+<li><a href="#virtHosts">68. --virt-hosts</a></li>
+<li><a href="#watchdogDelay">69. --watchdog_delay</a></li>
+<li><a href="#watchdogPingType">70. --watchdog_ping_type</a></li>
+<li><a href="#watchdogTimeout">71. --watchdog_timeout</a></li>
+<li><a href="#configType">72. config-type</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="admins"><a class="anchor" href="#admins"></a>1. --admins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 07:42</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> none</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--admins = <a href="mailto:admin@domain.com">admin@domain.com</a></code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>user1@domain,user2@domain2</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <em>Specifies a list of administrator accounts.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> list of admin accounts: <code>user1@domain,user2@domain2</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authDb"><a class="anchor" href="#authDb"></a>2. --auth-db</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 07:50</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase-custom</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--auth-db = db-type</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>mysql|pgsql|ldap|drupal|tigase-auth|tigase-custom|class name</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Specifies authentication repository, where <code>db-type</code> can be one of possible values: <code>mysql, pgsql, drupal, wp, tigase-auth</code> and <code>tigase-custom</code> (if omitted: <code>user-db</code> is used in versions up to 5.0 and <code>tigase-custom</code> is the new default value starting from version 5.1 ) or the class name. For SQL database this is normally: <code>tigase.db.jdbc.JDBCRepository</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authDbUri"><a class="anchor" href="#authDbUri"></a>3. --auth-db-uri</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 20:55</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>jdbc:mysql://localhost/tigasedb?user=tigase_user&amp;password=mypass</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--auth-db-uri = jdbc:mysql://localhost/tigasedb?user=tigase_user&amp;password=mypass</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>db connection-uri</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>connection-uri</code> is a full resource uri for user repository data source. (If omitted <code>user-db-uri</code> settings are used.)</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authDomainRepoPool"><a class="anchor" href="#authDomainRepoPool"></a>4. --auth-domain-repo-pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:01</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.db.AuthRepositoryMDImpl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--auth-domain-repo-pool = tigase.db.AuthRepositoryMDImpl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>class implementing AuthRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Allows to specify an implementation for per-domain <code>AuthRepository</code> implementation. This is used only if the implementation provided by a default Tigase server package is not sufficient in the particular deployment. The implementation provides a DB (AuthRepository to be more specific) connection pool where each connection (AuthRepository) handles data for a different DNS domain (VHost). This allows for database (user data) sharding to improve the system performance and better balance the load.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authRepoPool"><a class="anchor" href="#authRepoPool"></a>5. --auth-repo-pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 20:59</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.db.AuthRepositoryPool</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--auth-repo-pool = tigase.db.AuthRepositoryPool</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>class implementing AuthRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Allows to specify an implementation for the authentication repository connection pool. This is used only if the implementation provided by a default Tigase server package is not sufficient in the particular deployment. The implementation provides a DB (AuthRepository to be more specific) connection pool to improve the data access performance. The repository pool can offer data caching for improved performance or any other features necessary.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="authRepoPoolSize"><a class="anchor" href="#authRepoPoolSize"></a>6. --auth-repo-pool-size</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-05-28 04:24</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>10</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--auth-repo-pool-size = 25</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Number of db connections as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to set the database connections pool size for the AuthRepository.
+Please note, if not specified than in some cases instead of default for this property setting for --data-repo-pool-size can be used. This depends on the repository implementation and the way it is initialized.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="bindExtHostnames"><a class="anchor" href="#bindExtHostnames"></a>7. --bind-ext-hostnames</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:06</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> none</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--bind-ext-hostnames = pubsub.host.domain</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of domains.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property allows to set a list of domains to be bound to the external component connection. Let&#8217;s say we have a Tigase instance with only MUC and PubSub components loaded and we want to connect this instance to the main server via external component protocol. Using --external property we can define a domain (maybe muc.devel.tigase.org), password, TCP/IP port, remote host address, connection type, etc&#8230;&#8203;. This would make one of our component (MUC) visible on the remote server.</p>
+</div>
+<div class="paragraph">
+<p>To make visible the second component (PubSub) we would need to open another connection with the domain name (pubsub.devel.tigase.org) for the another component. Of course the second connection is redundant as all communication could go through a single connection. This is what this property is used. In our example with 2 components you can just put the <em>pubsub.devel.tigase.org</em> domain as a value to this property and it will bind the second domain to a single connection on top of the domain which has been authenticated during protocol handshaking.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="boshCloseConnection"><a class="anchor" href="#boshCloseConnection"></a>8. --bosh-close-connection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-20 00:51</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--bosh-close-connection = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property globally disables Bosh keep-alive support for the Tigase server. It causes the Bosh connection manager to force closed HTTP connection each time data is sent to the Bosh client. To continue communication the client must open a new HTTP connection.</p>
+</div>
+<div class="paragraph">
+<p>This setting is rarely required on some installations where the client cannot control/disable keep-alive Bosh connections and keep-alive does not work correctly for some reason.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="boshExtraHeadersFile"><a class="anchor" href="#boshExtraHeadersFile"></a>9. --bosh-extra-headers-file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-20 01:00</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>etc/bosh-extra-headers.txt</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--bosh-extra-headers-file = /path/to/file.txt</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>path to a file on the filesystem.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to specify a path to a text file with additional HTTP headers which will be sent to a Bosh client with each request. This gives some extra flexibility for Bosh clients running on some systems with special requirements for the HTTP headers and some additional settings.</p>
+</div>
+<div class="paragraph">
+<p>By default a file distributed with the installation contains following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: Content-Type
+Access-Control-Max-Age: 86400</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This can be modified, removed or replaced with a different content on your installation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clConnRepoClass"><a class="anchor" href="#clConnRepoClass"></a>10. --cl-conn-repo-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-28 14:02</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.cluster.repo.ClConSQLRepository</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cl-conn-repo-class = tigase.cluster.repo.ClConDirRepository</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>class implementing ComponentRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property allows to set class controlling cluster connections repository. The cluster connections repository is responsible for discovering cluster nodes which are part of the installation. Tigase in cluster mode establishes TCP/IP connections between cluster nodes to allow for user communication and exchanging cluster state metadata.</p>
+</div>
+<div class="paragraph">
+<p>From the Tigase XMPP Server 5.2.0 the server supports cluster auto-configuration so no action, configuring or any maintenance action is required to add  a new cluster node.</p>
+</div>
+<div class="paragraph">
+<p>As everything in the Tigase it is also a pluggable system so it is possible to implement/add new ways to synchronize information about cluster nodes on the system. Currently following cluster connection repositories are implemented:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>ClConSQLRepository</strong> a default implementation which synchronizes cluster nodes information through SQL database. By default it uses the same database as the main Tigase DB, that is the UserRepository database. All the cluster nodes need an access to the same database for cluster nodes information synchronization.</p>
+<div class="paragraph">
+<p>For backward compatibility this mode reads the list of the cluster nodes from a configuration file (<code>init.properties</code>) as well. However, this is used only as an initial setup and, after startup time the cluster nodes are synchronized through the database.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended however, that the --cluster-nodes property is not used (should be removed or commented out) when the automatic reconfiguration mode is used. This is because we found out that when the network configuration and DNS names are not perfect than automatic mode may conflict with manual settings.</p>
+</div>
+<div class="paragraph">
+<p>By default the same database as for the user repository is used for the cluster automatic cluster mode but, a different, separate database can be used as well. A DB URI for a different SQL database can be set using following configuration property:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/repo-uri=jdbc:mysql://localhost/tigasedb?user=user&amp;password=mypass</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>ClConDirRepository</strong> an alternative way to synchronize information about cluster nodes on the installation through filesystem. This might be used in case where DB is not accessible by the clustering code for some reason or synchronization through DB is not desired.
+To make use of the filesystem based cluster nodes synchronization you need to mount a directory via some network filesystem mechanism (like NFS for example) and point the Tigase to the directory. The rest works the same way as through the DB. However, instead of writing cluster node metadata to some DB table, each node writes it&#8217;s metadata to a separate file in the given directory.
+This mode is also compatible with the manual nodes configuration through --cluster-nodes but the same precautions and suggestions as for DB based automatic node hold.</p>
+<div class="paragraph">
+<p>A default location of the directory is probably not very useful, as it points to etc/ directory, therefore, normally a correct location has to be set through the repo-uri property in a following way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/repo-uri=/mount/tigase-cluster-repo</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>ClConConfigRepository</strong> is an implementation which allows you to revert back to the previous and manual cluster configuration through <em>--cluster-nodes</em>. However, since version <strong>5.2.0</strong> the <a href="#clusterNodes"><code>--cluster-nodes</code></a> has been extended with ability to set password and port number for each cluster node.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clientAccessPolicyFile"><a class="anchor" href="#clientAccessPolicyFile"></a>11. --client-access-policy-file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-20 01:09</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>etc/client-access-policy.xml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--client-access-policy-file = /path/to/access-policy-file.xml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>path to a file on the filesystem.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to control the cross domain access policy for Silverlight based web applications. The cross domain policy is controlled via XML file which contains the policy and rules.</p>
+</div>
+<div class="paragraph">
+<p>+
+By default Tigase is distributed with an example policy file which allows for full access from all sources to the whole installation. This is generally correct for most Bosh server installations. The configuration through the property and the XML file allows for a very easy and flexible modification of the policy on your installation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clusterConnectAll"><a class="anchor" href="#clusterConnectAll"></a>12. --cluster-connect-all</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:25</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cluster-connect-all = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to open active connections to all nodes
+listed in the --cluster-nodes configuration property. This property should be used only on the node which is added to the live cluster at later time. Normally this new cluster node is not listed in configuration of the existing cluster nodes. This is why they can not open connections the new node. The new node opens connection to all existing nodes instead. False is the default value and you can skip this option if you want to have it switched off.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clusterMode"><a class="anchor" href="#clusterMode"></a>13. --cluster-mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:27</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cluster-mode = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to switch cluster mode on. The default value is <em>false</em> so you can normally skip the parameter if you don&#8217;t want the server to run in the cluster mode. You can run the server in the cluster mode even if there is only one node running. The performance impact is insignificant and you have the opportunity to connect mode cluster nodes at any time without restarting the server.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="clusterNodes"><a class="anchor" href="#clusterNodes"></a>14. --cluster-nodes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:30</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> none</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cluster-nodes = node1.domain,node2.domain,node3.domain</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>a comma separated list of hostnames.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to specify a list of cluster nodes running on your installation.
+The node is a full DNS name of the machine running the node. Please note the proper DNS configuration is critical for the cluster to work correctly. Make sure the <em>hostname</em> command returns a full DNS name on each cluster node. Nodes don&#8217;t have to be in the same network although good network connectivity is also a critical element for an effective cluster performance.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--cluster-nodes=host-a.domain.com:pass:port,host-b.domain.com:pass:port,host-c.domain.com:pass:port</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All cluster nodes must be connected with each other to maintain user session synchronization and exchange packets between users connected to different nodes. Therefore each cluster node opens a <em>cluster port</em> on which it is listening for connections from different cluster nodes. As there is only one connection between each two nodes the Tigase server has to decide which nodes connects and which has to accept the connection. If you put the same list of cluster nodes in the configuration for all nodes this is not a problem. The Tigase server has a way to find it out and void conflicts. If you however want to add a new node later on, without restarting and changing configuration on old nodes there is no way the old nodes will try to establish a connection to the new node they don&#8217;t know of. To solve this particular case the next parameter is used.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmHtTrafficThrottling"><a class="anchor" href="#cmHtTrafficThrottling"></a>15. --cm-ht-traffic-throttling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:38</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>xmpp:25k:0:disc,bin:200m:0:disc</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cm-ht-traffic-throttling = xmpp:25k:0:disc,bin:200m:0:disc</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of traffic limits settings.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to specify traffic limit of non-user connections, that is s2s, external components and other high traffic server connections. Meaning of the property and values encoded are in the same way as for the --cm-traffic-throttling property.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.3</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmSeeOtherHost"><a class="anchor" href="#cmSeeOtherHost"></a>16. --cm-see-other-host</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-06-11 10:12</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.server.xmppclient.SeeOtherHostHashed</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cm-see-other-host=tigase.server.xmppclient.SeeOtherHostHashed</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>'none</em>' <em>or class implementing SeeOtherHostIfc.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Allows to specify a load balancing mechanism by specifying SeeOtherHostIfc implementation. More details about funcionality and implementation details can be found in Tigase Load Balancing documentation.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmTrafficThrottling"><a class="anchor" href="#cmTrafficThrottling"></a>17. --cm-traffic-throttling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:35</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>xmpp:2500:0:disc,bin:20m:0:disc</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cm-traffic-throttling = xmpp:2500:0:disc,bin:20m:0:disc</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of traffic limits settings.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to limit traffic on user connections. These limits are applied to each user connection and if a limit is exceeded then a specified action is applied.</p>
+</div>
+<div class="paragraph">
+<p>The property value is a comma separated list of traffic limits settings. For example the first part: <code>xmpp:2500:0:disc</code> specifies traffic limits for XMPP data to 2,500 packets allowed within last minute either sent to or received from a user and unlimited (0) total traffic on the user connection, in case any limit is exceeded the action is to <strong>disconnect</strong> the user.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>[xmpp|bin]</strong> traffic type, xmpp - XMPP traffic, that is limits refer to a number of XMPP packets transmitted, bin - binary traffic, that is limits refer to a number of bytes transmitted.</p>
+</li>
+<li>
+<p><strong>2500</strong> maximum traffic allowed within 1 minute. 0 means unlimited, or no limits.</p>
+</li>
+<li>
+<p><strong>0</strong> maximum traffic allowed for the life span of the connection. 0 means unlimited or no limits.</p>
+</li>
+<li>
+<p><strong>[disc|drop]</strong> action performed on the connection if limits are exceeded. disc - means disconnect, drop - means drop data.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.3</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmpnamePorts"><a class="anchor" href="#cmpnamePorts"></a>18. --cmpname-ports</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:42</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>depends on component.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--s2s-ports=5269,5270,5271</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separate list of TCP/IP port numbers.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to set ports list for a connection manager. <em>cmpname</em> is a component name of the connection manager you want to change ports numbers for. <em>list of ports</em> is a comma separated list of ports numbers. For example for the server to server connection manager named s2s the property would like like the example below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--s2s-ports=5269,5270,5271</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 3.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compClass"><a class="anchor" href="#compClass"></a>19. --comp-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:51</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>depends on component.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--comp-class-1 = tigase.muc.MUCComponent</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>class name.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Property is used to load an extra component to the server.  Normally this parameter is used if you want to load a component which is not included in the <code>config-type</code> you use. You can, of course, load more than just one component using parameters: <code>--comp-class-2</code>, <code>--comp-class-3</code> and so on&#8230;&#8203;. Let&#8217;s say you want to load the MUC component and the class name for the component is: <code>tigase.muc.MUCService</code>. The line in the properties file should look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--comp-class-1 = tigase.muc.MUCComponent</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 3.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compName"><a class="anchor" href="#compName"></a>20. --comp-name</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:54</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>custom string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--comp-name-1 = muc</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>XMPP localnode string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to assign name <em>name</em> to the non-standard component which is loaded by the server. It is normally used when you want to load component which is not loaded by the <code>config-type</code> you use. Together with <code>--comp-class-1</code> it allows you to load any extra component to your server configuration. Of course you can load more than just one component. Just use <code>--comp-name-2</code>, <code>--comp-name-3</code> and so on&#8230;&#8203; Let&#8217;s say you want to load the MUC component. You can then put give it a name: <code>muc</code> and the setting would look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--comp-name-1 = muc</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 3.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="crossDomainPolicyFile"><a class="anchor" href="#crossDomainPolicyFile"></a>21. --cross-domain-policy-file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-20 01:14</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>etc/cross-domain-policy.xml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--cross-domain-policy-file = /path/to/cross-domain-policy.xml</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>path to a file on the filesystem.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to set path to a file with cross domain access policy for flash based clients. This is a standard XML file which is sent to the flash client upon request.</p>
+</div>
+<div class="paragraph">
+<p>A default file distributed with the Tigase installation allows for full access for all. This is good enough for most use cases but it can be changed by simply editing the file.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dataRepoPoolSize"><a class="anchor" href="#dataRepoPoolSize"></a>22. --data-repo-pool-size</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-05-28 04:19</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>10</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--data-repo-pool-size = 25</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Number of db connections as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>DataRepository</code> is an abstraction layer between any higher level data access repositories such as <code>UserRepository</code> or <code>AuthRepository</code> and SQL database or JDBC driver to be more specific. Many implementations use <code>DataRepository</code> for DB connections and in fact on many installations they also share the same DataRepository instance if they connect to the same DB. In such a case it is desired to specific a connection pool on this level to avoid excessive number of connections to the database.</p>
+</div>
+<div class="paragraph">
+<p>It recommended to control number of DB connection using this property rather than --user-repo-pool-size or --auth-repo-pool-size.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="debug"><a class="anchor" href="#debug"></a>23. --debug</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 21:57</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--debug = server,xmpp.impl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of Tigase's package names.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property is used to turn on debugs log for selected tigase package. For example if you want to turn debug logs on for package: <code>tigase.server</code> then you have to put parameter: <code>--debug server</code>. If you have any problems with your server the best way to get help from me is to generate configuration with <em>--debug = server</em> and run the server. Then from the <code>logs/tigase-console.log</code> log file I can get all information I need to give you a help. More details about server logging and adjusting logging level is described in article Debugging Tigase.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="debugPackages"><a class="anchor" href="#debugPackages"></a>24. --debug-packages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:00</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--debug-packages = com.company.CustomPlugin,com.company.custom</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of java packages or classes.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is used to turn debugging on for any package not necessarily within tigase packages.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="domainFilterPolicy"><a class="anchor" href="#domainFilterPolicy"></a>25. --domain-filter-policy</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>ALL</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--domain-filter-policy = LOCAL</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>ALL|LOCAL|OWN|BLOCK|LIST=domain1;domain2|BLACKLIST=domain1;domain2</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is a global settings for setting communication filtering for vhosts. This function is kind of extension of the same property which could be set on a single user level. However, in many cases it is desired to control users communication not on per user-level but on the domain level. Domain filtering (communication filtering) allows you to specify with whom users can communicate for a particular domain. It allows to restrict communication for a selected domains or for the entire installation. A default value <code>ALL</code> that users for the domain (by default for all domains) are allowed to communicate with any user on any other domain. Other possible values are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>ALL</code> a default value allowing users to communicate with anybody on any other domain, including external servers.</p>
+</li>
+<li>
+<p><code>LOCAL</code> allows users to communicate with all users on the same installation on any domain. It only blocks communication with external servers.</p>
+</li>
+<li>
+<p><code>OWN</code> allows users to communicate with all other users on the same domain. Plus it allows users to communicate with subdomains such as <strong>muc.domain</strong>, <strong>pubsub.domain</strong>, etc…</p>
+</li>
+<li>
+<p><code>BLOCK</code> value completely blocks communication for the domain or for the user with anybody else. This could be used as a means to temporarily disable account or domain.</p>
+</li>
+<li>
+<p><code>LIST</code> property allows to set a list of domains (users' JIDs) with which users on the domain can communicate (i.e. <em>whitelist</em>).</p>
+</li>
+<li>
+<p><code>BLACKLIST</code> - user can communicate with everybody (like <code>ALL</code>), except contacts on listed domains.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost and settings or particular user</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the init.property file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="elementsNumberLimit"><a class="anchor" href="#elementsNumberLimit"></a>26. --elements-number-limit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-11-27 10:48</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>1000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--elements-number-limit=20000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>any integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>elements-number-limit</code> configuration property allows configuring Denial of Service protection mechanism which limits number of elements send in stanza. It can be configured on per ConnectionManager basis with the following configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&lt;ConnectionManager component&gt;/elements-number-limit[I]=integer_number</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for example (for ClusterConnectionManager):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/elements-number-limit[I]=100000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extComp"><a class="anchor" href="#extComp"></a>27. --ext-comp</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:05</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> --ext-comp = <code>localdomain,remotedomain,port,passwd,plain,accept</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>external connection definition string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Deprecated in favor of <code>--external</code>. <em>Support for this property is no longer maintained, please update your installation for the new way to connect external components.</em></p>
+</div>
+<div class="paragraph">
+<p>The property creates a connection over external component protocol - <a href="http://xmpp.org/extensions/xep-0114.html">XEP-0114</a>. The connection can be made to/from any XEP-0114 application: IM transort, MUC, PubSub and others. It is also possible to separate Tigase internal components onto separate instances connected via XEP-0114 connections.</p>
+</div>
+<div class="paragraph">
+<p>Possible values: connection string <code>localdomain,remotedomain,port,passwd,(plain|ssl),(accept|connect),routing</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> It is also possible to generate configuration for many external components. To do so use <code>--ext-comp_1 parameters</code>, <code>--ext-comp_2 parameters</code> and so on&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extcompRepoClass"><a class="anchor" href="#extcompRepoClass"></a>28. --extcomp-repo-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:13</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.server.ext.CompConfigRepository</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--extcomp-repo-class = tigase.server.ext.CompConfigRepository</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>a class name implementing tigase.db.comp.ComponentRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This can be used when <em>--external</em> is used to connect external components. The component responsible for maintaining external components connections can be reconfigured at run-time and can store configuration in a separate place, configuration file, database or any other data source. This property specifies implementation for this data source.</p>
+</div>
+<div class="paragraph">
+<p>The property sets a class managing the component repository. There are 3 available now and you can implement and use your own. The 3 available are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>tigase.server.ext.CompConfigRepository</em> which reads settings for external components from configuration only. It works well with ad-hoc commands, you can add, remove and update external component settings but your changes are not saved to any permanent storage.</p>
+</li>
+<li>
+<p><em>tigase.server.ext.CompDBRepository</em> which reads settings for external components from configuration and from database. As a database backend it uses UserRepository. It works well with ad-hoc commands and your changes are stored in DB and are loaded after server restart. All data are cached in memory so it doesn&#8217;t cause a significant load on database. As it uses UserRepository data are stored in a format hard for direct modifications in database and because of caching in memory all the data it is also not a good choice in cluster environment as changes made on one node are not quickly propagated to other nodes - a reload ad-hoc command must be called on all nodes.</p>
+</li>
+<li>
+<p><em>tigase.server.ext.CompSQLRepository</em> which reads initial settings from configuration and also stores data in SQL database. It automatically creates a dedicated DB table with a simple structure suitable for direct modifications with SQL command. It also doesn&#8217;t cache any data. External component details are read from DB on demand when the component tries to authenticate. As it doesn&#8217;t cache any data, each authentication request requires DB access therefore it may put some load on DB. On the other hand it allows for easy external components management from a separate application connecting directly to DB and all changes are instantly picked up by all cluster nodes.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="external"><a class="anchor" href="#external"></a>29. --external</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:40</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--external = muc1.devel.tigase.org:passwd1:connect:5270:devel.tigase.org:accept:lb-class</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>external domains parameters list.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property defines parameters for external component connections.</p>
+</div>
+<div class="paragraph">
+<p>The component is loaded the same way as all other Tigase components. In your <code>init.properties</code> file you need to add 2 lines:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--comp-name-1 = ext
+--comp-class-1 = tigase.server.ext.ComponentProtocol</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will load the component with an empty configuration and is practically useless. You have to tell the component on what port to listen to (or on what port to connect to) and external domains list with passwords.</p>
+</div>
+<div class="paragraph">
+<p>As a value you have to put comma separated list of external domains settings. Each domain settings consist of a few, colon separated parameters. For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--external = muc1.devel.tigase.org:passwd1,muc2.devel.tigase.org:passwd2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This sets passwords for 2 external domains but does not say anything about port number or about connection. The above list is a simplified syntax. The full syntax looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--external = muc1.devel.tigase.org:passwd1:listen:5270</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--external = muc1.devel.tigase.org:passwd1:connect:5270:\
+devel.tigase.org:accept:lb-class</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Meaning of each colon separated part:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>external component <strong>domain</strong>;</p>
+</li>
+<li>
+<p><strong>password</strong> for this domain;</p>
+</li>
+<li>
+<p><strong>connection type</strong> - <em>listen</em> for incoming connections or <em>connect</em> for the remote server;</p>
+</li>
+<li>
+<p><strong>port number</strong> for the TCP/IP connection (listening on or connecting to);</p>
+</li>
+<li>
+<p><strong>remote hostname address(es)</strong> - if the connection type is <em>connect</em> then here should the remote hostname address to connect to can be skipped for <em>listen</em> connection type; the first item on the list is always the remote domain name, if there are more entries, the rest is just addresses to connect to for this domain separated by semicolon (;)</p>
+</li>
+<li>
+<p><strong>protocol</strong> - if the connection type is <em>connect</em> then here is protocol to use -  <em>accept</em> for XEP-0114, <em>client</em> for XEP-0225, possible others in the future, can be skipped for <em>listen</em> connection type;</p>
+</li>
+<li>
+<p><strong>lb-class</strong> - is a class name for load-balancer plugin. This is used only where there are multiple connections from the external component and you want to spread load among them. More details and examples are in this guide.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Only 2 first parts are mandatory, the rest is optional. The simplified form is used to provide a list of domains:password elements for external components connections.</p>
+</div>
+<div class="paragraph">
+<p>The settings on the server side may most likely looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--external=muc1.devel.tigase.org:passwd1:listen:5270,\
+muc2.devel.tigase.org:passwd2,muc3.devel.tigase.org:passwd3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It specifies 3 domains with passwords and one TCP/IP port to listen to. On the other hand you can specify a configuration which would establish connection to the server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--external = muc1.devel.tigase.org:passwd1:connect:5270:devel.tigase.org:accept</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We use one of the domains configured on the server side, the same port number and the server address. (Assuming the main server works at devel.tigase.org address).</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hardenedMode"><a class="anchor" href="#hardenedMode"></a>30. --hardened-mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2014-01-07 09:04</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--hardened-mode=true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Enabling hardened mode affects handling of security aspects within Tigase. It turns off workaround for SSL issues, turns off SSLv2 and forces enabling more secure ciphers suites. It also forces requirement of StartTLS.</p>
+</div>
+<div class="paragraph">
+<p>Enabling it requires <a href="http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html">UnlimitedJCEPolicyJDK</a> installed. It&#8217;s preferred to use OracleJDK as our tests revealed that using OpenJDK in hardened mode may cause issues with some clients on some platforms.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="maxQueueSize"><a class="anchor" href="#maxQueueSize"></a>31. --max-queue-size</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:45</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>depends on RAM size.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--max-queue-size = 10000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>integer number.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property set internal queues maximum size to a specified value. By default the Tigase sets the queue size depending on the maximum available memory to the Tigase server process. It set&#8217;s 1000 for each 100MB memory assigned for JVM. This is enough for most use cases. If you have, however extremely busy service with Pubsub or MUC component generating huge number of packets (presence or messages) this size should be equal or bigger to the maximum expected number of packets generated by the component in a single request. Otherwise the Tigase may drop packets which it is unable to process.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="monitoring"><a class="anchor" href="#monitoring"></a>32. --monitoring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 22:48</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--monitoring = jmx:9050,http:9080,snmp:9060</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>list of monitoring protocols with port numbers.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property activates monitoring interfaces through selected protocols on selected TCP/IP port numbers. For more details please refer to the monitoring guide for details.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="netBuffHighThroughput"><a class="anchor" href="#netBuffHighThroughput"></a>33. --net-buff-high-throughput</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 23:05</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>64k</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--net-buff-high-throughput = 256k</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>network buffer size as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property sets the network buffer for high traffic connections like s2s or connections between cluster nodes. The default is <code>64k</code> and is optimal for medium traffic websites. If your cluster installation can not cope with traffic between nodes try to increase this number.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="netBuffStandard"><a class="anchor" href="#netBuffStandard"></a>34. --net-buff-standard</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 23:06</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>2k</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--net-buff-standard = 16k</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>network buffer size as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property sets the network buffer for standard (usually c2s) connections, default value is 2k and is optimal for most of cases.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="newConnectionsThrottling"><a class="anchor" href="#newConnectionsThrottling"></a>35. --new-connections-throttling</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 23:08</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>5222:200,5223:50,5269:100,5280:1000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--new-connections-throttling = 5222:100</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>a list of port numbers with throttling thresholds as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to limit how many new users' connection per second the server accepts on a particular port. Connections established within the limit are processed normally, all others are simply disconnected. This allows you to avoid server overload in case there is a huge number of users trying to connect at the same time. Mostly this happens after the server restart.</p>
+</div>
+<div class="paragraph">
+<p>The property value is a list of comma separated port settings. Each port setting is formatted in a following way: <code>PORT_NO:LIMIT_VAL</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="nonpriorityQueue"><a class="anchor" href="#nonpriorityQueue"></a>36. --nonpriority-queue</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 23:10</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--nonpriority-queue =  true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property can be used to switch to non-priority queues usage in the Tigase server (value set to <em>true</em>). Using non-priority queues prevents packets reordering. By default the Tigase uses priority queues which means that packets with highest priority may take over packets with lower priority (presence updates) which may result in packets arriving out of order.</p>
+</div>
+<div class="paragraph">
+<p>This may happen however only for packets of different types. That is, messages may take over presence packets, however, one message never takes over another message for the same user. Therefore, out of order packets delivery is not an issue for most cases.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="queueImplementation"><a class="anchor" href="#queueImplementation"></a>37. --queue-implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 23:16</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.util.PriorityQueueRelaxed</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--queue-implementation = tigase.util.PriorityQueueStrict</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>class name extending <code>tigase.util.PriorityQueueAbstract</code>.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property sets the Tigase internal queue implementation. You can choose between already available and ready to use or you can create own queue implementation and let the Tigase load it instead of the default one.
+Currently following queue implementations are available:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>tigase.util.PriorityQueueRelaxed</strong> - specialized priority queue designed to efficiently handle very high load and prevent packets loss for higher priority queues. This means that sometimes, under the system overload packets may arrive out of order in cases when they could have been dropped. Packets loss (drops) can typically happen for the lowest priority packets (presences) under a very high load.</p>
+</li>
+<li>
+<p><strong>tigase.util.PriorityQueueStrict</strong> - specialized priority queue designed to efficiently handle very high load but prefers packet loss over packet reordering. It is suitable for systems with a very high load where the packets order is the critical to proper system functioning. It means that packets of the same priority with the same source and destination address are never reordered. Packets loss (drops) can typically happen for all packets with the same probability, depending which priority queue is overloaded.</p>
+</li>
+<li>
+<p><strong>tigase.util.NonpriorityQueue</strong> - specialized non-priority queue. All packets are stored in a single physical collection, hence they are never reordered. Packets are not prioritized, hence system critical packets may have to wait for low priority packets to be processed. This may impact the server functioning and performance in many cases. Therefore this queue type should be choosen very carefully. Packets of the same type are never reordered. Packets loss (drops) can typically happen for all packets which do not fit into the single queue.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Please note!</strong> <em>Since the packets are processed by plugins in the SessionManager component and each plugin has own thread-pool with own queues packet reordering may happen regardless what queue type you set. The reordering may only happen, however between different packet types. That is <em>message</em> may take over <em>iq</em> packet or <em>iq</em> packet may take over <em>presence</em> packet and so on&#8230;&#8203; This is unpredictable.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="rosterImplementation"><a class="anchor" href="#rosterImplementation"></a>38. --roster-implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-04-24 20:44</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>RosterFlat.class.getCanonicalName()</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--roster-implementation=my.pack.CustomRosterImpl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Class extending tigase.xmpp.impl.roster.RosterAbstract.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property allows you to specify a different RosterAbstract implementation. This might be useful for a customized roster storage, or extended roster content or in some cases for some custom logic for certain roster elements.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2sEjabberdBugWorkaroundActive"><a class="anchor" href="#s2sEjabberdBugWorkaroundActive"></a>39. --s2s-ejabberd-bug-workaround-active</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 00:58</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--s2s-ejabberd-bug-workaround-active = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Property activates a workaround for a bug in EJabberd in it&#8217;s s2s implementation. EJabberd does not send dialback in stream features after TLS handshaking even if the dialback is expected/needed. This results in unusable connection as EJabberd does not accept any packets on this connection either. The workaround is enabled by default right now until EJabberd version without the bug is popular enough. A disadvantage of the workaround is that dialback is always performed even if the SSL certificate is fully trusted and in theory dialback could be avoided.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2sSecret"><a class="anchor" href="#s2sSecret"></a>40. --s2s-secret</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-03-28 14:55</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>&lt;null&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--s2s-secret = some-s2s-secret</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>ascii string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is a global settings for s2s secrets to generate dialback keys on the Tigase installation. By default it is null, which means the secret is automatically generated for each s2s connection and handshaking.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the init.property file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="s2sSkipTlsHostnames"><a class="anchor" href="#s2sSkipTlsHostnames"></a>41. --s2s-skip-tls-hostnames</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 00:59</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--s2s-skip-tls-hostnames =  domain1,domain2</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of domains.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property disables TLS handshaking for s2s connections to selected remote domains. Unfortunately some servers (certain versions of Openfire - [<a href="http://community.igniterealtime.org/thread/36206">1</a>] or [<a href="http://community.igniterealtime.org/thread/30578">2</a>]) have problems with TLS handshaking over s2s which prevents establishing usable connection. This completely blocks any communication to these servers. As a workaround you can disable TLS for these domains to get communication back.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="scriptDir"><a class="anchor" href="#scriptDir"></a>42. --script-dir</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:01</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>scripts/admin</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--script-dir = /opt/admin-scripts</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>path to a directory on the filesystem.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property sets the directory where all administrator scripts for ad-hoc command are stored.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="smClusterStrategyClass"><a class="anchor" href="#smClusterStrategyClass"></a>43. --sm-cluster-strategy-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-08-06 11:20</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.cluster.strategy.SMNonCachingAllNodes</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--sm-cluster-strategy-class=tigase.cluster.strategy.SMNonCachingAllNodes</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>any class implementing <code>tigase.cluster.strategy.ClusteringStrategyIfc</code> interface.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>--sm-cluster-strategy-class</code> property allows specify Clustering Strategy class which should be used for handling clustering environment; by default <code>SMNonCachingAllNodes</code> is used.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="smPlugins"><a class="anchor" href="#smPlugins"></a>44. --sm-plugins</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:04</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--sm-plugins = -jabber:iq:register,</code> <code>your-plugin</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of plugins IDs.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to specify a list of plugins which should be loaded or disabled on the server. Normally you don&#8217;t have to specify this. Server loads default list of plugins automatically. The default list contains all available plugins. Sometimes however you might want to load only some plugins. Typical use case is when user accounts are managed on your third-party system the Tigase server is integrated with. Then you might not want to allow users to register new accounts via XMPP service. You can then load a list of plugins without the user registration plugin. Another case when you usually have to use this option is when you have your own plugins which replace function of the Tigase default plugins like vCard, roster management, and so on&#8230;&#8203;.</p>
+</div>
+<div class="paragraph">
+<p>To prevent the plugin from loading add <em>-</em> before its ID, to load the plugin add <em>+</em> (which is optional). For example, following settings would switch user registration off, while adding a new plugin: <em>your-plugin</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--sm-plugins=-jabber:iq:register,+your-plugin</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There is more to this. Each plugin is running in one or more separate threads. Most plugins which deal with database have number of threads equal to number of CPUs or CPU cores. Sometimes it is not enough. If the database is slow or there is a specific kind of traffic at high level you might want to adjust number of threads for the plugin. To set a different from standard number of threads, just add <em>=N</em> where <em>N</em> is the number of threads you want. Above example has been modified to assign 8 threads for your plugin and 16 threads for authentication plugin:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--sm-plugins=-jabber:iq:register,+your-plugin=8,jabber:iq:auth=16</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 3.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="smThreadsPool"><a class="anchor" href="#smThreadsPool"></a>45. --sm-threads-pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:06</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>default</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--sm-threads-pool = custom:100</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>default|custom:NN</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to fine-tune the SM plugins (processors) thread pool. With the default settings every plugin gets his own thread pool. This guarantees the best performance and optimal resource usage. The downside of this setting is that packets can arrive out of order if they are processed within a different thread pools.</p>
+</div>
+<div class="paragraph">
+<p>If you really need or want to preserve the order for packets processed by different plugins then the solution is to use the <em>custom</em> thread pool. In such a case packets processed by all plugins are handled within a single thread pool. This guarantees that the packets are processed and delivered in the exact order they arrive. The number after the colon <em>:</em> specifies the thread pool size.</p>
+</div>
+<div class="paragraph">
+<p>What about fine-tuning then? Yes, there is an option to fine tune this even further. Let&#8217;s say you want most of the plugins to be executed within a single thread pool to preserve packet ordering for them, but some, selected plugins can/should execute within separate, own thread pools to improve performance.  Let&#8217;s say, authentication packets and user registration can be actually executed in a separate thread pools as we do not worry about an order for them. User cannot send or receive anything else before he authenticates anyway. The solution is to specify number of threads for selected plugins in the --sm-plugins property as described above. For example, setting a common thread pool for all plugins but registration and authentication can be done with following configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--sm-threads-pool=custom:100
+--sm-plugins=jabber:iq:register=8,jabber:iq:auth=16,urn:ietf:params:xml:ns:xmpp-sasl=16</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Available since: 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sslCertsLocation"><a class="anchor" href="#sslCertsLocation"></a>46. --ssl-certs-location</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:11</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>certs/</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--ssl-certs-location = /etc/vhost-certs</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>location of SSL certificates directory on the filesystem.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The option allows you to specify location where SSL certificates are stored. Meaning of this property depends on the SSL container &lt;sslContainerClass,class implementation&gt;&gt;. By default it just points to the directory where the server SSL certificates are stored in files in PEM format.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sslContainerClass"><a class="anchor" href="#sslContainerClass"></a>47. --ssl-container-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:11</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.io.SSLContextContainer</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--ssl-container-class =</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> a class implementing tigase.io.SSLContectContainerIfc.</p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to specify a class implementing storage for SSL/TLS certificates. The class presented in the example to this description allows for loading certificates from PEM files which is a common storage used on many systems.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sslDefCertDomain"><a class="anchor" href="#sslDefCertDomain"></a>48. --ssl-def-cert-domain</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:13</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>default</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--ssl-def-cert-domain =</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>DNS domain name.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows you to specify a default alias/domain name for certificate. It is mostly used to load certificate for unknown domain name during SSL negotiation. Unlike in TLS protocol, where the domain name is known at the handshaking time, for SSL domain name is not known, therefore, the server does not know which certificate to use. Specifying domain name in this property allows you to use certificate for specific domain in such case. This property value is also sometimes used if there is no certificate for one of virtual domains and the container does not automatically generate a self-signed certificate, then it can use the default one.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="statsArchiv"><a class="anchor" href="#statsArchiv"></a>49. --stats-archiv</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2014-06-10 18:21</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--stats-archiv=tigase.stats.CounterDataFileLogger:stats-file-logger:60,tigase.stats.CounterDataLogger:stats-logger:60</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of statistics archivizers:</em> <code>&lt;class&gt;:&lt;name&gt;:&lt;frequency&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>--stats-archiv</code> configuration property allow enabling and configuring components responsible for storing statistic information. As a parameter it takes comma separated list of all archivizers that we want to enable. Each entry follows same pattern: &lt;class&gt;:&lt;name&gt;:&lt;frequency&gt;, where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&lt;class&gt; - is the class of any archivizer implementing <code>tigase.stats.StatisticsArchivizerIfc</code> interface</p>
+</li>
+<li>
+<p>&lt;name&gt; - is name of particular archivizer under which it will be identified in Tigase</p>
+</li>
+<li>
+<p>&lt;frequency&gt; - is the time interval between subsequent execution of the archivizer <code>.execute()</code> method (in seconds).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Currently following archivizers classess are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tigase.stats.CounterDataArchivizer</code> - every execution put current basic server metrics (CPU usage, memory usage, number of user connections, uptime) into database (overwrites previous entry);</p>
+</li>
+<li>
+<p><code>tigase.stats.CounterDataLogger</code> - every execution insert new row with new set of number of server statistics (CPU usage, memory usage, number of user connections per connector, number of processed packets of different types, uptime, etc) into the database</p>
+</li>
+<li>
+<p><code>tigase.stats.CounterDataFileLogger</code> - every execution store all server statistics into separate file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It&#8217;s possible to configure each archivizer by adding following entry to the <code>etc/init.properties</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&lt;statistics_component_name&gt;/stats-archiv/&lt;name&gt;/&lt;property&gt;=&lt;value&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if we want to enable CounterDataFileLogger that stores statistics every 60 seconds:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--stats-archiv=tigase.stats.CounterDataFileLogger:stats-file-logger:60</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We can configure it further with following options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">stats/stats-archiv/stats-file-logger/stats-directory=logs/server_statistics
+stats/stats-archiv/stats-file-logger/stats-filename=stat
+stats/stats-archiv/stats-file-logger/stats-unixtime=false
+stats/stats-archiv/stats-file-logger/stats-datetime=true
+stats/stats-archiv/stats-file-logger/stats-datetime-format=HH:mm:ss
+stats/stats-archiv/stats-file-logger/stats-level=FINE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>which configures accordingly: directory to which files should be saved, filename prefix, whether to include or not unix timestamp in filename, whether to include or not datetime timestamp, control format of timestamp (using java DateFormat pattern) and also set level of the statistics we want to save (using java Logger.Level)</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="statsHistory"><a class="anchor" href="#statsHistory"></a>50. --stats-history</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-04-15 20:55</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--stats-history=2160,10</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>SIZE-NUM,INTERVAL_NUM</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The Tigase XMPP Server can store server statistics internally for a given period of time. This allows you to connect to a running system and collect all the server metrics along with historic data which are stored on the server.</p>
+</div>
+<div class="paragraph">
+<p>This is very useful when something happens on your production system you can connect and see when exactly this happened and what other metrics looked around this time.</p>
+</div>
+<div class="paragraph">
+<p>The property value consists of comma separated, 2 integer numbers. The first is a size of the buffer. That is how many complete sets of historic metrics to store in memory. The second specified how often to probe metrics on the server.</p>
+</div>
+<div class="paragraph">
+<p>Please be aware that Tigase XMPP Server produces about 1,000 different metrics of the system. Therefore caching large number of statistics sets requires lots of memory.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="stringprepProcessor"><a class="anchor" href="#stringprepProcessor"></a>51. --stringprep-processor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:29</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>simple</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--stringprep-processor = libidn</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>simple|libidn|empty</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property sets the stringprep processor for all JIDs handled by the Tigase server. The default <em>simple</em> implementation uses regular expressions to parse and check the user JID. It does not fulfils the RFC-3920 requirements but also puts much less stress on the server CPU, hence impact on the performance is very low.</p>
+</div>
+<div class="paragraph">
+<p>Other possible values are:</p>
+</div>
+<div class="paragraph">
+<p><em>libidn</em> - provides full stringprep processing exactly as described in the RFC-3920. It requires lots of CPU power and significantly impacts performance.</p>
+</div>
+<div class="paragraph">
+<p><em>empty</em> - doesn&#8217;t do anything to JIDs. JIDs are accepted in the form they are received. No impact on the performance and doesn&#8217;t use any CPU. Suitable for use in automated systems where JIDs are generated by some algorithm, hence there is no way incorrect JIDs may enter the system.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="test"><a class="anchor" href="#test"></a>52. --test</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:34</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--test</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false|empty-string</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property sets the server for a test mode, which means that all loggings are turned off, message offline storage is off and possibly some other changes to the system configuration are being made.</p>
+</div>
+<div class="paragraph">
+<p>The idea behind this mode is to test the Tigase XMPP Server with minimal performance impact from environment such as hard drive, database and others&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tigaseConfigRepoClass"><a class="anchor" href="#tigaseConfigRepoClass"></a>53. --tigase-config-repo-class</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:37</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.conf.ConfigurationCache</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--tigase-config-repo-class = tigase.conf.ConfigXMLRepository</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>name of class implementing <code>tigase.conf.ConfigRepositoryIfc</code></em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property is a parameter which allows loading different configuration storage engines. The default one stores configuration in memory only. Other possible are: <code>tigase.conf.ConfigXMLRepository</code> which keeps configuration in the old XML file and <code>tigase.conf.ConfigSQLRepository</code> which stores configuration in SQL database. Please note, in all cases the <code>init.properties</code> file can still be read and works the same way - provides an initial settings for the Tigase startup time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tigaseConfigRepoUri"><a class="anchor" href="#tigaseConfigRepoUri"></a>54. --tigase-config-repo-uri</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:38</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>none</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--tigase-config-repo-uri = jdbc:mysql://localhost/tigase?user=root&amp;password=mypass</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>DB connection URI string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This property is a parameter which allows to provide database connection string for configuration storage engines which keep server settings in database.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="tlsJdkNssBugWorkaroundActive"><a class="anchor" href="#tlsJdkNssBugWorkaroundActive"></a>55. --tls-jdk-nss-bug-workaround-active</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Andrzej Wojcik &lt;<a href="mailto:andrzejw@tigase.org">andrzejw@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 03:57</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--tls-jdk-nss-bug-workaround-active = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Workaround for TLS/SSL bug in new JDK7 using native library for keys generation and connection encryption used with new version of nss library.</p>
+</div>
+<div class="paragraph">
+<p>This caused number of problems with Tigase installed on system with JDK7 and the new library, such as hanging connections, or broken SSL/TLS. There was a short information on our <a href="https://projects.tigase.org/projects/tigase-server/wiki/Tigase_with_OpenJDK7_with_OpenSSL_101">wiki page</a>. Our earlier suggestion was to avoid using either JDK7 or the problematic native library. Now we have a proper fix/workaround which allows you to run Tigase with JDK7.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://stackoverflow.com/q/10687200/427545" class="bare">http://stackoverflow.com/q/10687200/427545</a></p>
+</li>
+<li>
+<p><a href="http://bugs.sun.com/bugdatabase/view_bug.do;jsessionid=b509d9cb5d8164d90e6731f5fc44?bug_id=6928796" class="bare">http://bugs.sun.com/bugdatabase/view_bug.do;jsessionid=b509d9cb5d8164d90e6731f5fc44?bug_id=6928796</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="trusted"><a class="anchor" href="#trusted"></a>56. --trusted</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:40</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>none</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--trusted = <a href="mailto:user@domain.com">user@domain.com</a>,<a href="mailto:user-2@domain2.com">user-2@domain2.com</a></code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of user bare JIDs.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to specify a list of accounts which are considered as trusted, thus can perform some specific actions on the server. They can execute some commands, send a broadcast message, set MOTD and so on. The configuration is similar to --adimins setting.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 3.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userdb"><a class="anchor" href="#userdb"></a>57. --user-db</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:45</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>mysql</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--user-db = ldap</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>UserRepository implementation class name or predefined string.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to specify UserRepository implementation - a storage where all users' data are located. Users' data include contact list (roster), privacy lists, vCards, and similar. Everything except user authentication information. The implementation can be defined by one of possible values: <code>mysql, pgsql, xml</code> or the class name. For SQL database this is normally: <code>tigase.db.jdbc.JDBCRepository</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userDbUri"><a class="anchor" href="#userDbUri"></a>58. --user-db-uri</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:47</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>jdbc:mysql://localhost/tigase?user=root&amp;password=mypass</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--user-db-uri = jdbc:postgresql://localhost/tigase?user=tigase</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Database connection URI.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property specify database connection string - <code>connection-uri</code>, where <code>connection-uri</code> is a full resource uri for user repository data source. If you skip this parameter default value is used depending on database type you selected:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>jdbc:mysql://localhost/tigase?user=root&amp;password=mypass</p>
+</li>
+<li>
+<p>jdbc:postgresql://localhost/tigase?user=tigase</p>
+</li>
+<li>
+<p>user-repository.xml</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userDomainRepoPool"><a class="anchor" href="#userDomainRepoPool"></a>59. --user-domain-repo-pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:50</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.db.UserRepositoryMDImpl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--user-domain-repo-pool = tigase.db.UserRepositoryMDImpl</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Name of class implementing UserRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows specify an implementation for per-domain UserRepository implementation. This is used only if the implementation provided by a default Tigase server package is not sufficient in the particular deployment. The implementation provides a DB (UserRepository to be more specific) connection pool where each connection (UserRepository) handles data for a different DNS domain (VHost). This allows for database (user data) sharding to improve the system performance and better balance the load.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userRepoPool"><a class="anchor" href="#userRepoPool"></a>60. --user-repo-pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:49</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>tigase.db.UserRepositoryPool</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--user-repo-pool = tigase.db.UserRepositoryPool</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Name of class implementing UserRepository.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to specify an implementation for the repository connection pool. This is used only if the implementation provided by a default Tigase server package is not sufficient in the particular deployment. The implementation provides a DB (UserRepository to be more specific) connection pool to improve the data access performance. The repository pool can offer data caching for improved performance or any other features necessary.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.1.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="userRepoPoolSize"><a class="anchor" href="#userRepoPoolSize"></a>61. --user-repo-pool-size</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-10 01:51</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>10</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--user-repo-pool-size = 25</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>Number of db connections as integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to set the database connections pool size for the <code>UserRepository</code>.</p>
+</div>
+<div class="paragraph">
+<p>Please note, if not specified than in some cases instead of default for this property setting for --data-repo-pool-size+ can be used. This depends on the repository implementation and the way it is initialized.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.0.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostAnonymousEnabled"><a class="anchor" href="#vhostAnonymousEnabled"></a>62. --vhost-anonymous-enabled</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 02:37</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-anonymous-enabled = false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property specifies whether anonymous user login is allowed for the installation for all vhosts.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostMaxUsers"><a class="anchor" href="#vhostMaxUsers"></a>63. --vhost-max-users</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 02:44</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>0</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-max-users = 1000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>integer number.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property specifies how many user accounts can be registered on the installations for all vhosts.</p>
+</div>
+<div class="paragraph">
+<p><strong>0 - zero</strong> means unlimited and this is a default. Otherwise greater than zero value specifies accounts number limit.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostMessageForwardJid"><a class="anchor" href="#vhostMessageForwardJid"></a>64. --vhost-message-forward-jid</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 02:52</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>&lt;null&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-message-forward-jid = <a href="mailto:archive@domain.com">archive@domain.com</a></code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>valid JID</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This is a global property for message forwarding for the installation. This property is normally specified on the vhost configuration level, however if you want to forward all messages on your installation and you have many virtual domains this property allows to set message forwarding for all of them. A valid JID must be specified as the forwarding destination. Also a message forwarding plugin must be loaded and activated on the installation for the message forwarding to work.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostPresenceForwardJid"><a class="anchor" href="#vhostPresenceForwardJid"></a>65. --vhost-presence-forward-jid</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 02:57</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>&lt;null&gt;</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-presence-forward-jid = <a href="mailto:presence-collector@domain.com">presence-collector@domain.com</a></code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>valid JID.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This is a global property for presence forwarding function for the installation. All user status presences will be forwarded to given XMPP address which can be a component or any other XMPP entity. If the destination entity is a bot connected via c2s connection it probably should be addressed via full JID (with resource part) or the standard XMPP presence processing would refuse to deliver presences from users who are not in the contact list.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostRegisterEnabled"><a class="anchor" href="#vhostRegisterEnabled"></a>66. --vhost-register-enabled</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 03:00</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-register-enabled = false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> This is a global property which allows you to switch on/off user registration on the installation. Setting this property to <code>false</code> does not disable registration plugin on the server. You can enable registration for selected domains in the domain configuration settings.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vhostTlsRequired"><a class="anchor" href="#vhostTlsRequired"></a>67. --vhost-tls-required</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-22 03:05</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--vhost-tls-required = true</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>true|false</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property is a global settings to switch on/off TLS required mode on the Tigase installation. Setting this property to <code>false</code> does not turn TLS off. The TLS is still available on the server but as an option and this is the client&#8217;s decision whether to use encryption or not. If the property is set to true the server will not allow for user authentication or sending any other user data before TLS handshaking is completed.</p>
+</div>
+<div class="paragraph">
+<p>This is a global property which is overridden by settings for particular vhost.</p>
+</div>
+<div class="paragraph">
+<p>A default settings for all virtual hosts for which the configuration is not defined. This settings is useful mostly for installations with many virtual hosts listed in the <code>init.property</code> file for which there is no individual settings specified. It allows to configure a default values for all of them, instead of having to provide individual configuration for each vhost.</p>
+</div>
+<div class="paragraph">
+<p>It is also applied as a default value for all new vhosts added at run-time.</p>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="virtHosts"><a class="anchor" href="#virtHosts"></a>68. --virt-hosts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Default value:</strong> <em>hostname</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--virt-hosts = domain1,domain2,domain3</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>comma separated list of domains.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> The property allows to set a list of virtual domains served by the installation. This is just a list of virtual domains loaded at the startup time. Domains can be added, removed, disabled or updated at runtime. All the actual domain metadata are stored in the database.</p>
+</div>
+<div class="paragraph">
+<p>Some metadata for vhosts can be also provided in the <code>init.properties</code> configuration file using this property. Domain is separated with <em>:</em> from its metadata. For boolean values <em>-</em> in front of the parameter means the feature is <strong>off</strong>. <code>+</code> or nothing  means it is <strong>on</strong>. If a parameter requires some additional settings it is provided in form: <code>param=val</code>.</p>
+</div>
+<div class="paragraph">
+<p>Here is an example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">--virt-hosts=domain1:-anon:register:-tls-required:s2s-secret=s2spasswd:\
+  domain-filter=LOCAL:max-users=1000,domain2,\
+  domain3:c2s-ports-allowed=5222;5223;5280;5290
+  domain3:domain-filter=LIST=whitedomain1;whitedomain2;whitedomain3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 4.3.0</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="watchdogDelay"><a class="anchor" href="#watchdogDelay"></a>69. --watchdog_delay</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2014-02-07 18:07</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>600000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--watchdog_delay=30000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>any integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>watchdog_delay</code> configuration property allows configuring delay (in miliseconds) between subsequent checks that ConnectionManager Watchdog (service responsible for detecting broken connections and closing them) will use to verify the connection. In addition to global configuration presented above a per component configuration is possible:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&lt;ConnectionManager component&gt;/watchdog_delay[L]=60000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for example (for ClusterConnectionManager):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/watchdog_delay[L]=150000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All related configuration options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>--watchdog_ping_type</p>
+</li>
+<li>
+<p>--watchdog_delay</p>
+</li>
+<li>
+<p>--watchdog_timeout</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.1</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="watchdogPingType"><a class="anchor" href="#watchdogPingType"></a>70. --watchdog_ping_type</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2014-02-07 18:05</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>whitespace</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--watchdog_ping_type=xmpp</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>whitespace,xmpp</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>watchdog_ping_type</code> configuration property allows configuring type of ping that ConnectionManager Watchdog (service responsible for detecting broken connections and closing them) will use to check the connection. In addition to global configuration presented above a per component configuration is possible:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&lt;ConnectionManager component&gt;/watchdog_ping_type[S]=xmpp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for example (for ClusterConnectionManager):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/watchdog_ping_type[S]=xmpp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All related configuration options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>--watchdog_ping_type</p>
+</li>
+<li>
+<p>--watchdog_delay</p>
+</li>
+<li>
+<p>--watchdog_timeout</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.1</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="watchdogTimeout"><a class="anchor" href="#watchdogTimeout"></a>71. --watchdog_timeout</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wojciech Kapcia &lt;<a href="mailto:wojciech.kapcia@tigase.org">wojciech.kapcia@tigase.org</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2014-02-07 18:13</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>1740000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong> <code>--watchdog_timeout=60000</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <em>any integer.</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> <code>watchdog_timeout</code> property allows fine-tuning ConnectionManager Watchdog (service responsible for detecting broken connections and closing them). Timeout property relates to the ammount of time (in miliseconds) after which lack of response/activity on a given connection will considered such connection as broken an close it. In addition to global configuration presented above a per component configuration is possible:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">&lt;ConnectionManager component&gt;/watchdog_timeout[L]=60000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>for example (for ClusterConnectionManager):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">cl-comp/watchdog_timeout[L]=150000</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>All related configuration options:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>--watchdog_ping_type</p>
+</li>
+<li>
+<p>--watchdog_delay</p>
+</li>
+<li>
+<p>--watchdog_timeout</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 5.2.1</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="configType"><a class="anchor" href="#configType"></a>72. config-type</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net/" class="bare">http://tigase.net/</a>
+:Date: 2013-02-09 07:22</p>
+</div>
+<div class="paragraph">
+<p><strong>Default value:</strong> <code>--gen-config-def</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Possible values:</strong> <code>--gen-config-def|--gen-config-all|--gen-config-sm|--gen-config-cs|--gen-config-comp</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Description:</strong> Probably the only such a property not starting with double hyphen. It sets the server type and determines what components are included in the generated XML file. Possible values are listed below:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>--gen-config-all</em> - creating configuration file with all available components. That is: session manager, client-to-server connection manager, server-to-server connection manager, one external component connection manager, stanza sender and stanza receiver.</p>
+</li>
+<li>
+<p><em>--gen-config-def</em> - creating default configuration file. That is configuration which is most likely needed for a typical installation. Components included in configuration are: session manager, client-to-server connection manager and server-to-server connection manager.</p>
+</li>
+<li>
+<p><em>--gen-config-sm</em> - creating configuration for instance with session manager and external component only. This is useful for distributed installation where you want to have session manager installed on separate machine and components managing network connections on different machines (one or more). Components included in configuration are: <code>sm</code> and <code>ext2s</code>.</p>
+</li>
+<li>
+<p><em>--gen-config-cs</em> - creating configuration for instance with components managing network connections. This is useful for distributed installation where you want to have session manager installed on separate machine and components managing network connections on different machines (one or more). Components included in configuration are: <code>c2s</code>, <code>s2s</code>, <code>ext2s</code>.</p>
+</li>
+<li>
+<p><em>--gen-config-comp</em> - generating a configuration with only one component - component managing external components connection, either XEP-0114 or XEP-0225. This is used to deploy a Tigase instance as external component connecting to the main server. You have to add more components handled by this instance, usually these are MUC, PubSub or any other custom components. You have to refer to description for --comp-name and --comp-class properties to learn how to add components to the Tigase instance. You also have to configure the external component connection, domain name, password, port, etc&#8230;&#8203; Please look for a description for --external and --bind-ext-hostnames properties.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Available since:</strong> 2.0.0</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0<br>
+Last updated 2015-05-14 20:55:07 CEST
+</div>
+</div>
+</body>
+</html>

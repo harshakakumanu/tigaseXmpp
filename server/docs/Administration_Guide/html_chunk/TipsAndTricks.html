@@ -1,0 +1,28 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;45.&nbsp;Tips and Tricks</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="index.html" title="Tigase Administration Guide"><link rel="prev" href="RetrievingStatisticsFromTheServer.html" title="Retrieving statistics from the server"><link rel="next" href="_tigase_tip_checking_cluster_connections.html" title="Tigase Tip: Checking Cluster Connections"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;45.&nbsp;Tips and Tricks</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="RetrievingStatisticsFromTheServer.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_tigase_tip_checking_cluster_connections.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="TipsAndTricks"></a>Chapter&nbsp;45.&nbsp;Tips and Tricks</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="TipsAndTricks.html#_tigase_tip_checking_the_runtime_environment">Tigase Tip: Checking the Runtime Environment</a></span></dt><dt><span class="section"><a href="_tigase_tip_checking_cluster_connections.html">Tigase Tip: Checking Cluster Connections</a></span></dt><dd><dl><dt><span class="section"><a href="_tigase_tip_checking_cluster_connections.html#_established_connections">Established connections</a></span></dt><dt><span class="section"><a href="_tigase_tip_checking_cluster_connections.html#_cluster_nodes_connected_using_xmpp">Cluster nodes connected (using XMPP)</a></span></dt></dl></dd></dl></div><p>The section contains some short trick and tips helping in different kind of issues related to the server administration and maintenance.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_tigase_tip_checking_the_runtime_environment"></a>Tigase Tip: Checking the Runtime Environment</h2></div></div></div><p>It has happened recently that we have tried very hard to fix a few annoying problems on one of the Tigase installations. Whatever we did, however the problems still existed after uploading a new version and the server restart. It worked fine in our development environment and it just didn&#8217;t on the target system.</p><p>It turned out that due to a specific environment settings on the target system an old version of the Tigase server was always started regardless updates we were uploading. When I finally started looking at the installation the first indication that something is wrong was lack of any log files in place where I expected them.</p><p>The best way to check all the environment settings used to start the Tigase server is to use&#8230;&#8203;.. <span class="strong"><strong>check</strong></span> command line parameter:</p><pre class="programlisting">./scripts/tigase.sh check etc/tigase.conf
+Checking arguments to Tigase
+TIGASE_HOME = .
+TIGASE_JAR = jars/tigase-server.jar
+TIGASE_PARAMS = etc/tigase.conf
+TIGASE_CONFIG = etc/tigase.xml
+TIGASE_RUN = tigase.server.XMPPServer -c etc/tigase.xml --property-file etc/init.properties
+TIGASE_PID = ./logs/tigase.pid
+TIGASE_OPTIONS = --property-file etc/init.properties
+JAVA_OPTIONS = -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8 \
+    -Djdbc.drivers=com.mysql.jdbc.Driver:org.postgresql.Driver \
+    -server -Xms100M -Xmx200M -XX:PermSize=32m -XX:MaxPermSize=256m
+JAVA = /System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin/java
+JAVA_CMD =
+CLASSPATH = ./jars/tigase-server.jar:./libs/jdbc-mysql.jar:./libs/jdbc-postgresql.jar:\
+    ./libs/tigase-extras.jar:./libs/tigase-muc.jar:./libs/tigase-pubsub.jar:\
+    ./libs/tigase-utils.jar:./libs/tigase-xmltools.jar
+TIGASE_CMD = /System/Library/Frameworks/JavaVM.framework/Versions/1.6/Home/bin/java \
+    -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8 \
+    -Djdbc.drivers=com.mysql.jdbc.Driver:org.postgresql.Driver \
+    -server -Xms100M -Xmx200M -XX:PermSize=32m -XX:MaxPermSize=256m \
+    -cp ./jars/tigase-server.jar:./libs/jdbc-mysql.jar:./libs/jdbc-postgresql.jar:\
+    ./libs/tigase-extras.jar:./libs/tigase-muc.jar:./libs/tigase-pubsub.jar:\
+    ./libs/tigase-utils.jar:./libs/tigase-xmltools.jar tigase.server.XMPPServer \
+    -c etc/tigase.xml --property-file etc/init.properties
+TIGASE_CONSOLE_LOG = ./logs/tigase-console.log</pre><p>In our case <span class="strong"><strong>TIGASE_HOME</strong></span> was set to a fixed location pointing to an old version of the server files. The quick <span class="strong"><strong>check</strong></span> command may be a real time saver.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="RetrievingStatisticsFromTheServer.html">Prev</a>&nbsp;</td><td width="20%" align="center">&nbsp;</td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_tigase_tip_checking_cluster_connections.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Retrieving statistics from the server&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Tigase Tip: Checking Cluster Connections</td></tr></table></div></body></html>

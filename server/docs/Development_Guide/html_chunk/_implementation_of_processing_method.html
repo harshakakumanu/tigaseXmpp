@@ -1,0 +1,93 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Implementation of processing method</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Development Guide"><link rel="up" href="wpc.html" title="Chapter&nbsp;17.&nbsp;Writing Plugin Code"><link rel="prev" href="_using_older_non_annotation_based_implementation.html" title="Using older non-annotation based implementation"><link rel="next" href="pluginconf.html" title="Chapter&nbsp;18.&nbsp;Plugin Configuration"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Implementation of processing method</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_using_older_non_annotation_based_implementation.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;17.&nbsp;Writing Plugin Code</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="pluginconf.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_implementation_of_processing_method"></a>Implementation of processing method</h2></div></div></div><p>Now we have our plugin prepared for loading it to the Tigase server. The next step is the actual packet processing method. For the complete code, please refer to the plugin in the Git. I will only comment here on elements which might be confusing or add a few more lines of code which might be helpful in your case.</p><pre class="programlisting">@Override
+public void process(Packet packet, XMPPResourceConnection session,
+	NonAuthUserRepository repo, Queue&lt;Packet&gt; results, Map&lt;String, Object&gt; settings)
+	throws XMPPException {
+
+	// For performance reasons it is better to do the check
+	// before calling logging method.
+	if (log.isLoggable(Level.FINEST)) {
+		log.log(Level.FINEST, "Processing packet: {0}", packet);
+	}
+
+	// You may want to skip processing completely if the user is offline.
+	if (session == null) {
+		return;
+	}    // end of if (session == null)
+
+	try {
+
+		// Remember to cut the resource part off before comparing JIDs
+		BareJID id = (packet.getStanzaTo() != null) ? packet.getStanzaTo().getBareJID() : null;
+
+		// Checking if this is a packet TO the owner of the session
+		if (session.isUserId(id)) {
+
+			// Yes this is message to 'this' client
+			Packet result = packet.copyElementOnly();
+
+			// This is where and how we set the address of the component
+			// which should rceive the result packet for the final delivery
+			// to the end-user. In most cases this is a c2s or Bosh component
+			// which keep the user connection.
+			result.setPacketTo(session.getConnectionId(packet.getStanzaTo()));
+
+			// In most cases this might be skept, however if there is a
+			// problem during packet delivery an error might be sent back
+			result.setPacketFrom(packet.getTo());
+
+			// Don't forget to add the packet to the results queue or it
+			// will be lost.
+			results.offer(result);
+
+			return;
+		}    // end of else
+
+		// Remember to cut the resource part off before comparing JIDs
+		id = (packet.getStanzaFrom() != null) ? packet.getStanzaFrom().getBareJID() : null;
+
+		// Checking if this is maybe packet FROM the client
+		if (session.isUserId(id)) {
+
+			// This is a packet FROM this client, the simplest action is
+			// to forward it to is't destination:
+			// Simple clone the XML element and....
+			// ... putting it to results queue is enough
+			results.offer(packet.copyElementOnly());
+
+			return;
+		}
+
+		// Can we really reach this place here?
+		// Yes, some packets don't even have from or to address.
+		// The best example is IQ packet which is usually a request to
+		// the server for some data. Such packets may not have any addresses
+		// And they usually require more complex processing
+		// This is how you check whether this is a packet FROM the user
+		// who is owner of the session:
+		JID jid = packet.getFrom();
+
+		// This test is in most cases equal to checking getElemFrom()
+		if (session.getConnectionId().equals(jid)) {
+
+			// Do some packet specific processing here, but we are dealing
+			// with messages here which normally need just forwarding
+			Element el_result = packet.getElement().clone();
+
+			// If we are here it means FROM address was missing from the
+			// packet, it is a place to set it here:
+			el_result.setAttribute("from", session.getJID().toString());
+
+			Packet result = Packet.packetInstance(el_result, session.getJID(),
+				packet.getStanzaTo());
+
+			// ... putting it to results queue is enough
+			results.offer(result);
+		}
+	} catch (NotAuthorizedException e) {
+		log.warning("NotAuthorizedException for packet: " + packet);
+		results.offer(Authorization.NOT_AUTHORIZED.getResponseMessage(packet,
+				"You must authorize session first.", true));
+	}    // end of try-catch
+}</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_using_older_non_annotation_based_implementation.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="wpc.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="pluginconf.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Using older non-annotation based implementation&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;18.&nbsp;Plugin Configuration</td></tr></table></div></body></html>

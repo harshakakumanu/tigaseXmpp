@@ -1,0 +1,39 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;65.&nbsp;Specification for ad-hoc Commands Used to Manage Virtual Domains</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="index.html" title="Tigase Administration Guide"><link rel="prev" href="_virtual_hosts_in_the_tigase_server.html" title="Chapter&nbsp;64.&nbsp;Virtual Hosts in the Tigase Server"><link rel="next" href="_adding_a_new_domain_or_updating_existing_one.html" title="Adding a New Domain or Updating Existing One"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;65.&nbsp;Specification for ad-hoc Commands Used to Manage Virtual Domains</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_virtual_hosts_in_the_tigase_server.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_adding_a_new_domain_or_updating_existing_one.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="_specification_for_ad_hoc_commands_used_to_manage_virtual_domains"></a>Chapter&nbsp;65.&nbsp;Specification for ad-hoc Commands Used to Manage Virtual Domains</h1></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl class="toc"><dt><span class="section"><a href="_specification_for_ad_hoc_commands_used_to_manage_virtual_domains.html#_reloading_the_domains_list_from_the_database">Reloading the Domains List from the Database</a></span></dt><dt><span class="section"><a href="_adding_a_new_domain_or_updating_existing_one.html">Adding a New Domain or Updating Existing One</a></span></dt><dt><span class="section"><a href="_removing_a_virtual_domain_from_the_server.html">Removing a Virtual Domain From the Server</a></span></dt></dl></div><p>Artur Hefczyc &lt;<a class="link" href="mailto:artur.hefczyc@tigase.net" target="_top">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a class="link" href="http://tigase.net" target="_top">http://tigase.net</a>
+:Date: 2010-04-06 21:18</p><p>There are 3 ad-hoc commands for virtual domains management in the Tigase server:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><span class="strong"><strong>VHOSTS_RELOAD</strong></span> used to reload virtual domains list from the repository (database).</li><li class="listitem"><span class="strong"><strong>VHOSTS_UPDATE</strong></span> used to add a new virtual domain or update information for existing one.</li><li class="listitem"><span class="strong"><strong>VHOSTS_REMOVE</strong></span> used to remove an existing virtual host from the running server.</li></ol></div><p>Syntax of the commands follows specification described in the <a class="link" href="http://xmpp.org/extensions/xep-0050.html" target="_top">XEP-0050</a>. Extra information required to complete the command is carried as data forms described in the <a class="link" href="http://xmpp.org/extensions/xep-0004.html" target="_top">XEP-0004</a>.</p><p>All commands are accepted by the server only when send by the installation administrator. If the command is sent from any other account &amp;lt;not-authorized /&amp;gt; error is returned. To grant administrator rights to an account you have to set <span class="strong"><strong>--admins</strong></span> property in the ////&lt;&lt;initPropertiesGuide,////configuration file.</p><p>Commands are sent to 'vhost-man' server component and the 'to' attribute of the stanza must contain a full JID of the VHostManager on the server. The full <span class="strong"><strong>JID</strong></span> consists of the component name: 'vhost-man' and the local domain, that is domain which is already on the list of virtual domains and is active. Assuming 'existing.domain.com' one of domains already activated for the server installation the <span class="strong"><strong>JID</strong></span> is: '<a class="link" href="mailto:vhost-man@existing.domain.com" target="_top">vhost-man@existing.domain.com</a>'.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_reloading_the_domains_list_from_the_database"></a>Reloading the Domains List from the Database</h2></div></div></div><p>In order to reload virtual domains from the permanent repository other than configuration file you have to send <span class="strong"><strong>VHOSTS_RELOAD</strong></span> ad-hoc command to the VHostManager on the server.</p><p>The reload command request is of the form:</p><pre class="programlisting">&lt;iq type="set"
+    to="vhost-man@existing.domain.com"
+    id="aac8a"&gt;
+  &lt;command xmlns="http://jabber.org/protocol/commands"
+           node="VHOSTS_RELOAD" /&gt;
+&lt;/iq&gt;</pre><p>The server sends a response upon successful completion of the command with current number of virtual domains server by the installation:</p><pre class="programlisting">&lt;iq from="vhost-man@existing.domain.com"
+    type="result"
+    to="cmd-sender-admin@existing.domain.com"
+    id="aac8a"&gt;
+  &lt;command xmlns="http://jabber.org/protocol/commands"
+           status="completed"
+           node="VHOSTS_RELOAD"&gt;
+    &lt;x xmlns="jabber:x:data" type="result"&gt;
+      &lt;field type="fixed" var="Note"&gt;
+        &lt;value&gt;Current number of VHosts: 123&lt;/value&gt;
+      &lt;/field&gt;
+    &lt;/x&gt;
+  &lt;/command&gt;
+&lt;/iq&gt;</pre><p>If the command is sent from other than admin account the server returns an error:</p><pre class="programlisting">&lt;iq from="vhost-man@existing.domain.com"
+    type="error"
+    to="cmd-sender-admin@existing.domain.com"
+    id="aac8a"&gt;
+  &lt;command xmlns="http://jabber.org/protocol/commands"
+           node="VHOSTS_RELOAD" /&gt;
+  &lt;error type="auth" code="401"&gt;
+    &lt;not-authorized xmlns="urn:ietf:params:xml:ns:xmpp-stanzas" /&gt;
+    &lt;text xmlns="urn:ietf:params:xml:ns:xmpp-stanzas"
+          xml:lang="en"&gt;
+      You are not authorized for this action.
+    &lt;/text&gt;
+  &lt;/error&gt;
+&lt;/iq&gt;</pre><p>The response doesn&#8217;t have any special meaning other then informative for the end-user. The client may ignore response as it is sent after the command has been executed.</p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_virtual_hosts_in_the_tigase_server.html">Prev</a>&nbsp;</td><td width="20%" align="center">&nbsp;</td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_adding_a_new_domain_or_updating_existing_one.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;64.&nbsp;Virtual Hosts in the Tigase Server&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Adding a New Domain or Updating Existing One</td></tr></table></div></body></html>

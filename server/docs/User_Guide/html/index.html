@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="author" content="Tigase Team">
+<title>Tigase User Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Tigase User Guide</h1>
+<div class="details">
+<span id="author" class="author">Tigase Team</span><br>
+<span id="email" class="email"><a href="mailto:team@tigase.com">team@tigase.com</a></span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_jabber_xmpp_introduction">1. Jabber/XMPP introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_jabber_xmpp_is_instant_messaging_technology">1.1. Jabber/XMPP is Instant Messaging Technology</a></li>
+</ul>
+</li>
+<li><a href="#_installing_minichat_on_your_website">2. Installing Minichat on Your Website</a>
+<ul class="sectlevel2">
+<li><a href="#_instructions">2.1. Instructions:</a></li>
+</ul>
+</li>
+<li><a href="#_how_to_use_tigase_service">3. How to Use Tigase Service</a>
+<ul class="sectlevel2">
+<li><a href="#_this_article_describes_how_to_use_strong_tigase_org_strong_service_for_instant_communications">3.1. This Article Describes How to use <strong>tigase.org</strong> Service for Instant Communications</a></li>
+</ul>
+</li>
+<li><a href="#_configuration_instructions_for_psi">4. Configuration Instructions for Psi</a>
+<ul class="sectlevel2">
+<li><a href="#_psi_initial_configuration">4.1. Psi - Initial Configuration</a></li>
+<li><a href="#_short_instructions_how_to_add_your_first_contact">4.2. Short Instructions How to Add Your First Contact</a></li>
+</ul>
+</li>
+<li><a href="#_tigase_service_and_msn_transport_from_client_side">5. Tigase Service and MSN Transport From Client Side</a>
+<ul class="sectlevel2">
+<li><a href="#_jeti">5.1. Jeti</a></li>
+<li><a href="#_pidgin">5.2. Pidgin</a></li>
+</ul>
+</li>
+<li><a href="#_jeti_and_msn_transport_on_tigase_org">6. Jeti and MSN Transport on tigase.org</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_jabber_xmpp_introduction"><a class="anchor" href="#_jabber_xmpp_introduction"></a>1. Jabber/XMPP introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net" class="bare">http://tigase.net</a>
+:Date: 2009-11-25 15:51</p>
+</div>
+<div class="sect2">
+<h3 id="_jabber_xmpp_is_instant_messaging_technology"><a class="anchor" href="#_jabber_xmpp_is_instant_messaging_technology"></a>1.1. Jabber/XMPP is Instant Messaging Technology</h3>
+<div class="paragraph">
+<p>All federated <strong>Jabber/XMPP</strong> servers are connected in one global communications network allowing you to send messages to friends who have accounts on other Jabber servers.</p>
+</div>
+<div class="paragraph">
+<p>This is very much like sending e-mail but the difference between Jabber and e-mail is the same as the difference between sending a traditional mail and talking on the phone.</p>
+</div>
+<div class="paragraph">
+<p>All messages sent through Jabber are sent instantly and you also receive responses instantly. More over you can see whether your mate is online and available for talking or not.</p>
+</div>
+<div class="paragraph">
+<p>There exists similar technologies to Jabber like Yahoo, MSN, and ICQ. There are, however, quite a few differences.</p>
+</div>
+<div class="paragraph">
+<p>Jabber is an open standard which means everybody can know how it works, everybody can implement their own software connecting to the network both client and server side.</p>
+</div>
+<div class="paragraph">
+<p>The server side is actually the biggest difference and advantage. Many companies have offices in different locations, and such instant messaging technology could be very useful to employees for communication. Companies are not inclined to allow confidential discussions to go outside the company&#8217;s network. Especially if it is not very secure to leave such information on third party public servers.</p>
+</div>
+<div class="paragraph">
+<p>Jabber on the other hand, allows you to deploy server software on your own company network. Employees can then talk securely and all information remains on the company&#8217;s secure network. Of course if offices are located in different locations or countries then all messages are transmitted over the public network - the Internet. This is not a problem since Jabber supports SSL/TLS - secure encrypted connections which helps you protect your discussion.</p>
+</div>
+<div class="paragraph">
+<p>Then if your employees need to contact customers outside your company, the whole discussion can go through your server and a server located on the customer side.</p>
+</div>
+<div class="paragraph">
+<p>There are many other scenarios and use cases but I hope this brief introduction gives you an idea of the differences and advantages of Jabber technology.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_minichat_on_your_website"><a class="anchor" href="#_installing_minichat_on_your_website"></a>2. Installing Minichat on Your Website</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net" class="bare">http://tigase.net</a>
+:Date: 2009-11-25 15:51</p>
+</div>
+<div class="paragraph">
+<p>We have made Minichat available to demonstrate new projects we are working on, to run some tests, and collect your opinions. The feedback we&#8217;ve recieved has exceeded our expectations. The most common question was: <em>Can I/how can I install this on my website?</em></p>
+</div>
+<div class="paragraph">
+<p>Installing Minichat on your website is very simple so I am providing instructions here for all of you that want to include the Minichat client on your website and allow visitors to chat with you.</p>
+</div>
+<div class="paragraph">
+<p><em>Just to remind you - this code is under development and will be updated and changed frequently. It may even stop working temporarily or permanently.  We can and will intentionally block certain users or IP addresses if we discover any abuse. If you are ready for this and still want to use it continue reading&#8230;&#8203;</em></p>
+</div>
+<div class="paragraph">
+<p>First thing to know: Minichat will only work with the <strong>tigase.org</strong> Jabber/XMPP server right now.  <em>This is not because of some limitations in the code or special non-standard implementation. This is to simplify deployment of the service. If you wanted Minichat to connect to a different domain/Jabber server the installation would be much more difficult, involving Apaches proxy_mod installation, configuration and possibly Bosh component/server deployment.</em></p>
+</div>
+<div class="paragraph">
+<p>Second thing to know: Minichat connects to the server as anonymous user. To avoid sending spam the anonymous user can only send messages to users within the single Jabber/XMPP server. It means that although you can configure Minichat to send messages to <strong>user@jabber.org</strong>, Tigase server won&#8217;t deliver those messages.</p>
+</div>
+<div class="sect2">
+<h3 id="_instructions"><a class="anchor" href="#_instructions"></a>2.1. Instructions:</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="http://www.tigase.org/user/register">Register an account</a> on the <a href="http://www.tigase.org">tigase.org</a> website. For purposes of this guide let&#8217;s say the account name is: <strong>your-account</strong>. The Jabber ID will be: <strong>your-account@tigase.org</strong>.</p>
+<div class="paragraph">
+<p><strong>Note!</strong> There seems to be some confusion so let me clarify this. You create an account on the <a href="http://tigase.org">www.tigase.org</a> website but your Jabber account domain is: <strong>tigase.org</strong>.</p>
+</div>
+</li>
+<li>
+<p>Setup the Jabber/XMPP client of your choice to connect to the Tigase server in domain: <strong>tigase.org</strong>. Note you must allow plain text login. TLS is supported so the connection is secure and your password is still safe.</p>
+</li>
+<li>
+<p>There are a few ways for adding the client to the website but you always use startup parameters as URL query to the client link. Following parameters are possible:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>jid=<a href="mailto:your-account@tigase.org">your-account@tigase.org</a></strong> tells the client who you want website visitors talk to. Normally you put your own account here.</p>
+</li>
+<li>
+<p><strong>name=YourName</strong> screen name (displayed name) of your account.</p>
+</li>
+<li>
+<p><strong>domain=tigase.org</strong> domain name you want Minichat to connect to. At the moment only <strong>tigase.org</strong> is allowed.</p>
+</li>
+<li>
+<p><strong>autologin=true</strong> determines whether the Minichat client automatically connects to the server when the page is loaded or waits for the visitor to click on the title bar.</p>
+</li>
+<li>
+<p>The first way described is to put the client in exactly the same way as it is on the <a href="http://tigase.org">www.tigase.org</a> website. The chat window is always visible but the client is not connected to the server until someone clicks on the Minichat title bar. Include in your page following code:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;iframe</span>
+  <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://minichat.tigase.org/MesComp.html?jid=your-account@tigase.org</span><span class="content">&amp;</span><span class="content">name=YourName</span><span class="content">&amp;</span><span class="content">domain=tigase.org</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">220px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">250px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">frameborder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/iframe&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Very similar to the first option. The only difference is that the client automatically connects to the server and is ready for chatting without need to click on the title bar. Include following code:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;iframe</span>
+  <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://minichat.tigase.org/MesComp.html?jid=your-account@tigase.org</span><span class="content">&amp;</span><span class="content">name=YourName</span><span class="content">&amp;</span><span class="content">domain=tigase.org</span><span class="content">&amp;</span><span class="content">autologin=true</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">220px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">250px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">frameborder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/iframe&gt;</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The third option is the least intrusive but the most complex to install. It puts a small, clickable image with text on your page: <strong>Click to chat with&#8230;&#8203;.</strong> When the website visitor clicks a new window pops up with the Minichat which automatically connects to the server. You need to put some code in the web page header:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/css</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://minichat.tigase.org/minichat.css</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/css</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://minichat.tigase.org/mygwt-all.css</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And similar to other configurations code in the web page body:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="html"><span class="tag">&lt;iframe</span>
+  <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://minichat.tigase.org/Runner.html?jid=your-account@tigase.org</span><span class="content">&amp;</span><span class="content">name=YourName</span><span class="content">&amp;</span><span class="content">domain=tigase.org</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">width</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">220px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">height</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">250px</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">frameborder</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/iframe&gt;</span></code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>Enjoy and send us your comments&#8230;&#8203;</em></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_use_tigase_service"><a class="anchor" href="#_how_to_use_tigase_service"></a>3. How to Use Tigase Service</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net" class="bare">http://tigase.net</a>
+:Date: 2009-11-25 15:51</p>
+</div>
+<div class="sect2">
+<h3 id="_this_article_describes_how_to_use_strong_tigase_org_strong_service_for_instant_communications"><a class="anchor" href="#_this_article_describes_how_to_use_strong_tigase_org_strong_service_for_instant_communications"></a>3.1. This Article Describes How to use <strong>tigase.org</strong> Service for Instant Communications</h3>
+<div class="paragraph">
+<p>You have to install and run a Jabber client application to use the service.</p>
+</div>
+<div class="sect3">
+<h4 id="_short_instructions"><a class="anchor" href="#_short_instructions"></a>3.1.1. Short instructions:</h4>
+<div class="paragraph">
+<p>Usually you just need to enter Jabber user name of the form: <a href="mailto:user@tigase.org">user@tigase.org</a>. Your Jabber client should take care of all other things as our service doesn&#8217;t need any special settings.  If you don&#8217;t have an account on tigase.org server yet just tick the option to register new account. That&#8217;s it!</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_long_instructions"><a class="anchor" href="#_long_instructions"></a>3.1.2. Long Instructions:</h4>
+<div class="paragraph">
+<p>Good news is that there are many programs to choose from which allow you to communicate through our server. So you can pick up your favorite application or use an existing one that is compatible and start using our service.</p>
+</div>
+<div class="paragraph">
+<p>All clients presented below support multiple accounts on Jabber servers. What this means is that you can have a few Jabber accounts on different Jabber servers and you can still use just one program to connect to all of them at the same time.</p>
+</div>
+<div class="paragraph">
+<p>Full list of all known Jabber clients is very long. You can obviously try them all but below is a selection which is recommended by Tigase team.  The selected programs might not be the best choice for you but these programs have been tested and we can offer help with using them.  Here is a list of recommended instant messaging clients:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://psi-im.org/about">Psi</a>
+Pure Jabber client. Although it supports only Jabber network it is a very user friendly and comfortable program. It works on most popular operating systems like Linux, MS Windows, and Apple MacOS X.</p>
+</li>
+<li>
+<p><a href="http://www.gajim.org/">Gajim</a>
+This is another Jabber only client. Very user friendly and works on most of Linux distributions, FreeBSD, and MS Windows.</p>
+</li>
+<li>
+<p><a href="http://www.pidgin.im/">Pidgin</a> (previously <a href="http://gaim.sourceforge.net/">Gaim</a>)
+This is not just a Jabber client. This type of application is called multicommunicator as apart from Jabber it supports many other instant messagin networks/protocols such as: AIM/ICQ, MSN, Yahoo, Gadu-Gadu, IRC, and a few others. So it is especially convenient if you have friends using other messaging networks. Pidgin works on most Linux distributions, and on MS Windows.</p>
+</li>
+<li>
+<p><a href="http://kopete.kde.org/">Kopete</a>
+This is a <a href="http://www.kde.org/">KDE</a> component and although it only works on Linux based system it also supports many of the most popular instant messaging protocols apart from Jabber like: AIM, Gadu-Gadu, ICQ, IRC, MSN, Yahoo.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Install the Jabber client of your choice and set up for a Tigase account.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_instructions_for_psi"><a class="anchor" href="#_configuration_instructions_for_psi"></a>4. Configuration Instructions for Psi</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_psi_initial_configuration"><a class="anchor" href="#_psi_initial_configuration"></a>4.1. Psi - Initial Configuration</h3>
+<div class="paragraph">
+<p>The first time you run Psi you see a screen like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-first-run.png" alt="Psi First Run"></span></p>
+</div>
+<div class="paragraph">
+<p>To connect to tigase.org server we need to configure the program. Below are step-by-step instructions for novice users on how to setup Psi.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Psi can connect to many Jabber servers at the same time so we have to identify each connection somehow. The first thing to do is assign a name to the connection we just created. As we are going to define connection to tigase.org server let&#8217;s just name it: <strong>Tigase</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-add-account.png" alt="Psi Add Account"></span></p>
+</div>
+<div class="paragraph">
+<p><strong>Note!</strong> <em>At the moment you can register an account through <a href="http://www.tigase.org/user/register">the Web site only</a>.  This is a single account for both services: The Drupal website and Jabber/XMPP service on the tigase.org domain. If you want to have a Jabber account on the <strong>tigase.org</strong> server go to the <a href="http://www.tigase.org/user/register">registration page</a>, un-tick "Register new account", and go to the point no <strong>5</strong>. You can use guide points 2-4 to register a Jabber account on any other Jabber server.</em></p>
+</div>
+</li>
+<li>
+<p>When you press the <strong>Add</strong> button you will see next window where you can enter your Jabber account details:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-register-account-empty.png" alt="Psi Empty Account"></span></p>
+</div>
+</li>
+<li>
+<p>Invent your user name for the account on Tigase server. Let&#8217;s assume your user name is: <strong>frank</strong>. Jabber ID&#8217;s however consist of 2 parts - your user name and server address. Exactly the same as an e-mail address. As you are registering an account on tigase.org server, you will have to enter in this field: <strong>frank@tigase.org</strong>. Next enter the password of your choice and click the <strong>Register</strong> button.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-register-account-nossl.png" alt="Psi Register Account"></span></p>
+</div>
+</li>
+<li>
+<p>On successful registration you will receive a confirmation message and you should see a window like this:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-register-account-success.png" alt="Register Account Success"></span></p>
+</div>
+<div class="paragraph">
+<p>It may happen that somebody earlier registered an account with the same name you&#8217;ve selected for yourself. If so, you will receive error message. You will then have to select another user name and try to register again.</p>
+</div>
+</li>
+<li>
+<p>After clicking the <strong>OK</strong> button you will see a window with your connection and account setup. You can stick with default values for now.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-account-properties-basic.png" alt="psi-account-properties-basic"></span></p>
+</div>
+<div class="paragraph">
+<p>Just click the <strong>Save</strong> button and this window closes.</p>
+</div>
+</li>
+<li>
+<p>Now you have your account configured and ready to use but you are still off-line. You can find out whether you are on-line or off-line by looking at the bottom of main Psi window. There you can see <strong>Offline</strong> text.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-after-registration.png" alt="PSI After Registration"></span></p>
+</div>
+<div class="paragraph">
+<p>Click on this <strong>Offline</strong> text and you will see a list of possible options. Just select <strong>Online</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-connected.png" alt="PSI Connected"></span></p>
+</div>
+<div class="paragraph">
+<p>Now you are connected!</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Well, you are now connected but how to talk to other people? How to add friends to the contact list?</p>
+</div>
+<div class="paragraph">
+<p>You can send a message to your friends stright away using the <strong>Psi menu</strong> option <strong>New blank message</strong>. It is much more convenient however, if you could see which of your friends is online and available for chatting and if you could start talking to your friend just by clicking on his name.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_short_instructions_how_to_add_your_first_contact"><a class="anchor" href="#_short_instructions_how_to_add_your_first_contact"></a>4.2. Short Instructions How to Add Your First Contact</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on Psi menu - the button next to the <strong>Online</strong> text. You will see something like this:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-menu.png" alt="PSI Menu"></span></p>
+</div>
+<div class="paragraph">
+<p>From all menu options select the top one - <strong>Add a contact</strong>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-menu-add-contact.png" alt="PSI Menu add Contact"></span></p>
+</div>
+</li>
+<li>
+<p>The next window will display where you can enter your contact details:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-add-user-empty.png" alt="PSI Add User Empty"></span></p>
+</div>
+<div class="paragraph">
+<p>You have to know the Jabber ID of the person you want to add to your contact list. Let&#8217;s assume, for example, you want to add Tigase server administrator&#8217;s Jabber ID to your contact list. So, after you enter these details the window will look like this:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-add-user-filled.png" alt="PSI Add User Filled"></span></p>
+</div>
+<div class="paragraph">
+<p>Click the <strong>Add</strong> button.</p>
+</div>
+</li>
+<li>
+<p>Now you will see a confirmation window that a new person has been added to your contact list:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-kobit-added.png" alt="PSI Kobit Added"></span></p>
+</div>
+<div class="paragraph">
+<p>But there is more behind the scenes. Adding a contact to your <strong>Roster</strong> (contact list) usually means you can see whether the person is online and available to talk or not. The person however, may not wish you to see his presence. So, to make sure the other person accepts you as a friend Psi sent a request to the address you just entered with the question of whether he agrees to show his presence to you.</p>
+</div>
+<div class="paragraph">
+<p>You won&#8217;t be able to see the users availability until he sends confirmation.</p>
+</div>
+</li>
+<li>
+<p>Once the other user sends confirmation back, you will usually receive 2 system events:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-kobit-auth-received.png" alt="PSI Kobit Auth Received"></span></p>
+</div>
+</li>
+<li>
+<p>Click on the contact to see a window with these messages:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-authorized-window.png" alt="PSI Authorized Window"></span></p>
+</div>
+</li>
+<li>
+<p>One message just says you have been authorized by the other user:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-authorized-window-2.png" alt="PSI Authorized Window 2"></span></p>
+</div>
+<div class="paragraph">
+<p>So you simply click <strong>Next</strong> to see the second message.</p>
+</div>
+</li>
+<li>
+<p>The second message is a bit more interesting. It contains the question of whether you also authorize the other user to see your presence. If you want to accept this request just click <strong>Add/Auth</strong>.</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-authorized-window-3.png" alt="PSI Authorized Window 3"></span></p>
+</div>
+</li>
+<li>
+<p>Finally main Psi window with your new contact:</p>
+<div class="paragraph">
+<p><span class="image"><img src="./images/psi-kobit-added-authorized.png" alt="PSI Kobit Added Authorized"></span></p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Well done!</p>
+</div>
+<div class="paragraph">
+<p>You are ready to start Jabbering. Good luck.</p>
+</div>
+<div class="paragraph">
+<p>Where to go next? For detailed Psi documentation refer to the program Wiki page: <a href="http://psi-im.org/wiki/Main_Page" class="bare">http://psi-im.org/wiki/Main_Page</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_tigase_service_and_msn_transport_from_client_side"><a class="anchor" href="#_tigase_service_and_msn_transport_from_client_side"></a>5. Tigase Service and MSN Transport From Client Side</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net" class="bare">http://tigase.net</a>
+:Date: 2009-11-25 15:51</p>
+</div>
+<div class="paragraph">
+<p>MSN transport is a separate module which allows you to connect to your MSN account and contact other people on the MSN network from your Jabber client.  We use <a href="http://delx.cjb.net/pymsnt/">PyMSN-t</a> application as a MSN transport which is a separate project from Tigase server. Both applications integrate very well and detailed configuration instructions are available in the <strong>Admin Guide</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/tigase-register-2-s.png" alt="Tigase Register"></span></p>
+</div>
+<div class="paragraph">
+<p>At the moment the MSN transport installed on <strong>tigase.org</strong> server is available for local users only.</p>
+</div>
+<div class="paragraph">
+<p>You also need an account on <a href="http://get.live.com/mail/options">Hotmail&#8217;s</a> server and a Jabber/XMPP client of your choice:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://psi-im.org/">Psi</a></p>
+</li>
+<li>
+<p><a href="http://www.pidgin.im/">Pidgin</a></p>
+</li>
+<li>
+<p><a href="http://coccinella.im/">Coccinella</a></p>
+</li>
+<li>
+<p><a href="http://jeti-im.org/">Jeti</a> - Also available on Tigase Website.</p>
+</li>
+<li>
+<p><a href="http://jwchat.sourceforge.net/">JWChat</a> - Also available on Tigase Website.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are many other clients available&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Here are instructions on how to use the MSN transport on <strong>tigase.org</strong> with different Jabber/XMPP clients.</p>
+</div>
+<div class="paragraph">
+<p>The first and most important thing to note is that you can not register an account on <strong>tigase.org</strong> server using your Jabber client. You have to create a new account using <a href="http://www.tigase.org/user/register">Tigase website</a>. This is because Tigase website (which runs on <a href="http://drupal.org/">Drupal</a>) shares account information with the Jabber service and all account management is done via the website interface.</p>
+</div>
+<div class="paragraph">
+<p>All Jabber/XMPP capable clients can use MSN transport as it needs very basic Jabber/XMPP protocol features. Unfortunately, some clients, especially multi-protocol clients like <a href="http://www.pidgin.im/">Pidgin</a> don&#8217;t fully support the protocol and cannot initialize MSN transport properly. There is a workaround though. Again, using what Tigase Website offers, you can initialize MSN transport and then switch back to your favorite client.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say we have already requested a <strong>test</strong> account on <a href="http://www.tigase.org/user/register">Tigase website</a> with password *** and we also have a MSN account:
+<a href="mailto:kobit12@hotmail.com">kobit12@hotmail.com</a> with password: *\**\**\****.</p>
+</div>
+<div class="sect2">
+<h3 id="_jeti"><a class="anchor" href="#_jeti"></a>5.1. Jeti</h3>
+<div class="paragraph">
+<p>Jeti is described as the first client because it might be needed for users of some other clients to initialize MSN transport for your account.</p>
+</div>
+<div class="paragraph">
+<p>Due to the number of images used in the Jeti guide it has been moved to a separate page.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pidgin"><a class="anchor" href="#_pidgin"></a>5.2. Pidgin</h3>
+<div class="paragraph">
+<p>As I mentioned earlier, Pidgin doesn&#8217;t support all Jabber extensions needed for registering to MSN transport. So unfortunately you have to use a different client to add this transport to your roster. Ideally you should use one of the native Jabber stand-alone clients like <a href="http://psi-im.org/">Psi</a>, or <a href="http://coccinella.im/">Coccinella</a>. However, If you don&#8217;t want to install any other clients you can use <a href="http://jeti-im.org/">Jeti</a> which is available on Tigase website preinstalled and preconfigured for use. Please refer to separate guide for details on how to use Jeti client to get MSN transport working.</p>
+</div>
+<div class="paragraph">
+<p>Ok, now as you probably have MSN transport activated for you account you can start using <a href="http://www.pidgin.im/">Pidgin</a> to communicate with either Jabber users or MSN users.</p>
+</div>
+<div class="paragraph">
+<p>First thing to do is basic Pidgin configuration to connect to your Jabber account on <strong>tigase.org</strong> server. Click <strong>Accounts</strong> in your main menu and then <strong>Add/Edit</strong> to get to the window with all your accounts listing. There is a button Add. After you press it you get to a window as below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-add-account-m.png" alt="Pidgin Add Account"></span></p>
+</div>
+<div class="paragraph">
+<p>Please enter all your login details as on the example screenshot. Your user name, Screen name, and Password will be different but Domain should be the same: <strong>tigase.org</strong>. After you fill in all fields <strong>don&#8217;t</strong> press Register. You have to press <strong>Save</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-no-hotmail-budy-m.png" alt="Pidgin no Hotmail"></span></p>
+</div>
+<div class="paragraph">
+<p>Ok. Assuming everything was enterred correctly and you have configured Pidgin to login automatically, your main window should look like the one on the left hand side. Your buddy list might be empty if you didn&#8217;t add anybody to your list yet or, if you didn&#8217;t register to MSN transport yet.</p>
+</div>
+<div class="paragraph">
+<p>If MSN transport is not activated yet, please disconnect Pidgin from <strong>tigase.org</strong> server and use a different client as described above.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand if you did everything already, and you have an old MSN account with lots of contacts, your buddy list may look completely different as all the contacts you have will be automatically pulled into your Jabber roster and should show on the list.</p>
+</div>
+<div class="paragraph">
+<p>I have created a completely new MSN account for the purpose of writing this guide and I don&#8217;t have any MSN contacts yet. So my list is quite simple - a single Jabber contact and MSN transport which shows as a normal contact. Remember Pidgin can&#8217;t distinguish between transports and regular accounts.</p>
+</div>
+<div class="paragraph">
+<p>In such a case one of the first things I should do is add a new MSN contact to be able to communicate with somebody and see whether he/she is on-line or not.</p>
+</div>
+<div class="paragraph">
+<p>Adding new contact is simple as long as Pidgin thinks it is normal Jabber contact. So we cannot actually enter: <a href="mailto:user_name@hotmail.com">user_name@hotmail.com</a> in the <strong>Add buddy</strong> window because this is a Hotmail account which is not directly available.  After the @ character you have to put a valid Jabber domain, not MSN.</p>
+</div>
+<div class="paragraph">
+<p>If you look at the image below it should become clear now.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-add-hotmail-budy-m.png" alt="Pidgin add Hotmail"></span></p>
+</div>
+<div class="paragraph">
+<p>The whole MSN account address is a user name for Jabber identifier purposes and you have to replace @ with %. Then you add @ and MSN transport address. As an <strong>alias</strong> you can use anything. I have used a real Hotmail address to make it easier later on to see what the account is.</p>
+</div>
+<div class="paragraph">
+<p>Enter everything carefuly and press <strong>Add</strong>.</p>
+</div>
+<div class="paragraph">
+<p>After you press the <strong>Add</strong> button the contact you are adding should receive a subscription request as well receiving a subscription request yourself. The Pidgin window should look similar to the example below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-autorize-hotmail-budy-m.png" alt="Pidgin Authorize Hotmail"></span></p>
+</div>
+<div class="paragraph">
+<p>Of course you need to press the <strong>Authorize</strong> button on both sides (or your mate on MSN network accepts your subscription request) and now the final window should look like the one below. The new buddy is on your list and you can click on his/her name and start chatting.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-hotmail-budy-added-m.png" alt="Pidgin Hotmail Buddy Added"></span></p>
+</div>
+<div class="paragraph">
+<p>One final funny discovery I made during writing this guide.</p>
+</div>
+<div class="paragraph">
+<p>I have created a new MSN account just for my tests and I have also used my old MSN account for subscribing and adding the account to buddy list on both sides. Moreover, I access both MSN accounts through MSN transport and in my tests I was communicating from one Jabber client (Psi) through MSN gateway to the MSN server and back through my MSN gateway back to other Jabber client (Pidgin) to the other account.</p>
+</div>
+<div class="paragraph">
+<p>Apparently MSN transport spotted this and knowing how silly such a use case this is, sends me one extra message to my chat window. Have a look at the last screenshot and have fun. Remember to not communicate between 2 Jabber accounts using your 2 MSN accounts as this might be discovered by the smart, open source software.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/pidgin-hotmail-chat-m.png" alt="Pidgin Hotmail Chat"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jeti_and_msn_transport_on_tigase_org"><a class="anchor" href="#_jeti_and_msn_transport_on_tigase_org"></a>6. Jeti and MSN Transport on tigase.org</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Artur Hefczyc &lt;<a href="mailto:artur.hefczyc@tigase.net">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a href="http://tigase.net" class="bare">http://tigase.net</a>
+:Date: 2009-11-25 15:51</p>
+</div>
+<div class="paragraph">
+<p>Make sure you are not connected to the <strong>Tigase</strong> server account with another Jabber client at the same time as this may affect your transport configuration.</p>
+</div>
+<div class="paragraph">
+<p>Jeti is available on Tigase website, preinstalled and preconfigured. You can run it by clicking on <a href="http://www.tigase.org/content/jeti-and-msn-transport-tigaseorg">this link</a>.  Enter you user name and password to login. In my case this is test and *\**.  Click *Login* and go to next page&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-login-m.png" alt="Jeti Login"></span></p>
+</div>
+<div class="paragraph">
+<p>You are now logged in. You may see some contacts on the buddy list or an empty list if you have no contacts. You can add somebody or just start chatting, but in this guide we will focus on the MSN transport configuration.</p>
+</div>
+<div class="paragraph">
+<p>Now click the <strong>Jeti</strong> button and select Manage Services menu option&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-services-menu-cut-m.png" alt="Jeti Services Menu"></span></p>
+</div>
+<div class="paragraph">
+<p>As a result you will get the windows with all <strong>tigase.org</strong> services.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-change-server.png" alt="Jeti Change Server"></span></p>
+</div>
+<div class="paragraph">
+<p>This version of Jeti client doesn&#8217;t support service browsing yet so you have to enter the correct address of MSN transport: <code>msn.tigase.org</code>.</p>
+</div>
+<div class="paragraph">
+<p>Click <strong>Change server</strong> and you will get to another window which looks like this one.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-msn-transport.png" alt="Jeti MSN Transport"></span></p>
+</div>
+<div class="paragraph">
+<p>Now single click on the <strong>PyMSNt Commands</strong> text to open another window where you have to enter you MSN user name and password.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-hotmail-registration-m.png" alt="Jeti Hotmail Registration"></span></p>
+</div>
+<div class="paragraph">
+<p>Make sure you enter your full MSN account name here including the <em>hotmail.com</em> part or any other domain name you use for you MSN account.</p>
+</div>
+<div class="paragraph">
+<p>Now click <strong>OK</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Well, you clicked <strong>OK</strong> and nothing really happened. The main <strong>Jeti</strong> windows looks just as it looked before, the same. Possibly empty buddy list, and no track of MSN transport. Unfortunately this Jeti version doesn&#8217;t refresh the transport list properly and you have to re-login to see the transport. Jeti&#8217;s author is aware of this problem and it will be addressed in next release.</p>
+</div>
+<div class="paragraph">
+<p>So please close the Jeti window and start the application again entering you Tigase user name and password.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-logged-with-msn-offline-m.png" alt="Jeti Logged with MSN Offline"></span></p>
+</div>
+<div class="paragraph">
+<p>As you can see the MSN transport is available now but it is grayed out, which means you are not logged into the MSN service.</p>
+</div>
+<div class="paragraph">
+<p>To activate (login) to the MSN service, right click on the <strong>MSN Transport</strong> to get connect menu. Select <strong>Log On&#8230;&#8203;</strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-msn-login-cut-m.png" alt="Jeti MSN Login Cut"></span></p>
+</div>
+<div class="paragraph">
+<p>If everything was entered correctly, and if the MSN service is available, you should be logged into the transport and it should show in green color. All of your MSN contacts should be automatically pulled into your application.</p>
+</div>
+<div class="paragraph">
+<p>For the Jabber client, there is now no difference between MSN contacts and Jabber contacts. So, you can simply continue to use Jeti or close it and login with another Jabber client.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="./images/jeti-logged-with-msn-online-m.png" alt="Jeti Logged With MSN Online"></span></p>
+</div>
+<div class="paragraph">
+<p>You can now communicate with all people regardless if they are available through XMPP or MSN.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2015-05-14 20:55:07 CEST
+</div>
+</div>
+</body>
+</html>

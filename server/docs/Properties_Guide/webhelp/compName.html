@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>--comp-name -  - Tigase Properties Guide</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="Tigase Properties Guide" />
+      <link rel="up" href="index.html" title="Tigase Properties Guide" />
+      <link rel="prev" href="compClass.html" title="--comp-class" />
+      <link rel="next" href="crossDomainPolicyFile.html" title="--cross-domain-policy-file" />
+      <meta name="Section-title" content="--comp-name" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-3522";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt=" Documentation" /></a><h1>Tigase Properties Guide<br />--comp-name
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="compClass.html">Prev</a> 
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="crossDomainPolicyFile.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="chapter">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h1 xmlns="http://www.w3.org/1999/xhtml" class="title"><a id="compName"></a>--comp-name
+                     </h1>
+                  </div>
+               </div>
+            </div>
+            <p>Artur Hefczyc &lt;<a class="link" href="mailto:artur.hefczyc@tigase.net" target="_top">artur.hefczyc@tigase.net</a>&gt;
+               v2.0, June 2014: Reformatted for AsciiDoc.
+               :toc:
+               :numbered:
+               :website: <a class="link" href="http://tigase.net/" target="_top">http://tigase.net/</a>
+               :Date: 2013-02-09 21:54
+            </p>
+            <p><span class="strong"><strong>Default value:</strong></span> <span class="emphasis"><em>custom string.</em></span></p>
+            <p><span class="strong"><strong>Example:</strong></span> <code class="literal">--comp-name-1 = muc</code></p>
+            <p><span class="strong"><strong>Possible values:</strong></span> <span class="emphasis"><em>XMPP localnode string.</em></span></p>
+            <p><span class="strong"><strong>Description:</strong></span> The property is used to assign name <span class="emphasis"><em>name</em></span> to the non-standard component which is loaded by the server. It is normally used when you want to load component which is
+               not loaded by the <code class="literal">config-type</code> you use. Together with <code class="literal">--comp-class-1</code> it allows you to load any extra component to your server configuration. Of course you can load more than just one component.
+               Just use <code class="literal">--comp-name-2</code>, <code class="literal">--comp-name-3</code> and so on…​ Let’s say you want to load the MUC component. You can then put give it a name: <code class="literal">muc</code> and the setting would look like:
+            </p><pre class="programlisting">--comp-name-1 = muc</pre><p><span class="strong"><strong>Available since:</strong></span> 3.0.0
+            </p>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="compClass.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"> </td>
+                  <td width="40%" align="right"> <a accesskey="n" href="crossDomainPolicyFile.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="admins.html" tabindex="1">--admins</a></span></li>
+                        <li><span class="file"><a href="authDb.html" tabindex="1">--auth-db</a></span></li>
+                        <li><span class="file"><a href="authDbUri.html" tabindex="1">--auth-db-uri</a></span></li>
+                        <li><span class="file"><a href="authDomainRepoPool.html" tabindex="1">--auth-domain-repo-pool</a></span></li>
+                        <li><span class="file"><a href="authRepoPool.html" tabindex="1">--auth-repo-pool</a></span></li>
+                        <li><span class="file"><a href="authRepoPoolSize.html" tabindex="1">--auth-repo-pool-size</a></span></li>
+                        <li><span class="file"><a href="bindExtHostnames.html" tabindex="1">--bind-ext-hostnames</a></span></li>
+                        <li><span class="file"><a href="boshCloseConnection.html" tabindex="1">--bosh-close-connection</a></span></li>
+                        <li><span class="file"><a href="boshExtraHeadersFile.html" tabindex="1">--bosh-extra-headers-file</a></span></li>
+                        <li><span class="file"><a href="clConnRepoClass.html" tabindex="1">--cl-conn-repo-class</a></span></li>
+                        <li><span class="file"><a href="clientAccessPolicyFile.html" tabindex="1">--client-access-policy-file</a></span></li>
+                        <li><span class="file"><a href="clusterConnectAll.html" tabindex="1">--cluster-connect-all</a></span></li>
+                        <li><span class="file"><a href="clusterMode.html" tabindex="1">--cluster-mode</a></span></li>
+                        <li><span class="file"><a href="clusterNodes.html" tabindex="1">--cluster-nodes</a></span></li>
+                        <li><span class="file"><a href="cmHtTrafficThrottling.html" tabindex="1">--cm-ht-traffic-throttling</a></span></li>
+                        <li><span class="file"><a href="cmSeeOtherHost.html" tabindex="1">--cm-see-other-host</a></span></li>
+                        <li><span class="file"><a href="cmTrafficThrottling.html" tabindex="1">--cm-traffic-throttling</a></span></li>
+                        <li><span class="file"><a href="cmpnamePorts.html" tabindex="1">--cmpname-ports</a></span></li>
+                        <li><span class="file"><a href="compClass.html" tabindex="1">--comp-class</a></span></li>
+                        <li id="webhelp-currentid"><span class="file"><a href="compName.html" tabindex="1">--comp-name</a></span></li>
+                        <li><span class="file"><a href="crossDomainPolicyFile.html" tabindex="1">--cross-domain-policy-file</a></span></li>
+                        <li><span class="file"><a href="dataRepoPoolSize.html" tabindex="1">--data-repo-pool-size</a></span></li>
+                        <li><span class="file"><a href="debug.html" tabindex="1">--debug</a></span></li>
+                        <li><span class="file"><a href="debugPackages.html" tabindex="1">--debug-packages</a></span></li>
+                        <li><span class="file"><a href="domainFilterPolicy.html" tabindex="1">--domain-filter-policy</a></span></li>
+                        <li><span class="file"><a href="elementsNumberLimit.html" tabindex="1">--elements-number-limit</a></span></li>
+                        <li><span class="file"><a href="extComp.html" tabindex="1">--ext-comp</a></span></li>
+                        <li><span class="file"><a href="extcompRepoClass.html" tabindex="1">--extcomp-repo-class</a></span></li>
+                        <li><span class="file"><a href="external.html" tabindex="1">--external</a></span></li>
+                        <li><span class="file"><a href="hardenedMode.html" tabindex="1">--hardened-mode</a></span></li>
+                        <li><span class="file"><a href="maxQueueSize.html" tabindex="1">--max-queue-size</a></span></li>
+                        <li><span class="file"><a href="monitoring.html" tabindex="1">--monitoring</a></span></li>
+                        <li><span class="file"><a href="netBuffHighThroughput.html" tabindex="1">--net-buff-high-throughput</a></span></li>
+                        <li><span class="file"><a href="netBuffStandard.html" tabindex="1">--net-buff-standard</a></span></li>
+                        <li><span class="file"><a href="newConnectionsThrottling.html" tabindex="1">--new-connections-throttling</a></span></li>
+                        <li><span class="file"><a href="nonpriorityQueue.html" tabindex="1">--nonpriority-queue</a></span></li>
+                        <li><span class="file"><a href="queueImplementation.html" tabindex="1">--queue-implementation</a></span></li>
+                        <li><span class="file"><a href="rosterImplementation.html" tabindex="1">--roster-implementation</a></span></li>
+                        <li><span class="file"><a href="s2sEjabberdBugWorkaroundActive.html" tabindex="1">--s2s-ejabberd-bug-workaround-active</a></span></li>
+                        <li><span class="file"><a href="s2sSecret.html" tabindex="1">--s2s-secret</a></span></li>
+                        <li><span class="file"><a href="s2sSkipTlsHostnames.html" tabindex="1">--s2s-skip-tls-hostnames</a></span></li>
+                        <li><span class="file"><a href="scriptDir.html" tabindex="1">--script-dir</a></span></li>
+                        <li><span class="file"><a href="smClusterStrategyClass.html" tabindex="1">--sm-cluster-strategy-class</a></span></li>
+                        <li><span class="file"><a href="smPlugins.html" tabindex="1">--sm-plugins</a></span></li>
+                        <li><span class="file"><a href="smThreadsPool.html" tabindex="1">--sm-threads-pool</a></span></li>
+                        <li><span class="file"><a href="sslCertsLocation.html" tabindex="1">--ssl-certs-location</a></span></li>
+                        <li><span class="file"><a href="sslContainerClass.html" tabindex="1">--ssl-container-class</a></span></li>
+                        <li><span class="file"><a href="sslDefCertDomain.html" tabindex="1">--ssl-def-cert-domain</a></span></li>
+                        <li><span class="file"><a href="statsArchiv.html" tabindex="1">--stats-archiv</a></span></li>
+                        <li><span class="file"><a href="statsHistory.html" tabindex="1">--stats-history</a></span></li>
+                        <li><span class="file"><a href="stringprepProcessor.html" tabindex="1">--stringprep-processor</a></span></li>
+                        <li><span class="file"><a href="test.html" tabindex="1">--test</a></span></li>
+                        <li><span class="file"><a href="tigaseConfigRepoClass.html" tabindex="1">--tigase-config-repo-class</a></span></li>
+                        <li><span class="file"><a href="tigaseConfigRepoUri.html" tabindex="1">--tigase-config-repo-uri</a></span></li>
+                        <li><span class="file"><a href="tlsJdkNssBugWorkaroundActive.html" tabindex="1">--tls-jdk-nss-bug-workaround-active</a></span></li>
+                        <li><span class="file"><a href="trusted.html" tabindex="1">--trusted</a></span></li>
+                        <li><span class="file"><a href="userdb.html" tabindex="1">--user-db</a></span></li>
+                        <li><span class="file"><a href="userDbUri.html" tabindex="1">--user-db-uri</a></span></li>
+                        <li><span class="file"><a href="userDomainRepoPool.html" tabindex="1">--user-domain-repo-pool</a></span></li>
+                        <li><span class="file"><a href="userRepoPool.html" tabindex="1">--user-repo-pool</a></span></li>
+                        <li><span class="file"><a href="userRepoPoolSize.html" tabindex="1">--user-repo-pool-size</a></span></li>
+                        <li><span class="file"><a href="vhostAnonymousEnabled.html" tabindex="1">--vhost-anonymous-enabled</a></span></li>
+                        <li><span class="file"><a href="vhostMaxUsers.html" tabindex="1">--vhost-max-users</a></span></li>
+                        <li><span class="file"><a href="vhostMessageForwardJid.html" tabindex="1">--vhost-message-forward-jid</a></span></li>
+                        <li><span class="file"><a href="vhostPresenceForwardJid.html" tabindex="1">--vhost-presence-forward-jid</a></span></li>
+                        <li><span class="file"><a href="vhostRegisterEnabled.html" tabindex="1">--vhost-register-enabled</a></span></li>
+                        <li><span class="file"><a href="vhostTlsRequired.html" tabindex="1">--vhost-tls-required</a></span></li>
+                        <li><span class="file"><a href="virtHosts.html" tabindex="1">--virt-hosts</a></span></li>
+                        <li><span class="file"><a href="watchdogDelay.html" tabindex="1">--watchdog_delay</a></span></li>
+                        <li><span class="file"><a href="watchdogPingType.html" tabindex="1">--watchdog_ping_type</a></span></li>
+                        <li><span class="file"><a href="watchdogTimeout.html" tabindex="1">--watchdog_timeout</a></span></li>
+                        <li><span class="file"><a href="configType.html" tabindex="1">config-type</a></span></li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

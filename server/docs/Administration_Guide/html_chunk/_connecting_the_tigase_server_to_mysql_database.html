@@ -1,0 +1,32 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Chapter&nbsp;73.&nbsp;Connecting the Tigase Server to MySQL Database</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="index.html" title="Tigase Administration Guide"><link rel="prev" href="_tigase_server_version_3_x.html" title="Chapter&nbsp;72.&nbsp;Tigase Server Version 3.x"><link rel="next" href="_integrating_tigase_server_with_drupal.html" title="Chapter&nbsp;74.&nbsp;Integrating Tigase Server with Drupal"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter&nbsp;73.&nbsp;Connecting the Tigase Server to MySQL Database</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_tigase_server_version_3_x.html">Prev</a>&nbsp;</td><th width="60%" align="center">&nbsp;</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_integrating_tigase_server_with_drupal.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a name="_connecting_the_tigase_server_to_mysql_database"></a>Chapter&nbsp;73.&nbsp;Connecting the Tigase Server to MySQL Database</h1></div></div></div><p>Artur Hefczyc &lt;<a class="link" href="mailto:artur.hefczyc@tigase.net" target="_top">artur.hefczyc@tigase.net</a>&gt;
+v2.0, June 2014: Reformatted for AsciiDoc.
+:toc:
+:numbered:
+:website: <a class="link" href="http://tigase.net" target="_top">http://tigase.net</a>
+:Date: 2010-04-06 21:16</p><p>Please before continuing reading of this manual have a look at the ////&lt;&lt;prepareMysql,////initial MySQL database setup. It will help you with database preparation for connecting the Tigase server.</p><p>The easiest way to setup the Tigase server for connecting with MySQL database is to use so called ////&lt;&lt;3xconfiguration,////configuration wizards (configuration generators) which release you from manually editing the XML configuration file and allow you quickly regenerate the XML configuration file in case of problems.</p><p>The article above describes the older way for using configuration generators which is a bit more difficult and doesn&#8217;t work on Windows system. The guide below describes a new way to use them which is simpler and can be applied for Windows systems as well. It is using init.properties file where you can put all your initial configuration parameters.</p><p>This guide describes MySQL database connection parameters.</p><p>Well the guide is actually very short as there are example configuration files which can be used and customized for your environment.</p><p>Unfortunately these files are not included yet in the server version 3.x binary release and you have to download them from the SVN repository using following links:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><a class="link" href="https://svn.tigase.org/reps/tigase-server/trunk/etc/tigase-mysql.conf" target="_top">tigase-mysql.conf</a> - the Tigase server startup file. The only difference from the default one is that it points to the file described below to load initial parameters.</li><li class="listitem"><p class="simpara"><a class="link" href="https://svn.tigase.org/reps/tigase-server/trunk/etc/init-mysql.properties" target="_top">init-mysql.properties</a> - the file contains a few initial parameters which can/should be adjusted to your environment. Here is a content of the file with each line described:</p><pre class="programlisting"># Load standard set of the server components.
+# Look at the http://www.tigase.org/configuration-wizards
+# document for other possible values. Normally you don't
+# need to change this line.
+config-type=--gen-config-def
+# List of administrator accounts, please replace them with
+# administrator accounts in your installation
+--admins=admin@tigase.org,admin@test-d
+# The line says that the database used by the Tigase server is 'mysql'
+# Look at the configuration wizards article for different options
+# You can also put here a Java class name if you have a custom
+# implementation for a database connector.
+--user-db=mysql
+# The line contains the database connection string. This is database
+# specific string and for each kind of database it may look differently.
+# Below string is for MySQL database. Please modify it for your system.
+# MySQL connector requires connection string in the following format:
+# jdbc:mysql://[hostname]/[database name]?user=[user name]&amp;password=[user password]
+--user-db-uri=jdbc:mysql://localhost/tigasedb?user=tigase_user&amp;password=mypass
+# Virtual domains for your server installation, comma separated list of vhosts
+--virt-hosts=tigase.org,test-d,localhost
+# Select what packages you want to have logging switched for
+# The below setting is recommended for the initail setup and it is required
+# when asking for help with setting the server up
+--debug=server</pre></li></ol></div><p>Download both files and put them to your etc/ directory.</p><p>Edit the init-mysql.properties for your environment.</p><p>Remove the XML configuration file.</p><p>Start the server using following command:</p><pre class="programlisting">./bin/tigase.sh start etc/tigase-mysql.conf</pre><p><span class="emphasis"><em>Ask more questions if you got stuck or need any help with this.</em></span></p></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_tigase_server_version_3_x.html">Prev</a>&nbsp;</td><td width="20%" align="center">&nbsp;</td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_integrating_tigase_server_with_drupal.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;72.&nbsp;Tigase Server Version 3.x&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;74.&nbsp;Integrating Tigase Server with Drupal</td></tr></table></div></body></html>

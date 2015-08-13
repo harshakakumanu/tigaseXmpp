@@ -1,0 +1,34 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Configuration</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="_stanzasender.html" title="Chapter&nbsp;36.&nbsp;StanzaSender"><link rel="prev" href="_stanzasender.html" title="Chapter&nbsp;36.&nbsp;StanzaSender"><link rel="next" href="_debuging_tigase.html" title="Chapter&nbsp;37.&nbsp;Debuging Tigase"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Configuration</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_stanzasender.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;36.&nbsp;StanzaSender</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_debuging_tigase.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_configuration_2"></a>Configuration</h2></div></div></div><p>It is Tigase component so the configuration is similar to configuration of all other components. The simplest way to get the settings for <span class="strong"><strong>StanzaSender</strong></span> is by generating configuration with all possible components. To do this you have to run Tigase server with --gen-config-all parameter set.</p><p>By default this component name is <span class="strong"><strong>ssend</strong></span> and here is a content of the configuration file for <span class="strong"><strong>StanzaSender</strong></span>:</p><p>It is one of msg-receivers:</p><pre class="programlisting">&lt;entry type="String[]" key="id-names"&gt;
+  ...
+  &lt;item value="ssend"/&gt;
+&lt;/entry&gt;</pre><p>To activate the component and specify class name for it following entries has been added:</p><pre class="programlisting">&lt;entry value="true" type="Boolean" key="ssend.active"/&gt;
+&lt;entry value="tigase.server.ssender.StanzaSender" type="String" key="ssend.class"/&gt;</pre><p>And the main settings section for the component:</p><pre class="programlisting">&lt;component name="ssend"&gt;
+  &lt;map&gt;
+   &lt;entry value="10" type="Long" key="default-interval"/&gt;
+   &lt;entry value="1000" type="Integer" key="max-queue-size"/&gt;
+   &lt;entry type="String[]" key="stanza-listeners"&gt;
+    &lt;item value="jdbc"/&gt;
+    &lt;item value="file"/&gt;
+   &lt;/entry&gt;
+  &lt;/map&gt;
+  &lt;node name="file"&gt;
+   &lt;map&gt;
+    &lt;entry value="true" type="Boolean" key="active"/&gt;
+    &lt;entry value="tigase.server.ssender.FileTask" type="String" key="class-name"/&gt;
+    &lt;entry value="/var/spool/jabber/*.stanza" type="String" key="init-string"/&gt;
+    &lt;entry value="10" type="Long" key="interval"/&gt;
+   &lt;/map&gt;
+  &lt;/node&gt;
+  &lt;node name="jdbc"&gt;
+   &lt;map&gt;
+    &lt;entry value="true" type="Boolean" key="active"/&gt;
+    &lt;entry value="tigase.server.ssender.JDBCTask" type="String" key="class-name"/&gt;
+    &lt;entry value="jdbc:mysql://localhost/tigase?user=tigase&amp;
+        password=mypass&amp;table=xmpp_stanza"
+      type="String" key="init-string"/&gt;
+    &lt;entry value="10" type="Long" key="interval"/&gt;
+   &lt;/map&gt;
+  &lt;/node&gt;
+ &lt;/component&gt;</pre><p>I think most of parameters should be pretty clear but some may need a little explanation. General StanzaSender parameters:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><span class="strong"><strong>default-interval</strong></span> number which specifies in seconds how often should the task look in data source for new packets to send.</li><li class="listitem"><span class="strong"><strong>max-queue-size</strong></span> is a number which specifies internal packets queue size. This is used to prevent the component from consume all the memory for data in case the component can not process them.</li><li class="listitem"><span class="strong"><strong>stanza-listeners</strong></span> is a list of task names to load. Each task can read XMPP packets to send from different data source. You can load as many listeners (tasks) as you need. Each task must read stanzas from different data source.</li></ul></div><p>Each task has own, separate parameters list. For each task from the stanza-listeners list there is a separate section with parameters for each task:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><span class="strong"><strong>active</strong></span> boolean switch allowing you to turn on/off the task without removing configuration completely.</li><li class="listitem"><span class="strong"><strong>class-name</strong></span> Java class name which implements the task. This class must extend tigase.server.ssender.SenderTask and it is loaded at runtime.</li><li class="listitem"><span class="strong"><strong>init-string</strong></span> is kind of data source connection string. For database it is just database connection string, for file system this is just a directory name. It may be even different for different tasks. The 2 tasks already implemented have some specific features: FileTask allows you to use wild-chars in directory/ file name specification and JDBCTask allows you to specify additional parameter at the end of JDBC connection string - database table name. For specific examples look at above config sections.</li><li class="listitem"><span class="strong"><strong>interval</strong></span> is a number which allows you to specify different interval in seconds for checking data source for each task.</li></ul></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_stanzasender.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="_stanzasender.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_debuging_tigase.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&nbsp;36.&nbsp;StanzaSender&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Chapter&nbsp;37.&nbsp;Debuging Tigase</td></tr></table></div></body></html>

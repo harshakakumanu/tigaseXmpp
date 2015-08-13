@@ -1,0 +1,51 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>Storing Configuration in SQL Database</title><link rel="stylesheet" type="text/css" href="css/docbook-xsl.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Tigase Administration Guide"><link rel="up" href="_configuration_changes_in_the_tigase_server_5_x.html" title="Chapter&nbsp;52.&nbsp;Configuration Changes in the Tigase Server 5.x"><link rel="prev" href="_default_behaviour.html" title="Default Behaviour"><link rel="next" href="_going_further.html" title="Going Further"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Storing Configuration in SQL Database</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="_default_behaviour.html">Prev</a>&nbsp;</td><th width="60%" align="center">Chapter&nbsp;52.&nbsp;Configuration Changes in the Tigase Server 5.x</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="_going_further.html">Next</a></td></tr></table><hr></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="_storing_configuration_in_sql_database"></a>Storing Configuration in SQL Database</h2></div></div></div><p>There is one more configuration storage implemented right now. It allows you to store the server settings in the SQL database. In most cases this is not quite useful, just opposite, very inconvenient.
+There is however at least one case when you really want to keep the server configuration in the SQL database. This is the cluster mode. If you have a Tigase cluster system of 10 or more nodes it is much easier to keep configuration in a single central location and manage it from there, rather then go to every single machine, every time you want to change some settings.
+You can even change any settings for all cluster nodes with a single database query.</p><p>You set the SQL storage the same way as you set it for XML file, there is, however one more parameter as you have to provide also database connection string for the server so it knows where to connect to for the settings:</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">Parameters in init.properties file:</p><pre class="programlisting">--tigase-config-repo-class=tigase.conf.ConfigSQLRepository
+--tigase-config-repo-uri=connection-uri</pre></li><li class="listitem"><p class="simpara">Alternatively you can provide system properties to the JVM:</p><pre class="programlisting">-Dtigase-config-repo-class=tigase.conf.ConfigSQLRepository
+-Dtigase-config-repo-uri=connection-uri</pre></li></ol></div><p>Please note, the current implementation for the SQL storage automatically creates necessary table if it does not exists. So you don&#8217;t have to worry about the schema but you should make sure that the database user used by the Tigase has permissions to create a table.</p><p>Configuration is stored in table with following schema:</p><pre class="programlisting">create table tigase_configuration (
+-- The component name by which the configuration parameter
+-- is used.
+  component_name varchar(127) NOT NULL,
+
+-- The configuration property key name or identifier.
+  key_name varchar(127) NOT NULL,
+
+-- The configuration property value
+  value varchar(8191) NOT NULL,
+
+-- The cluster node by which the configuration property is read,
+-- if empty it will be read by all cluster nodes.
+  cluster_node varchar(255) NOT NULL DEFAULT '',
+
+-- Additional, secondary identifier for the configuration property.
+-- The configuration can be organised in a hierarchical way to allow
+-- multiple occurrences of the same property name for a single
+-- component, for example you can have the same property for
+-- different tcp/ip ports set to a different value:
+-- c2s/5222/port_type=plain
+-- c2s/5223/port_type=ssl
+-- the port number is a secondary identifier.
+  key_node varchar(127) NOT NULL DEFAULT '',
+
+--  Not currently used. In future it will be used to distinguish between
+-- different kind of properties (initial settings, defaults, updated by
+-- user, etc...)
+  flag varchar(32) NOT NULL DEFAULT 'DEFAULT',
+
+-- The system detects basic Java types and stores information about
+-- the property type, when the property is read the original property
+-- type is restored and provided to the component without need for
+-- a parsing or conversion.
+  value_type varchar(8) NOT NULL DEFAULT 'S',
+
+-- It is not currently used. In the future it will be used to reload
+-- settings changed in last, defined period of time. Basicall, the
+-- system can automatically check the configuration database to
+-- see whether some properties have been updated, then reload
+-- them and apply automatically.
+  last_update           timestamp,
+
+primary key(cluster_node, component_name, key_node,
+                  key_node, flag));</pre></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="_default_behaviour.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="_configuration_changes_in_the_tigase_server_5_x.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="_going_further.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Default Behaviour&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;Going Further</td></tr></table></div></body></html>

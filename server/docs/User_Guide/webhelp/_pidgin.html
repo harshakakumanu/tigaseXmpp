@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>Pidgin -  - Tigase User Guide</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="Tigase User Guide" />
+      <link rel="up" href="_tigase_service_and_msn_transport_from_client_side.html" title="Tigase Service and MSN Transport From Client Side" />
+      <link rel="prev" href="_jeti.html" title="Jeti" />
+      <link rel="next" href="_jeti_and_msn_transport_on_tigase_org.html" title="Jeti and MSN Transport on tigase.org" />
+      <meta name="Section-title" content="Pidgin" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-903";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt=" Documentation" /></a><h1>Tigase User Guide<br />Tigase Service and MSN Transport From Client Side
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="_jeti.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="_tigase_service_and_msn_transport_from_client_side.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="_jeti_and_msn_transport_on_tigase_org.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="section">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="_pidgin"></a>Pidgin
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>As I mentioned earlier, Pidgin doesn’t support all Jabber extensions needed for registering to MSN transport. So unfortunately
+               you have to use a different client to add this transport to your roster. Ideally you should use one of the native Jabber stand-alone
+               clients like <a class="link" href="http://psi-im.org/" target="_top">Psi</a>, or <a class="link" href="http://coccinella.im/" target="_top">Coccinella</a>. However, If you don’t want to install any other clients you can use <a class="link" href="http://jeti-im.org/" target="_top">Jeti</a> which is available on Tigase website preinstalled and preconfigured for use. Please refer to separate guide for details on
+               how to use Jeti client to get MSN transport working.
+            </p>
+            <p>Ok, now as you probably have MSN transport activated for you account you can start using <a class="link" href="http://www.pidgin.im/" target="_top">Pidgin</a> to communicate with either Jabber users or MSN users.
+            </p>
+            <p>First thing to do is basic Pidgin configuration to connect to your Jabber account on <span class="strong"><strong>tigase.org</strong></span> server. Click <span class="strong"><strong>Accounts</strong></span> in your main menu and then <span class="strong"><strong>Add/Edit</strong></span> to get to the window with all your accounts listing. There is a button Add. After you press it you get to a window as below.
+            </p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-add-account-m.png" alt="Pidgin Add Account" /></span></p>
+            <p>Please enter all your login details as on the example screenshot. Your user name, Screen name, and Password will be different
+               but Domain should be the same: <span class="strong"><strong>tigase.org</strong></span>. After you fill in all fields <span class="strong"><strong>don’t</strong></span> press Register. You have to press <span class="strong"><strong>Save</strong></span>.
+            </p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-no-hotmail-budy-m.png" alt="Pidgin no Hotmail" /></span></p>
+            <p>Ok. Assuming everything was enterred correctly and you have configured Pidgin to login automatically, your main window should
+               look like the one on the left hand side. Your buddy list might be empty if you didn’t add anybody to your list yet or, if
+               you didn’t register to MSN transport yet.
+            </p>
+            <p>If MSN transport is not activated yet, please disconnect Pidgin from <span class="strong"><strong>tigase.org</strong></span> server and use a different client as described above.
+            </p>
+            <p>On the other hand if you did everything already, and you have an old MSN account with lots of contacts, your buddy list may
+               look completely different as all the contacts you have will be automatically pulled into your Jabber roster and should show
+               on the list.
+            </p>
+            <p>I have created a completely new MSN account for the purpose of writing this guide and I don’t have any MSN contacts yet. So
+               my list is quite simple - a single Jabber contact and MSN transport which shows as a normal contact. Remember Pidgin can’t
+               distinguish between transports and regular accounts.
+            </p>
+            <p>In such a case one of the first things I should do is add a new MSN contact to be able to communicate with somebody and see
+               whether he/she is on-line or not.
+            </p>
+            <p>Adding new contact is simple as long as Pidgin thinks it is normal Jabber contact. So we cannot actually enter: <a class="link" href="mailto:user_name@hotmail.com" target="_top">user_name@hotmail.com</a> in the <span class="strong"><strong>Add buddy</strong></span> window because this is a Hotmail account which is not directly available.  After the @ character you have to put a valid
+               Jabber domain, not MSN.
+            </p>
+            <p>If you look at the image below it should become clear now.</p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-add-hotmail-budy-m.png" alt="Pidgin add Hotmail" /></span></p>
+            <p>The whole MSN account address is a user name for Jabber identifier purposes and you have to replace @ with %. Then you add
+               @ and MSN transport address. As an <span class="strong"><strong>alias</strong></span> you can use anything. I have used a real Hotmail address to make it easier later on to see what the account is.
+            </p>
+            <p>Enter everything carefuly and press <span class="strong"><strong>Add</strong></span>.
+            </p>
+            <p>After you press the <span class="strong"><strong>Add</strong></span> button the contact you are adding should receive a subscription request as well receiving a subscription request yourself.
+               The Pidgin window should look similar to the example below.
+            </p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-autorize-hotmail-budy-m.png" alt="Pidgin Authorize Hotmail" /></span></p>
+            <p>Of course you need to press the <span class="strong"><strong>Authorize</strong></span> button on both sides (or your mate on MSN network accepts your subscription request) and now the final window should look
+               like the one below. The new buddy is on your list and you can click on his/her name and start chatting.
+            </p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-hotmail-budy-added-m.png" alt="Pidgin Hotmail Buddy Added" /></span></p>
+            <p>One final funny discovery I made during writing this guide.</p>
+            <p>I have created a new MSN account just for my tests and I have also used my old MSN account for subscribing and adding the
+               account to buddy list on both sides. Moreover, I access both MSN accounts through MSN transport and in my tests I was communicating
+               from one Jabber client (Psi) through MSN gateway to the MSN server and back through my MSN gateway back to other Jabber client
+               (Pidgin) to the other account.
+            </p>
+            <p>Apparently MSN transport spotted this and knowing how silly such a use case this is, sends me one extra message to my chat
+               window. Have a look at the last screenshot and have fun. Remember to not communicate between 2 Jabber accounts using your
+               2 MSN accounts as this might be discovered by the smart, open source software.
+            </p>
+            <p><span class="inlinemediaobject"><img src="./images/pidgin-hotmail-chat-m.png" alt="Pidgin Hotmail Chat" /></span></p>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="_jeti.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="_tigase_service_and_msn_transport_from_client_side.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="_jeti_and_msn_transport_on_tigase_org.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="_jabber_xmpp_introduction.html" tabindex="1">Jabber/XMPP introduction</a></span><ul>
+                              <li><span class="file"><a href="_jabber_xmpp_is_instant_messaging_technology.html" tabindex="1">Jabber/XMPP is Instant Messaging Technology</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_installing_minichat_on_your_website.html" tabindex="1">Installing Minichat on Your Website</a></span><ul>
+                              <li><span class="file"><a href="_instructions.html" tabindex="1">Instructions:</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_how_to_use_tigase_service.html" tabindex="1">How to Use Tigase Service</a></span><ul>
+                              <li><span class="file"><a href="_this_article_describes_how_to_use_emphasis_role_strong_tigase_org_emphasis_service_for_instant_communications.html" tabindex="1">This Article Describes How to use tigase.org Service for Instant Communications</a></span><ul>
+                                    <li><span class="file"><a href="_short_instructions.html" tabindex="1">Short instructions:</a></span></li>
+                                    <li><span class="file"><a href="_long_instructions.html" tabindex="1">Long Instructions:</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_configuration_instructions_for_psi.html" tabindex="1">Configuration Instructions for Psi</a></span><ul>
+                              <li><span class="file"><a href="_psi_initial_configuration.html" tabindex="1">Psi - Initial Configuration</a></span></li>
+                              <li><span class="file"><a href="_short_instructions_how_to_add_your_first_contact.html" tabindex="1">Short Instructions How to Add Your First Contact</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_service_and_msn_transport_from_client_side.html" tabindex="1">Tigase Service and MSN Transport From Client Side</a></span><ul>
+                              <li><span class="file"><a href="_jeti.html" tabindex="1">Jeti</a></span></li>
+                              <li id="webhelp-currentid"><span class="file"><a href="_pidgin.html" tabindex="1">Pidgin</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_jeti_and_msn_transport_on_tigase_org.html" tabindex="1">Jeti and MSN Transport on tigase.org</a></span></li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

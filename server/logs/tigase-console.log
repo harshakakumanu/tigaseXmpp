@@ -1,0 +1,1936 @@
+STARTED Tigase Mon 10 Aug 2015 15:34:47 PDT
+sh: /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/bin/java: No such file or directory
+sh: line 0: exec: /System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/bin/java: cannot execute: No such file or directory
+STARTED Tigase Mon 10 Aug 2015 15:37:36 PDT
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.xml.XMLUtils}
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.util.ClassUtil}
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.server.XMPPServer}
+2015-08-10 15:37:37.416 [main]             DNSResolver.<clinit>()             WARNING:  Resolving default host name: harsha.vs.shawcable.net took: 252
+2015-08-10 15:37:37.452 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Setting defaults: --property-file = etc/init.properties
+2015-08-10 15:37:37.453 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Loading initial properties from property file: etc/init.properties
+2015-08-10 15:37:37.454 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--cluster-mode=true)
+2015-08-10 15:37:37.454 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (config-type=--gen-config-def)
+2015-08-10 15:37:37.454 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--debug=server)
+2015-08-10 15:37:37.454 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--user-db=mysql)
+2015-08-10 15:37:37.455 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--admins=admin@rtc.harsha.com)
+2015-08-10 15:37:37.455 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--user-db-uri=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12)
+2015-08-10 15:37:37.455 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--virt-hosts=rtc.harsha.com)
+2015-08-10 15:37:37.455 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-4=message-archive)
+2015-08-10 15:37:37.456 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-4=tigase.archive.MessageArchiveComponent)
+2015-08-10 15:37:37.456 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-3=proxy)
+2015-08-10 15:37:37.456 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-3=tigase.socks5.Socks5ProxyComponent)
+2015-08-10 15:37:37.456 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-2=pubsub)
+2015-08-10 15:37:37.457 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-2=tigase.pubsub.PubSubComponent)
+2015-08-10 15:37:37.457 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-1=tigase.muc.MUCComponent)
+2015-08-10 15:37:37.457 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-1=muc)
+2015-08-10 15:37:37.457 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--sm-plugins=+message-archive-xep-0136)
+2015-08-10 15:37:37.469 [main]             AbstractMessageReceiver.setMaxQueueSize()  FINEST: message-router maxQueueSize: 466, maxInQueueSize: 28, maxOutQueueSize: 932
+2015-08-10 15:37:37.474 [main]             MessageRouter.addRegistrator()     INFO:     Adding registrator: Configurator
+2015-08-10 15:37:37.474 [main]             MessageRouter.addComponent()       INFO:     Adding component: 
+2015-08-10 15:37:37.474 [main]             ConfiguratorAbstract.componentAdded()  CONFIG:  component: basic-conf
+2015-08-10 15:37:37.475 [main]             ConfiguratorAbstract.setup()       CONFIG:   Setting up component: basic-conf
+2015-08-10 15:37:37.477 [main]             ConfiguratorAbstract.setup()       CONFIG:   Component basic-conf defaults: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties}
+2015-08-10 15:37:37.478 [main]             ConfiguratorAbstract.setup()       CONFIG:   Component basic-conf configuration: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties}
+2015-08-10 15:37:37.481 [main]             ConfiguratorAbstract.setProperties()  INFO:  Propeties size is 33, and here are all propeties: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties, shared-user-repo=null, shared-user-repo-params=null, shared-auth-repo=null, shared-auth-repo-params=null}
+2015-08-10 15:37:40.159 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+2015-08-10 15:37:40.769 [main]             VHostManager.setProperties()       WARNING:  {rtc.harsha.com=Domain: rtc.harsha.com, enabled: true, anonym: true, register: true, maxusers: 0, tls: false, s2sSecret: 88cf3afa-eaa8-4e40-b902-b3b7daa71f29, domainFilter: ALL, domainFilterDomains: null, c2sPortsAllowed: null, saslAllowedMechanisms: null}
+2015-08-10 15:37:40.976 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: amp :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.AmpComponentClustered}
+Loading component: bosh :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.BoshConnectionClustered}
+Loading component: c2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.ClientConnectionClustered}
+2015-08-10 15:37:41.300 [main]             ClusterConnectionManager.itemAdded()  WARNING: Incorrect ClusterRepoItem, skipping connection attempt: harsha.vs.shawcable.net:7999e147c312656c954c24a477f4f69fdcd82bcec9969e9fa1230946e832da51:5277:0:0.0:0.0
+Loading component: cl-comp :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.ClusterConnectionManager}
+Loading component: message-archive :: componentInfo{Title=Tigase Message Archiving Component, Version=1.1.0-b71/c4003eb3, Class=tigase.archive.MessageArchiveComponent}
+Loading component: monitor :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.MonitorClustered}
+2015-08-10 15:37:42.240 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: muc :: componentInfo{Title=Tigase MUC, Version=2.3.0-b389/879168a9, Class=tigase.muc.MUCComponent}
+Loading component: proxy :: componentInfo{Title=Tigase Socks5 Component, Version=1.1.0-b48/f5c8a08c, Class=tigase.socks5.Socks5ProxyComponent}
+2015-08-10 15:37:42.873 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: pubsub :: componentInfo{Title=Tigase PubSub, Version=3.1.0-b463/1df4d937, Class=tigase.pubsub.PubSubComponent}
+Loading component: s2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.S2SConnectionClustered}
+Loading plugin: session-close=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: session-open=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: default-handler=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:register=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:auth=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-sasl=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-bind=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-session=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:roster=16:291 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:privacy=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:version=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: http://jabber.org/protocol/stats=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: starttls=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: vcard-temp=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: http://jabber.org/protocol/commands=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:private=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:xmpp:ping=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: presence=16:291 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: disco=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: zlib=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: amp=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: message-carbons=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: message-archive-xep-0136=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+MA LOADED = message-archive@harsha.vs.shawcable.net
+Loading component: sess-man :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.SessionManagerClustered, componentData={ClusteringStrategy=class tigase.cluster.strategy.DefaultClusteringStrategy}}
+Loading component: ws2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.WebSocketClientConnectionClustered}
+2015-08-10 15:37:44.174 [main]             ConfigurationCache.store()         WARNING:  Dumping server configuration to: etc/config-dump.properties
+2015-08-10 15:41:22.691 [ConnectionOpenThread]  SocketThread.<clinit>()       WARNING:  33 socketReadThreads started.
+2015-08-10 15:41:22.704 [ConnectionOpenThread]  SocketThread.<clinit>()       WARNING:  33 socketWriteThreads started.
+2015-08-10 15:46:13.364 [in_4-c2s]         SSLContextContainer.getSSLContext()  WARNING: Auto-generated certificate for domain: rtc.harsha.com
+2015-08-10 18:26:49.806 [cluster-nodes]    ClusterConnectionManager.itemAdded()  WARNING: Incorrect ClusterRepoItem, skipping connection attempt: harsha.vs.shawcable.net:e1940f8e9909c73eddc8a9ee9a6b8ad259e83a1cff44a75e00ea116f317629f2:5277:1439256409000:0.2187883:66.32043
+java.net.UnknownHostException: harsha.vs.shawcable.net: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at java.net.InetAddress.getByName(InetAddress.java:1055)
+	at tigase.cluster.ClusterConnectionManager.itemAdded(ClusterConnectionManager.java:279)
+	at tigase.cluster.ClusterConnectionManager.itemAdded(ClusterConnectionManager.java:96)
+	at tigase.db.comp.ConfigRepository.addItemNoStore(ConfigRepository.java:146)
+	at tigase.db.comp.ConfigRepository.addItem(ConfigRepository.java:134)
+	at tigase.cluster.repo.ClConConfigRepository.itemLoaded(ClConConfigRepository.java:125)
+	at tigase.cluster.repo.ClConSQLRepository.reload(ClConSQLRepository.java:263)
+	at tigase.db.comp.ConfigRepository$1.run(ConfigRepository.java:74)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+STOPPED Tue 11 Aug 2015 14:38:52 PDT
+STARTED Tigase Tue 11 Aug 2015 14:38:58 PDT
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option PermSize=32m; support was removed in 8.0
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.xml.XMLUtils}
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.util.ClassUtil}
+componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.server.XMPPServer}
+2015-08-11 14:38:59.280 [main]             DNSResolver.<clinit>()             WARNING:  Resolving default host name: harsha.vs.shawcable.net took: 300
+2015-08-11 14:38:59.357 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Setting defaults: --property-file = etc/init.properties
+2015-08-11 14:38:59.358 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Loading initial properties from property file: etc/init.properties
+2015-08-11 14:38:59.359 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--cluster-mode=true)
+2015-08-11 14:38:59.359 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (config-type=--gen-config-def)
+2015-08-11 14:38:59.360 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--debug=server)
+2015-08-11 14:38:59.360 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--user-db=mysql)
+2015-08-11 14:38:59.360 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--admins=admin@rtc.harsha.com)
+2015-08-11 14:38:59.360 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--user-db-uri=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12)
+2015-08-11 14:38:59.361 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--virt-hosts=rtc.harsha.com)
+2015-08-11 14:38:59.361 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-4=message-archive)
+2015-08-11 14:38:59.361 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-4=tigase.archive.MessageArchiveComponent)
+2015-08-11 14:38:59.361 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-3=proxy)
+2015-08-11 14:38:59.362 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-3=tigase.socks5.Socks5ProxyComponent)
+2015-08-11 14:38:59.362 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-2=pubsub)
+2015-08-11 14:38:59.362 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-2=tigase.pubsub.PubSubComponent)
+2015-08-11 14:38:59.362 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-class-1=tigase.muc.MUCComponent)
+2015-08-11 14:38:59.363 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--comp-name-1=muc)
+2015-08-11 14:38:59.363 [main]             ConfiguratorAbstract.parseArgs()   CONFIG:   Added default config parameter: (--sm-plugins=+message-archive-xep-0136)
+2015-08-11 14:38:59.377 [main]             AbstractMessageReceiver.setMaxQueueSize()  FINEST: message-router maxQueueSize: 466, maxInQueueSize: 28, maxOutQueueSize: 932
+2015-08-11 14:38:59.382 [main]             MessageRouter.addRegistrator()     INFO:     Adding registrator: Configurator
+2015-08-11 14:38:59.382 [main]             MessageRouter.addComponent()       INFO:     Adding component: 
+2015-08-11 14:38:59.383 [main]             ConfiguratorAbstract.componentAdded()  CONFIG:  component: basic-conf
+2015-08-11 14:38:59.384 [main]             ConfiguratorAbstract.setup()       CONFIG:   Setting up component: basic-conf
+2015-08-11 14:38:59.386 [main]             ConfiguratorAbstract.setup()       CONFIG:   Component basic-conf defaults: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties}
+2015-08-11 14:38:59.387 [main]             ConfiguratorAbstract.setup()       CONFIG:   Component basic-conf configuration: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties}
+2015-08-11 14:38:59.390 [main]             ConfiguratorAbstract.setProperties()  INFO:  Propeties size is 33, and here are all propeties: {component-id=basic-conf@harsha.vs.shawcable.net, def-hostname=harsha.vs.shawcable.net, admins=[Ljava.lang.String;@1a6c5a9e, scripts-dir=scripts/admin, command/ALL=ADMIN, logging/.level=CONFIG, logging/handlers=java.util.logging.ConsoleHandler java.util.logging.FileHandler, logging/java.util.logging.ConsoleHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.ConsoleHandler.level=WARNING, logging/java.util.logging.FileHandler.append=true, logging/java.util.logging.FileHandler.count=5, logging/java.util.logging.FileHandler.formatter=tigase.util.LogFormatter, logging/java.util.logging.FileHandler.limit=10000000, logging/java.util.logging.FileHandler.pattern=logs/tigase.log, logging/tigase.useParentHandlers=true, logging/java.util.logging.FileHandler.level=ALL, logging/tigase.server.level=ALL, user-domain-repo-pool=tigase.db.UserRepositoryMDImpl, auth-domain-repo-pool=tigase.db.AuthRepositoryMDImpl, user-repo-pool-size=10, data-repo-pool-size=10, user-repo-class=mysql, user-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, auth-repo-class=tigase.db.jdbc.TigaseCustomAuth, auth-repo-url=jdbc:mysql://localhost/tigasedb?user=tigase&password=tigase12, ssl-container-class=tigase.io.SSLContextContainer, ssl-certs-location=certs/, ssl-def-cert-domain=default, config-dump-file=etc/config-dump.properties, shared-user-repo=null, shared-user-repo-params=null, shared-auth-repo=null, shared-auth-repo-params=null}
+2015-08-11 14:39:02.295 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+2015-08-11 14:39:02.836 [main]             VHostManager.setProperties()       WARNING:  {rtc.harsha.com=Domain: rtc.harsha.com, enabled: true, anonym: true, register: true, maxusers: 0, tls: false, s2sSecret: bffe7df3-d538-4120-a2d8-481310a9acdc, domainFilter: ALL, domainFilterDomains: null, c2sPortsAllowed: null, saslAllowedMechanisms: null}
+2015-08-11 14:39:03.023 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: amp :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.AmpComponentClustered}
+Loading component: bosh :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.BoshConnectionClustered}
+Loading component: c2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.ClientConnectionClustered}
+2015-08-11 14:39:03.408 [main]             ClusterConnectionManager.itemAdded()  WARNING: Incorrect ClusterRepoItem, skipping connection attempt: harsha.vs.shawcable.net:7b0abd4a0328efd8ae519584a5515b0143a6660466a3c2aa3c7e7f9792f42fc2:5277:0:0.0:0.0
+Loading component: cl-comp :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.ClusterConnectionManager}
+Loading component: message-archive :: componentInfo{Title=Tigase Message Archiving Component, Version=1.1.0-b71/c4003eb3, Class=tigase.archive.MessageArchiveComponent}
+Loading component: monitor :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.MonitorClustered}
+2015-08-11 14:39:04.134 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: muc :: componentInfo{Title=Tigase MUC, Version=2.3.0-b389/879168a9, Class=tigase.muc.MUCComponent}
+Loading component: proxy :: componentInfo{Title=Tigase Socks5 Component, Version=1.1.0-b48/f5c8a08c, Class=tigase.socks5.Socks5ProxyComponent}
+2015-08-11 14:39:04.704 [main]             SimpleCache.<init>()               WARNING:  Tigase cache turned off.
+Loading component: pubsub :: componentInfo{Title=Tigase PubSub, Version=3.1.0-b463/1df4d937, Class=tigase.pubsub.PubSubComponent}
+Loading component: s2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.S2SConnectionClustered}
+Loading plugin: session-close=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: session-open=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: default-handler=4:1165 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:register=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:auth=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-sasl=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-bind=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:ietf:params:xml:ns:xmpp-session=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:roster=16:291 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:privacy=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:version=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: http://jabber.org/protocol/stats=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: starttls=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: vcard-temp=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: http://jabber.org/protocol/commands=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: jabber:iq:private=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: urn:xmpp:ping=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: presence=16:291 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: disco=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: zlib=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: amp=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: message-carbons=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+Loading plugin: message-archive-xep-0136=8:582 ... 	, version: 7.0.2-b3821/563fcf81 (2015-05-15/00:41:16)
+MA LOADED = message-archive@harsha.vs.shawcable.net
+Loading component: sess-man :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.SessionManagerClustered, componentData={ClusteringStrategy=class tigase.cluster.strategy.DefaultClusteringStrategy}}
+Loading component: ws2s :: componentInfo{Title=Tigase XMPP Server, Version=7.0.2-b3821/563fcf81 (2015-05-15/00:41:16), Class=tigase.cluster.WebSocketClientConnectionClustered}
+2015-08-11 14:39:06.065 [main]             ConfigurationCache.store()         WARNING:  Dumping server configuration to: etc/config-dump.properties
+2015-08-11 14:40:37.060 [ConnectionOpenThread]  SocketThread.<clinit>()       WARNING:  33 socketReadThreads started.
+2015-08-11 14:40:37.071 [ConnectionOpenThread]  SocketThread.<clinit>()       WARNING:  33 socketWriteThreads started.
+2015-08-11 20:05:57.549 [cluster-nodes]    ClusterConnectionManager.itemAdded()  WARNING: Incorrect ClusterRepoItem, skipping connection attempt: harsha.vs.shawcable.net:41932edfdca0429d369be21cacfb49fd8c3028a724a00a892fdd0ed01da27727:5277:1439348756000:2.254442:66.42385
+java.net.UnknownHostException: harsha.vs.shawcable.net: unknown error
+	at java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.net.InetAddress$2.lookupAllHostAddr(InetAddress.java:907)
+	at java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1302)
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1255)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1171)
+	at java.net.InetAddress.getAllByName(InetAddress.java:1105)
+	at java.net.InetAddress.getByName(InetAddress.java:1055)
+	at tigase.cluster.ClusterConnectionManager.itemAdded(ClusterConnectionManager.java:279)
+	at tigase.cluster.ClusterConnectionManager.itemAdded(ClusterConnectionManager.java:96)
+	at tigase.db.comp.ConfigRepository.addItemNoStore(ConfigRepository.java:146)
+	at tigase.db.comp.ConfigRepository.addItem(ConfigRepository.java:134)
+	at tigase.cluster.repo.ClConConfigRepository.itemLoaded(ClConConfigRepository.java:125)
+	at tigase.cluster.repo.ClConSQLRepository.reload(ClConSQLRepository.java:263)
+	at tigase.db.comp.ConfigRepository$1.run(ConfigRepository.java:74)
+	at java.util.TimerThread.mainLoop(Timer.java:555)
+	at java.util.TimerThread.run(Timer.java:505)
+2015-08-12 12:12:27.766 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:12:27.780 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:06.968 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:06.968 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:18.261 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:18.262 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:44.731 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:14:44.731 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:15:20.872 [ConnectionOpenThread]  SSLContextContainer.getSSLContext()  SEVERE: Can not initialize SSLContext for domain: default, protocol: SSL
+java.io.FileNotFoundException: certs/default.pem (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileWriter.<init>(FileWriter.java:107)
+	at tigase.cert.CertificateUtil.storeCertificate(CertificateUtil.java:700)
+	at tigase.io.SSLContextContainer.addCertificateEntry(SSLContextContainer.java:173)
+	at tigase.io.SSLContextContainer.getSSLContext(SSLContextContainer.java:290)
+	at tigase.io.SSLContextContainer.getSSLContext(SSLContextContainer.java:229)
+	at tigase.io.TLSUtil.getSSLContext(TLSUtil.java:118)
+	at tigase.net.IOService.startSSL(IOService.java:412)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1369)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:16:36.787 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:16:36.787 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:20:03.076 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading Bosh extra headers file: etc/bosh-extra-headers.txt
+java.io.FileNotFoundException: etc/bosh-extra-headers.txt (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:117)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+2015-08-12 12:20:03.076 [ConnectionOpenThread]  BoshIOService.<init>()        WARNING:  Problem reading client access policy file: etc/client-access-policy.xml
+java.io.FileNotFoundException: etc/client-access-policy.xml (No such file or directory)
+	at java.io.FileInputStream.open0(Native Method)
+	at java.io.FileInputStream.open(FileInputStream.java:195)
+	at java.io.FileInputStream.<init>(FileInputStream.java:138)
+	at java.io.FileInputStream.<init>(FileInputStream.java:93)
+	at java.io.FileReader.<init>(FileReader.java:58)
+	at tigase.server.bosh.BoshIOService.<init>(BoshIOService.java:137)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:833)
+	at tigase.server.bosh.BoshConnectionManager.getXMPPIOServiceInstance(BoshConnectionManager.java:77)
+	at tigase.server.ConnectionManager$ConnectionListenerImpl.accept(ConnectionManager.java:1359)
+	at tigase.net.ConnectionOpenThread.run(ConnectionOpenThread.java:220)
+	at java.lang.Thread.run(Thread.java:745)
+java.util.logging.ErrorManager: 4
+java.io.FileNotFoundException: logs/tigase.log.0 (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:133)
+	at java.util.logging.FileHandler.open(FileHandler.java:210)
+	at java.util.logging.FileHandler.rotate(FileHandler.java:661)
+	at java.util.logging.FileHandler.access$100(FileHandler.java:150)
+	at java.util.logging.FileHandler$1.run(FileHandler.java:693)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.util.logging.FileHandler.publish(FileHandler.java:690)
+	at java.util.logging.Logger.log(Logger.java:738)
+	at java.util.logging.Logger.doLog(Logger.java:765)
+	at java.util.logging.Logger.log(Logger.java:830)
+	at tigase.server.MessageRouter.processPacket(MessageRouter.java:239)
+	at tigase.server.AbstractMessageReceiver$QueueListener.run(AbstractMessageReceiver.java:1424)
+ShutdownThread started...
+== Removing cluster_nodes item: harsha.vs.shawcable.net
+vhost-man/Number of VHosts = 1
+vhost-man/Checks: is local domain = 5374
+vhost-man/Checks: is anonymous domain = 0
+vhost-man/Get components for local domain = 354
+vhost-man/Get components for non-local domain = 19
+message-router/Last second packets = 0
+message-router/Last minute packets = 4
+message-router/Last hour packets = 315
+message-router/Processing threads = 32
+message-router/Packets received = 4748
+message-router/Packets sent = 85
+message-router/In queue wait: SYSTEM = 0
+message-router/In queue wait: CLUSTER = 0
+message-router/In queue wait: HIGH = 0
+message-router/In queue wait: NORMAL = 0
+message-router/In queue wait: LOW = 0
+message-router/In queue wait: PRESENCE = 0
+message-router/In queue wait: LOWEST = 0
+message-router/Out queue wait: SYSTEM = 0
+message-router/Out queue wait: CLUSTER = 0
+message-router/Out queue wait: HIGH = 0
+message-router/Out queue wait: NORMAL = 0
+message-router/Out queue wait: LOW = 0
+message-router/Out queue wait: PRESENCE = 0
+message-router/Out queue wait: LOWEST = 0
+message-router/Total In queues wait = 0
+message-router/Total Out queues wait = 0
+message-router/Total queues wait = 0
+message-router/Max queue size = 9280
+message-router/IN Queue overflow = 0
+message-router/OUT Queue overflow = 0
+message-router/Total queues overflow = 0
+message-router/Average processing time on last 100 runs [ms] = 0
+message-router/IN_QUEUE processed messages = 108
+message-router/IN_QUEUE processed presences = 455
+message-router/IN_QUEUE processed cluster = 0
+message-router/IN_QUEUE processed other = 4185
+message-router/IN_QUEUE processed IQ no XMLNS = 1295
+message-router/IN_QUEUE processed IQ http://jabber.org/protocol/disco#items = 306
+message-router/IN_QUEUE processed IQ jabber:iq:roster = 113
+message-router/IN_QUEUE processed IQ ping = 1102
+message-router/IN_QUEUE processed IQ session = 34
+message-router/IN_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 196
+message-router/IN_QUEUE processed IQ error = 32
+message-router/IN_QUEUE processed IQ command = 435
+message-router/IN_QUEUE processed IQ bind = 68
+message-router/IN_QUEUE processed IQ jabber:iq:privacy = 4
+message-router/IN_QUEUE processed IQ disable = 11
+message-router/IN_QUEUE processed IQ vCard = 78
+message-router/IN_QUEUE processed IQ http://jabber.org/protocol/disco#info = 398
+message-router/IN_QUEUE processed IQ jabber:iq:private = 2
+message-router/IN_QUEUE processed total IQ = 4074
+message-router/OUT_QUEUE processed messages = 0
+message-router/OUT_QUEUE processed presences = 0
+message-router/OUT_QUEUE processed cluster = 0
+message-router/OUT_QUEUE processed other = 85
+message-router/OUT_QUEUE processed IQ no XMLNS = 0
+message-router/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#items = 42
+message-router/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#info = 43
+message-router/OUT_QUEUE processed total IQ = 85
+message-router/Processed packets thread: in_0-message-router = 239
+message-router/Processed packets thread: in_1-message-router = 414
+message-router/Processed packets thread: in_2-message-router = 226
+message-router/Processed packets thread: in_3-message-router = 42
+message-router/Processed packets thread: in_4-message-router = 166
+message-router/Processed packets thread: in_5-message-router = 230
+message-router/Processed packets thread: in_6-message-router = 817
+message-router/Processed packets thread: in_7-message-router = 95
+message-router/Processed packets thread: in_8-message-router = 233
+message-router/Processed packets thread: in_9-message-router = 301
+message-router/Processed packets thread: in_10-message-router = 398
+message-router/Processed packets thread: in_11-message-router = 0
+message-router/Processed packets thread: in_12-message-router = 83
+message-router/Processed packets thread: in_13-message-router = 72
+message-router/Processed packets thread: in_14-message-router = 366
+message-router/Processed packets thread: in_15-message-router = 158
+message-router/Processed packets thread: in_16-message-router = 176
+message-router/Processed packets thread: in_17-message-router = 0
+message-router/Processed packets thread: in_18-message-router = 248
+message-router/Processed packets thread: in_19-message-router = 0
+message-router/Processed packets thread: in_20-message-router = 0
+message-router/Processed packets thread: in_21-message-router = 0
+message-router/Processed packets thread: in_22-message-router = 167
+message-router/Processed packets thread: in_23-message-router = 13
+message-router/Processed packets thread: in_24-message-router = 54
+message-router/Processed packets thread: in_25-message-router = 0
+message-router/Processed packets thread: in_26-message-router = 3
+message-router/Processed packets thread: in_27-message-router = 61
+message-router/Processed packets thread: in_28-message-router = 11
+message-router/Processed packets thread: in_29-message-router = 148
+message-router/Processed packets thread: in_30-message-router = 28
+message-router/Processed packets thread: in_31-message-router = 0
+message-router/Processed packets thread: out_0-message-router = 85
+message-router/Local hostname = harsha.vs.shawcable.net
+message-router/Uptime = 20 hours, 17 mins
+message-router/Load average = 2.4658
+message-router/CPUs no = 8
+message-router/Threads count = 1233
+message-router/CPU usage [%] = 0.07130699
+message-router/HEAP usage [%] = 68.03582
+message-router/NONHEAP usage [%] = 100.0
+message-router/CPU usage = 0.1%
+message-router/Max Heap mem = 182,272 KB
+message-router/Used Heap = 107,119 KB
+message-router/Free Heap = 75,152 KB
+message-router/Max NonHeap mem = 0 KB
+message-router/Used NonHeap = 61,695 KB
+message-router/Free NonHeap = 0 KB
+amp/Last second packets = 0
+amp/Last minute packets = 0
+amp/Last hour packets = 3
+amp/Processing threads = 1
+amp/Packets received = 30
+amp/Packets sent = 0
+amp/In queue wait: SYSTEM = 0
+amp/In queue wait: CLUSTER = 0
+amp/In queue wait: HIGH = 0
+amp/In queue wait: NORMAL = 0
+amp/In queue wait: LOW = 0
+amp/In queue wait: PRESENCE = 0
+amp/In queue wait: LOWEST = 0
+amp/Out queue wait: SYSTEM = 0
+amp/Out queue wait: CLUSTER = 0
+amp/Out queue wait: HIGH = 0
+amp/Out queue wait: NORMAL = 0
+amp/Out queue wait: LOW = 0
+amp/Out queue wait: PRESENCE = 0
+amp/Out queue wait: LOWEST = 0
+amp/Total In queues wait = 0
+amp/Total Out queues wait = 0
+amp/Total queues wait = 0
+amp/Max queue size = 932
+amp/IN Queue overflow = 0
+amp/OUT Queue overflow = 0
+amp/Total queues overflow = 0
+amp/Average processing time on last 100 runs [ms] = 0
+amp/IN_QUEUE processed messages = 0
+amp/IN_QUEUE processed presences = 30
+amp/IN_QUEUE processed cluster = 0
+amp/IN_QUEUE processed other = 0
+amp/IN_QUEUE processed IQ no XMLNS = 0
+amp/IN_QUEUE processed total IQ = 0
+amp/OUT_QUEUE processed messages = 0
+amp/OUT_QUEUE processed presences = 0
+amp/OUT_QUEUE processed cluster = 0
+amp/OUT_QUEUE processed other = 0
+amp/OUT_QUEUE processed IQ no XMLNS = 0
+amp/OUT_QUEUE processed total IQ = 0
+amp/Processed packets thread: in_0-amp = 30
+amp/Processed packets thread: out_0-amp = 0
+bosh/Last second packets = 0
+bosh/Last minute packets = 0
+bosh/Last hour packets = 0
+bosh/Processing threads = 32
+bosh/Packets received = 0
+bosh/Packets sent = 0
+bosh/In queue wait: SYSTEM = 0
+bosh/In queue wait: CLUSTER = 0
+bosh/In queue wait: HIGH = 0
+bosh/In queue wait: NORMAL = 0
+bosh/In queue wait: LOW = 0
+bosh/In queue wait: PRESENCE = 0
+bosh/In queue wait: LOWEST = 0
+bosh/Out queue wait: SYSTEM = 0
+bosh/Out queue wait: CLUSTER = 0
+bosh/Out queue wait: HIGH = 0
+bosh/Out queue wait: NORMAL = 0
+bosh/Out queue wait: LOW = 0
+bosh/Out queue wait: PRESENCE = 0
+bosh/Out queue wait: LOWEST = 0
+bosh/Total In queues wait = 0
+bosh/Total Out queues wait = 0
+bosh/Total queues wait = 0
+bosh/Max queue size = 9280
+bosh/IN Queue overflow = 0
+bosh/OUT Queue overflow = 0
+bosh/Total queues overflow = 0
+bosh/Average processing time on last 100 runs [ms] = 0
+bosh/IN_QUEUE processed messages = 0
+bosh/IN_QUEUE processed presences = 0
+bosh/IN_QUEUE processed cluster = 0
+bosh/IN_QUEUE processed other = 0
+bosh/IN_QUEUE processed IQ no XMLNS = 0
+bosh/IN_QUEUE processed total IQ = 0
+bosh/OUT_QUEUE processed messages = 0
+bosh/OUT_QUEUE processed presences = 0
+bosh/OUT_QUEUE processed cluster = 0
+bosh/OUT_QUEUE processed other = 0
+bosh/OUT_QUEUE processed IQ no XMLNS = 0
+bosh/OUT_QUEUE processed total IQ = 0
+bosh/Processed packets thread: in_0-bosh = 0
+bosh/Processed packets thread: in_1-bosh = 0
+bosh/Processed packets thread: in_2-bosh = 0
+bosh/Processed packets thread: in_3-bosh = 0
+bosh/Processed packets thread: in_4-bosh = 0
+bosh/Processed packets thread: in_5-bosh = 0
+bosh/Processed packets thread: in_6-bosh = 0
+bosh/Processed packets thread: in_7-bosh = 0
+bosh/Processed packets thread: in_8-bosh = 0
+bosh/Processed packets thread: in_9-bosh = 0
+bosh/Processed packets thread: in_10-bosh = 0
+bosh/Processed packets thread: in_11-bosh = 0
+bosh/Processed packets thread: in_12-bosh = 0
+bosh/Processed packets thread: in_13-bosh = 0
+bosh/Processed packets thread: in_14-bosh = 0
+bosh/Processed packets thread: in_15-bosh = 0
+bosh/Processed packets thread: in_16-bosh = 0
+bosh/Processed packets thread: in_17-bosh = 0
+bosh/Processed packets thread: in_18-bosh = 0
+bosh/Processed packets thread: in_19-bosh = 0
+bosh/Processed packets thread: in_20-bosh = 0
+bosh/Processed packets thread: in_21-bosh = 0
+bosh/Processed packets thread: in_22-bosh = 0
+bosh/Processed packets thread: in_23-bosh = 0
+bosh/Processed packets thread: in_24-bosh = 0
+bosh/Processed packets thread: in_25-bosh = 0
+bosh/Processed packets thread: in_26-bosh = 0
+bosh/Processed packets thread: in_27-bosh = 0
+bosh/Processed packets thread: in_28-bosh = 0
+bosh/Processed packets thread: in_29-bosh = 0
+bosh/Processed packets thread: in_30-bosh = 0
+bosh/Processed packets thread: in_31-bosh = 0
+bosh/Processed packets thread: out_0-bosh = 0
+bosh/Processed packets thread: out_1-bosh = 0
+bosh/Processed packets thread: out_2-bosh = 0
+bosh/Processed packets thread: out_3-bosh = 0
+bosh/Processed packets thread: out_4-bosh = 0
+bosh/Processed packets thread: out_5-bosh = 0
+bosh/Processed packets thread: out_6-bosh = 0
+bosh/Processed packets thread: out_7-bosh = 0
+bosh/Processed packets thread: out_8-bosh = 0
+bosh/Processed packets thread: out_9-bosh = 0
+bosh/Processed packets thread: out_10-bosh = 0
+bosh/Processed packets thread: out_11-bosh = 0
+bosh/Processed packets thread: out_12-bosh = 0
+bosh/Processed packets thread: out_13-bosh = 0
+bosh/Processed packets thread: out_14-bosh = 0
+bosh/Processed packets thread: out_15-bosh = 0
+bosh/Processed packets thread: out_16-bosh = 0
+bosh/Processed packets thread: out_17-bosh = 0
+bosh/Processed packets thread: out_18-bosh = 0
+bosh/Processed packets thread: out_19-bosh = 0
+bosh/Processed packets thread: out_20-bosh = 0
+bosh/Processed packets thread: out_21-bosh = 0
+bosh/Processed packets thread: out_22-bosh = 0
+bosh/Processed packets thread: out_23-bosh = 0
+bosh/Processed packets thread: out_24-bosh = 0
+bosh/Processed packets thread: out_25-bosh = 0
+bosh/Processed packets thread: out_26-bosh = 0
+bosh/Processed packets thread: out_27-bosh = 0
+bosh/Processed packets thread: out_28-bosh = 0
+bosh/Processed packets thread: out_29-bosh = 0
+bosh/Processed packets thread: out_30-bosh = 0
+bosh/Processed packets thread: out_31-bosh = 0
+bosh/Open connections = 0
+bosh/Waiting to send = 0
+bosh/Bytes sent = 0
+bosh/Bytes received = 1098
+bosh/Socket overflow = 0
+bosh/Watchdog runs = 0
+bosh/Watchdog tests = 0
+bosh/Watchdog stopped = 0
+bosh/Bosh sessions = 0
+c2s/Last second packets = 0
+c2s/Last minute packets = 2
+c2s/Last hour packets = 125
+c2s/Processing threads = 32
+c2s/Packets received = 2024
+c2s/Packets sent = 1897
+c2s/In queue wait: SYSTEM = 0
+c2s/In queue wait: CLUSTER = 0
+c2s/In queue wait: HIGH = 0
+c2s/In queue wait: NORMAL = 0
+c2s/In queue wait: LOW = 0
+c2s/In queue wait: PRESENCE = 0
+c2s/In queue wait: LOWEST = 0
+c2s/Out queue wait: SYSTEM = 0
+c2s/Out queue wait: CLUSTER = 0
+c2s/Out queue wait: HIGH = 0
+c2s/Out queue wait: NORMAL = 0
+c2s/Out queue wait: LOW = 0
+c2s/Out queue wait: PRESENCE = 0
+c2s/Out queue wait: LOWEST = 0
+c2s/Total In queues wait = 0
+c2s/Total Out queues wait = 0
+c2s/Total queues wait = 0
+c2s/Max queue size = 9280
+c2s/IN Queue overflow = 0
+c2s/OUT Queue overflow = 0
+c2s/Total queues overflow = 0
+c2s/Average processing time on last 100 runs [ms] = 1
+c2s/IN_QUEUE processed messages = 36
+c2s/IN_QUEUE processed presences = 157
+c2s/IN_QUEUE processed cluster = 0
+c2s/IN_QUEUE processed other = 1753
+c2s/IN_QUEUE processed IQ no XMLNS = 1152
+c2s/IN_QUEUE processed IQ http://jabber.org/protocol/disco#items = 88
+c2s/IN_QUEUE processed IQ bind = 26
+c2s/IN_QUEUE processed IQ jabber:iq:roster = 65
+c2s/IN_QUEUE processed IQ vCard = 36
+c2s/IN_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 41
+c2s/IN_QUEUE processed IQ error = 16
+c2s/IN_QUEUE processed IQ command = 197
+c2s/IN_QUEUE processed IQ http://jabber.org/protocol/disco#info = 103
+c2s/IN_QUEUE processed IQ jabber:iq:private = 1
+c2s/IN_QUEUE processed total IQ = 1725
+c2s/OUT_QUEUE processed messages = 36
+c2s/OUT_QUEUE processed presences = 96
+c2s/OUT_QUEUE processed cluster = 0
+c2s/OUT_QUEUE processed other = 1765
+c2s/OUT_QUEUE processed IQ no XMLNS = 38
+c2s/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#items = 88
+c2s/OUT_QUEUE processed IQ bind = 26
+c2s/OUT_QUEUE processed IQ jabber:iq:roster = 40
+c2s/OUT_QUEUE processed IQ jabber:iq:privacy = 4
+c2s/OUT_QUEUE processed IQ session = 26
+c2s/OUT_QUEUE processed IQ ping = 1102
+c2s/OUT_QUEUE processed IQ vCard = 42
+c2s/OUT_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 57
+c2s/OUT_QUEUE processed IQ command = 171
+c2s/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#info = 103
+c2s/OUT_QUEUE processed IQ jabber:iq:private = 1
+c2s/OUT_QUEUE processed total IQ = 1698
+c2s/Processed packets thread: in_0-c2s = 0
+c2s/Processed packets thread: in_1-c2s = 211
+c2s/Processed packets thread: in_2-c2s = 137
+c2s/Processed packets thread: in_3-c2s = 26
+c2s/Processed packets thread: in_4-c2s = 91
+c2s/Processed packets thread: in_5-c2s = 138
+c2s/Processed packets thread: in_6-c2s = 409
+c2s/Processed packets thread: in_7-c2s = 57
+c2s/Processed packets thread: in_8-c2s = 112
+c2s/Processed packets thread: in_9-c2s = 172
+c2s/Processed packets thread: in_10-c2s = 227
+c2s/Processed packets thread: in_11-c2s = 0
+c2s/Processed packets thread: in_12-c2s = 48
+c2s/Processed packets thread: in_13-c2s = 8
+c2s/Processed packets thread: in_14-c2s = 182
+c2s/Processed packets thread: in_15-c2s = 24
+c2s/Processed packets thread: in_16-c2s = 94
+c2s/Processed packets thread: in_17-c2s = 0
+c2s/Processed packets thread: in_18-c2s = 0
+c2s/Processed packets thread: in_19-c2s = 0
+c2s/Processed packets thread: in_20-c2s = 0
+c2s/Processed packets thread: in_21-c2s = 0
+c2s/Processed packets thread: in_22-c2s = 0
+c2s/Processed packets thread: in_23-c2s = 0
+c2s/Processed packets thread: in_24-c2s = 0
+c2s/Processed packets thread: in_25-c2s = 0
+c2s/Processed packets thread: in_26-c2s = 0
+c2s/Processed packets thread: in_27-c2s = 0
+c2s/Processed packets thread: in_28-c2s = 5
+c2s/Processed packets thread: in_29-c2s = 79
+c2s/Processed packets thread: in_30-c2s = 4
+c2s/Processed packets thread: in_31-c2s = 0
+c2s/Processed packets thread: out_0-c2s = 0
+c2s/Processed packets thread: out_1-c2s = 201
+c2s/Processed packets thread: out_2-c2s = 90
+c2s/Processed packets thread: out_3-c2s = 17
+c2s/Processed packets thread: out_4-c2s = 81
+c2s/Processed packets thread: out_5-c2s = 105
+c2s/Processed packets thread: out_6-c2s = 392
+c2s/Processed packets thread: out_7-c2s = 44
+c2s/Processed packets thread: out_8-c2s = 105
+c2s/Processed packets thread: out_9-c2s = 140
+c2s/Processed packets thread: out_10-c2s = 181
+c2s/Processed packets thread: out_11-c2s = 0
+c2s/Processed packets thread: out_12-c2s = 39
+c2s/Processed packets thread: out_13-c2s = 4
+c2s/Processed packets thread: out_14-c2s = 189
+c2s/Processed packets thread: out_15-c2s = 16
+c2s/Processed packets thread: out_16-c2s = 85
+c2s/Processed packets thread: out_17-c2s = 0
+c2s/Processed packets thread: out_18-c2s = 0
+c2s/Processed packets thread: out_19-c2s = 0
+c2s/Processed packets thread: out_20-c2s = 0
+c2s/Processed packets thread: out_21-c2s = 0
+c2s/Processed packets thread: out_22-c2s = 0
+c2s/Processed packets thread: out_23-c2s = 132
+c2s/Processed packets thread: out_24-c2s = 0
+c2s/Processed packets thread: out_25-c2s = 0
+c2s/Processed packets thread: out_26-c2s = 0
+c2s/Processed packets thread: out_27-c2s = 0
+c2s/Processed packets thread: out_28-c2s = 2
+c2s/Processed packets thread: out_29-c2s = 72
+c2s/Processed packets thread: out_30-c2s = 2
+c2s/Processed packets thread: out_31-c2s = 0
+c2s/Open connections = 0
+c2s/Waiting to send = 0
+c2s/Bytes sent = 1269291
+c2s/Bytes received = 379885
+c2s/Socket overflow = 0
+c2s/Watchdog runs = 121
+c2s/Watchdog tests = 0
+c2s/Watchdog stopped = 0
+cl-comp/Last second packets = 0
+cl-comp/Last minute packets = 0
+cl-comp/Last hour packets = 0
+cl-comp/Processing threads = 64
+cl-comp/Packets received = 0
+cl-comp/Packets sent = 0
+cl-comp/In queue wait: SYSTEM = 0
+cl-comp/In queue wait: CLUSTER = 0
+cl-comp/In queue wait: HIGH = 0
+cl-comp/In queue wait: NORMAL = 0
+cl-comp/In queue wait: LOW = 0
+cl-comp/In queue wait: PRESENCE = 0
+cl-comp/In queue wait: LOWEST = 0
+cl-comp/Out queue wait: SYSTEM = 0
+cl-comp/Out queue wait: CLUSTER = 0
+cl-comp/Out queue wait: HIGH = 0
+cl-comp/Out queue wait: NORMAL = 0
+cl-comp/Out queue wait: LOW = 0
+cl-comp/Out queue wait: PRESENCE = 0
+cl-comp/Out queue wait: LOWEST = 0
+cl-comp/Total In queues wait = 0
+cl-comp/Total Out queues wait = 0
+cl-comp/Total queues wait = 0
+cl-comp/Max queue size = 9216
+cl-comp/IN Queue overflow = 0
+cl-comp/OUT Queue overflow = 0
+cl-comp/Total queues overflow = 0
+cl-comp/Average processing time on last 100 runs [ms] = 0
+cl-comp/IN_QUEUE processed messages = 0
+cl-comp/IN_QUEUE processed presences = 0
+cl-comp/IN_QUEUE processed cluster = 0
+cl-comp/IN_QUEUE processed other = 0
+cl-comp/IN_QUEUE processed IQ no XMLNS = 0
+cl-comp/IN_QUEUE processed total IQ = 0
+cl-comp/OUT_QUEUE processed messages = 0
+cl-comp/OUT_QUEUE processed presences = 0
+cl-comp/OUT_QUEUE processed cluster = 0
+cl-comp/OUT_QUEUE processed other = 0
+cl-comp/OUT_QUEUE processed IQ no XMLNS = 0
+cl-comp/OUT_QUEUE processed total IQ = 0
+cl-comp/Processed packets thread: in_0-cl-comp = 0
+cl-comp/Processed packets thread: in_1-cl-comp = 0
+cl-comp/Processed packets thread: in_2-cl-comp = 0
+cl-comp/Processed packets thread: in_3-cl-comp = 0
+cl-comp/Processed packets thread: in_4-cl-comp = 0
+cl-comp/Processed packets thread: in_5-cl-comp = 0
+cl-comp/Processed packets thread: in_6-cl-comp = 0
+cl-comp/Processed packets thread: in_7-cl-comp = 0
+cl-comp/Processed packets thread: in_8-cl-comp = 0
+cl-comp/Processed packets thread: in_9-cl-comp = 0
+cl-comp/Processed packets thread: in_10-cl-comp = 0
+cl-comp/Processed packets thread: in_11-cl-comp = 0
+cl-comp/Processed packets thread: in_12-cl-comp = 0
+cl-comp/Processed packets thread: in_13-cl-comp = 0
+cl-comp/Processed packets thread: in_14-cl-comp = 0
+cl-comp/Processed packets thread: in_15-cl-comp = 0
+cl-comp/Processed packets thread: in_16-cl-comp = 0
+cl-comp/Processed packets thread: in_17-cl-comp = 0
+cl-comp/Processed packets thread: in_18-cl-comp = 0
+cl-comp/Processed packets thread: in_19-cl-comp = 0
+cl-comp/Processed packets thread: in_20-cl-comp = 0
+cl-comp/Processed packets thread: in_21-cl-comp = 0
+cl-comp/Processed packets thread: in_22-cl-comp = 0
+cl-comp/Processed packets thread: in_23-cl-comp = 0
+cl-comp/Processed packets thread: in_24-cl-comp = 0
+cl-comp/Processed packets thread: in_25-cl-comp = 0
+cl-comp/Processed packets thread: in_26-cl-comp = 0
+cl-comp/Processed packets thread: in_27-cl-comp = 0
+cl-comp/Processed packets thread: in_28-cl-comp = 0
+cl-comp/Processed packets thread: in_29-cl-comp = 0
+cl-comp/Processed packets thread: in_30-cl-comp = 0
+cl-comp/Processed packets thread: in_31-cl-comp = 0
+cl-comp/Processed packets thread: in_32-cl-comp = 0
+cl-comp/Processed packets thread: in_33-cl-comp = 0
+cl-comp/Processed packets thread: in_34-cl-comp = 0
+cl-comp/Processed packets thread: in_35-cl-comp = 0
+cl-comp/Processed packets thread: in_36-cl-comp = 0
+cl-comp/Processed packets thread: in_37-cl-comp = 0
+cl-comp/Processed packets thread: in_38-cl-comp = 0
+cl-comp/Processed packets thread: in_39-cl-comp = 0
+cl-comp/Processed packets thread: in_40-cl-comp = 0
+cl-comp/Processed packets thread: in_41-cl-comp = 0
+cl-comp/Processed packets thread: in_42-cl-comp = 0
+cl-comp/Processed packets thread: in_43-cl-comp = 0
+cl-comp/Processed packets thread: in_44-cl-comp = 0
+cl-comp/Processed packets thread: in_45-cl-comp = 0
+cl-comp/Processed packets thread: in_46-cl-comp = 0
+cl-comp/Processed packets thread: in_47-cl-comp = 0
+cl-comp/Processed packets thread: in_48-cl-comp = 0
+cl-comp/Processed packets thread: in_49-cl-comp = 0
+cl-comp/Processed packets thread: in_50-cl-comp = 0
+cl-comp/Processed packets thread: in_51-cl-comp = 0
+cl-comp/Processed packets thread: in_52-cl-comp = 0
+cl-comp/Processed packets thread: in_53-cl-comp = 0
+cl-comp/Processed packets thread: in_54-cl-comp = 0
+cl-comp/Processed packets thread: in_55-cl-comp = 0
+cl-comp/Processed packets thread: in_56-cl-comp = 0
+cl-comp/Processed packets thread: in_57-cl-comp = 0
+cl-comp/Processed packets thread: in_58-cl-comp = 0
+cl-comp/Processed packets thread: in_59-cl-comp = 0
+cl-comp/Processed packets thread: in_60-cl-comp = 0
+cl-comp/Processed packets thread: in_61-cl-comp = 0
+cl-comp/Processed packets thread: in_62-cl-comp = 0
+cl-comp/Processed packets thread: in_63-cl-comp = 0
+cl-comp/Processed packets thread: out_0-cl-comp = 0
+cl-comp/Processed packets thread: out_1-cl-comp = 0
+cl-comp/Processed packets thread: out_2-cl-comp = 0
+cl-comp/Processed packets thread: out_3-cl-comp = 0
+cl-comp/Processed packets thread: out_4-cl-comp = 0
+cl-comp/Processed packets thread: out_5-cl-comp = 0
+cl-comp/Processed packets thread: out_6-cl-comp = 0
+cl-comp/Processed packets thread: out_7-cl-comp = 0
+cl-comp/Processed packets thread: out_8-cl-comp = 0
+cl-comp/Processed packets thread: out_9-cl-comp = 0
+cl-comp/Processed packets thread: out_10-cl-comp = 0
+cl-comp/Processed packets thread: out_11-cl-comp = 0
+cl-comp/Processed packets thread: out_12-cl-comp = 0
+cl-comp/Processed packets thread: out_13-cl-comp = 0
+cl-comp/Processed packets thread: out_14-cl-comp = 0
+cl-comp/Processed packets thread: out_15-cl-comp = 0
+cl-comp/Processed packets thread: out_16-cl-comp = 0
+cl-comp/Processed packets thread: out_17-cl-comp = 0
+cl-comp/Processed packets thread: out_18-cl-comp = 0
+cl-comp/Processed packets thread: out_19-cl-comp = 0
+cl-comp/Processed packets thread: out_20-cl-comp = 0
+cl-comp/Processed packets thread: out_21-cl-comp = 0
+cl-comp/Processed packets thread: out_22-cl-comp = 0
+cl-comp/Processed packets thread: out_23-cl-comp = 0
+cl-comp/Processed packets thread: out_24-cl-comp = 0
+cl-comp/Processed packets thread: out_25-cl-comp = 0
+cl-comp/Processed packets thread: out_26-cl-comp = 0
+cl-comp/Processed packets thread: out_27-cl-comp = 0
+cl-comp/Processed packets thread: out_28-cl-comp = 0
+cl-comp/Processed packets thread: out_29-cl-comp = 0
+cl-comp/Processed packets thread: out_30-cl-comp = 0
+cl-comp/Processed packets thread: out_31-cl-comp = 0
+cl-comp/Processed packets thread: out_32-cl-comp = 0
+cl-comp/Processed packets thread: out_33-cl-comp = 0
+cl-comp/Processed packets thread: out_34-cl-comp = 0
+cl-comp/Processed packets thread: out_35-cl-comp = 0
+cl-comp/Processed packets thread: out_36-cl-comp = 0
+cl-comp/Processed packets thread: out_37-cl-comp = 0
+cl-comp/Processed packets thread: out_38-cl-comp = 0
+cl-comp/Processed packets thread: out_39-cl-comp = 0
+cl-comp/Processed packets thread: out_40-cl-comp = 0
+cl-comp/Processed packets thread: out_41-cl-comp = 0
+cl-comp/Processed packets thread: out_42-cl-comp = 0
+cl-comp/Processed packets thread: out_43-cl-comp = 0
+cl-comp/Processed packets thread: out_44-cl-comp = 0
+cl-comp/Processed packets thread: out_45-cl-comp = 0
+cl-comp/Processed packets thread: out_46-cl-comp = 0
+cl-comp/Processed packets thread: out_47-cl-comp = 0
+cl-comp/Processed packets thread: out_48-cl-comp = 0
+cl-comp/Processed packets thread: out_49-cl-comp = 0
+cl-comp/Processed packets thread: out_50-cl-comp = 0
+cl-comp/Processed packets thread: out_51-cl-comp = 0
+cl-comp/Processed packets thread: out_52-cl-comp = 0
+cl-comp/Processed packets thread: out_53-cl-comp = 0
+cl-comp/Processed packets thread: out_54-cl-comp = 0
+cl-comp/Processed packets thread: out_55-cl-comp = 0
+cl-comp/Processed packets thread: out_56-cl-comp = 0
+cl-comp/Processed packets thread: out_57-cl-comp = 0
+cl-comp/Processed packets thread: out_58-cl-comp = 0
+cl-comp/Processed packets thread: out_59-cl-comp = 0
+cl-comp/Processed packets thread: out_60-cl-comp = 0
+cl-comp/Processed packets thread: out_61-cl-comp = 0
+cl-comp/Processed packets thread: out_62-cl-comp = 0
+cl-comp/Processed packets thread: out_63-cl-comp = 0
+cl-comp/Open connections = 0
+cl-comp/Waiting to send = 0
+cl-comp/Bytes sent = 0
+cl-comp/Bytes received = 0
+cl-comp/Socket overflow = 0
+cl-comp/Watchdog runs = 121
+cl-comp/Watchdog tests = 0
+cl-comp/Watchdog stopped = 0
+cl-comp/Total disconnects = 0
+cl-comp/Service connected time-outs = 0
+cl-comp/Last day disconnects = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cl-comp/Last hour disconnects = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+cl-comp/Average compression ratio = NaN
+cl-comp/Average decompression ratio = NaN
+message-archive/Last second packets = 0
+message-archive/Last minute packets = 0
+message-archive/Last hour packets = 0
+message-archive/Processing threads = 1
+message-archive/Packets received = 0
+message-archive/Packets sent = 0
+message-archive/In queue wait: SYSTEM = 0
+message-archive/In queue wait: CLUSTER = 0
+message-archive/In queue wait: HIGH = 0
+message-archive/In queue wait: NORMAL = 0
+message-archive/In queue wait: LOW = 0
+message-archive/In queue wait: PRESENCE = 0
+message-archive/In queue wait: LOWEST = 0
+message-archive/Out queue wait: SYSTEM = 0
+message-archive/Out queue wait: CLUSTER = 0
+message-archive/Out queue wait: HIGH = 0
+message-archive/Out queue wait: NORMAL = 0
+message-archive/Out queue wait: LOW = 0
+message-archive/Out queue wait: PRESENCE = 0
+message-archive/Out queue wait: LOWEST = 0
+message-archive/Total In queues wait = 0
+message-archive/Total Out queues wait = 0
+message-archive/Total queues wait = 0
+message-archive/Max queue size = 932
+message-archive/IN Queue overflow = 0
+message-archive/OUT Queue overflow = 0
+message-archive/Total queues overflow = 0
+message-archive/Average processing time on last 100 runs [ms] = 0
+message-archive/IN_QUEUE processed messages = 0
+message-archive/IN_QUEUE processed presences = 0
+message-archive/IN_QUEUE processed cluster = 0
+message-archive/IN_QUEUE processed other = 0
+message-archive/IN_QUEUE processed IQ no XMLNS = 0
+message-archive/IN_QUEUE processed total IQ = 0
+message-archive/OUT_QUEUE processed messages = 0
+message-archive/OUT_QUEUE processed presences = 0
+message-archive/OUT_QUEUE processed cluster = 0
+message-archive/OUT_QUEUE processed other = 0
+message-archive/OUT_QUEUE processed IQ no XMLNS = 0
+message-archive/OUT_QUEUE processed total IQ = 0
+message-archive/Processed packets thread: in_0-message-archive = 0
+message-archive/Processed packets thread: out_0-message-archive = 0
+monitor/Last second packets = 0
+monitor/Last minute packets = 0
+monitor/Last hour packets = 0
+monitor/Processing threads = 8
+monitor/Packets received = 0
+monitor/Packets sent = 0
+monitor/In queue wait: SYSTEM = 0
+monitor/In queue wait: CLUSTER = 0
+monitor/In queue wait: HIGH = 0
+monitor/In queue wait: NORMAL = 0
+monitor/In queue wait: LOW = 0
+monitor/In queue wait: PRESENCE = 0
+monitor/In queue wait: LOWEST = 0
+monitor/Out queue wait: SYSTEM = 0
+monitor/Out queue wait: CLUSTER = 0
+monitor/Out queue wait: HIGH = 0
+monitor/Out queue wait: NORMAL = 0
+monitor/Out queue wait: LOW = 0
+monitor/Out queue wait: PRESENCE = 0
+monitor/Out queue wait: LOWEST = 0
+monitor/Total In queues wait = 0
+monitor/Total Out queues wait = 0
+monitor/Total queues wait = 0
+monitor/Max queue size = 928
+monitor/IN Queue overflow = 0
+monitor/OUT Queue overflow = 0
+monitor/Total queues overflow = 0
+monitor/Average processing time on last 100 runs [ms] = 0
+monitor/IN_QUEUE processed messages = 0
+monitor/IN_QUEUE processed presences = 0
+monitor/IN_QUEUE processed cluster = 0
+monitor/IN_QUEUE processed other = 0
+monitor/IN_QUEUE processed IQ no XMLNS = 0
+monitor/IN_QUEUE processed total IQ = 0
+monitor/OUT_QUEUE processed messages = 0
+monitor/OUT_QUEUE processed presences = 0
+monitor/OUT_QUEUE processed cluster = 0
+monitor/OUT_QUEUE processed other = 0
+monitor/OUT_QUEUE processed IQ no XMLNS = 0
+monitor/OUT_QUEUE processed total IQ = 0
+monitor/Processed packets thread: in_0-monitor = 0
+monitor/Processed packets thread: in_1-monitor = 0
+monitor/Processed packets thread: in_2-monitor = 0
+monitor/Processed packets thread: in_3-monitor = 0
+monitor/Processed packets thread: in_4-monitor = 0
+monitor/Processed packets thread: in_5-monitor = 0
+monitor/Processed packets thread: in_6-monitor = 0
+monitor/Processed packets thread: in_7-monitor = 0
+monitor/Processed packets thread: out_0-monitor = 0
+monitor/Processed packets thread: out_1-monitor = 0
+monitor/Processed packets thread: out_2-monitor = 0
+monitor/Processed packets thread: out_3-monitor = 0
+monitor/Processed packets thread: out_4-monitor = 0
+monitor/Processed packets thread: out_5-monitor = 0
+monitor/Processed packets thread: out_6-monitor = 0
+monitor/Processed packets thread: out_7-monitor = 0
+muc/Last second packets = 0
+muc/Last minute packets = 0
+muc/Last hour packets = 3
+muc/Processing threads = 32
+muc/Packets received = 23
+muc/Packets sent = 23
+muc/In queue wait: SYSTEM = 0
+muc/In queue wait: CLUSTER = 0
+muc/In queue wait: HIGH = 0
+muc/In queue wait: NORMAL = 0
+muc/In queue wait: LOW = 0
+muc/In queue wait: PRESENCE = 0
+muc/In queue wait: LOWEST = 0
+muc/Out queue wait: SYSTEM = 0
+muc/Out queue wait: CLUSTER = 0
+muc/Out queue wait: HIGH = 0
+muc/Out queue wait: NORMAL = 0
+muc/Out queue wait: LOW = 0
+muc/Out queue wait: PRESENCE = 0
+muc/Out queue wait: LOWEST = 0
+muc/Total In queues wait = 0
+muc/Total Out queues wait = 0
+muc/Total queues wait = 0
+muc/Max queue size = 896
+muc/IN Queue overflow = 0
+muc/OUT Queue overflow = 0
+muc/Total queues overflow = 0
+muc/Average processing time on last 100 runs [ms] = 1
+muc/IN_QUEUE processed messages = 0
+muc/IN_QUEUE processed presences = 0
+muc/IN_QUEUE processed cluster = 0
+muc/IN_QUEUE processed other = 23
+muc/IN_QUEUE processed IQ no XMLNS = 0
+muc/IN_QUEUE processed IQ http://jabber.org/protocol/disco#info = 23
+muc/IN_QUEUE processed total IQ = 23
+muc/OUT_QUEUE processed messages = 0
+muc/OUT_QUEUE processed presences = 0
+muc/OUT_QUEUE processed cluster = 0
+muc/OUT_QUEUE processed other = 23
+muc/OUT_QUEUE processed IQ no XMLNS = 0
+muc/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#info = 23
+muc/OUT_QUEUE processed total IQ = 23
+muc/Processed packets thread: in_0-muc = 0
+muc/Processed packets thread: in_1-muc = 0
+muc/Processed packets thread: in_2-muc = 0
+muc/Processed packets thread: in_3-muc = 0
+muc/Processed packets thread: in_4-muc = 0
+muc/Processed packets thread: in_5-muc = 0
+muc/Processed packets thread: in_6-muc = 0
+muc/Processed packets thread: in_7-muc = 0
+muc/Processed packets thread: in_8-muc = 0
+muc/Processed packets thread: in_9-muc = 0
+muc/Processed packets thread: in_10-muc = 0
+muc/Processed packets thread: in_11-muc = 0
+muc/Processed packets thread: in_12-muc = 0
+muc/Processed packets thread: in_13-muc = 0
+muc/Processed packets thread: in_14-muc = 0
+muc/Processed packets thread: in_15-muc = 0
+muc/Processed packets thread: in_16-muc = 0
+muc/Processed packets thread: in_17-muc = 0
+muc/Processed packets thread: in_18-muc = 0
+muc/Processed packets thread: in_19-muc = 0
+muc/Processed packets thread: in_20-muc = 13
+muc/Processed packets thread: in_21-muc = 0
+muc/Processed packets thread: in_22-muc = 0
+muc/Processed packets thread: in_23-muc = 0
+muc/Processed packets thread: in_24-muc = 0
+muc/Processed packets thread: in_25-muc = 0
+muc/Processed packets thread: in_26-muc = 10
+muc/Processed packets thread: in_27-muc = 0
+muc/Processed packets thread: in_28-muc = 0
+muc/Processed packets thread: in_29-muc = 0
+muc/Processed packets thread: in_30-muc = 0
+muc/Processed packets thread: in_31-muc = 0
+muc/Processed packets thread: out_0-muc = 0
+muc/Processed packets thread: out_1-muc = 0
+muc/Processed packets thread: out_2-muc = 0
+muc/Processed packets thread: out_3-muc = 0
+muc/Processed packets thread: out_4-muc = 0
+muc/Processed packets thread: out_5-muc = 0
+muc/Processed packets thread: out_6-muc = 0
+muc/Processed packets thread: out_7-muc = 0
+muc/Processed packets thread: out_8-muc = 0
+muc/Processed packets thread: out_9-muc = 0
+muc/Processed packets thread: out_10-muc = 0
+muc/Processed packets thread: out_11-muc = 0
+muc/Processed packets thread: out_12-muc = 0
+muc/Processed packets thread: out_13-muc = 0
+muc/Processed packets thread: out_14-muc = 0
+muc/Processed packets thread: out_15-muc = 0
+muc/Processed packets thread: out_16-muc = 0
+muc/Processed packets thread: out_17-muc = 0
+muc/Processed packets thread: out_18-muc = 0
+muc/Processed packets thread: out_19-muc = 0
+muc/Processed packets thread: out_20-muc = 0
+muc/Processed packets thread: out_21-muc = 0
+muc/Processed packets thread: out_22-muc = 0
+muc/Processed packets thread: out_23-muc = 0
+muc/Processed packets thread: out_24-muc = 0
+muc/Processed packets thread: out_25-muc = 0
+muc/Processed packets thread: out_26-muc = 0
+muc/Processed packets thread: out_27-muc = 23
+muc/Processed packets thread: out_28-muc = 0
+muc/Processed packets thread: out_29-muc = 0
+muc/Processed packets thread: out_30-muc = 0
+muc/Processed packets thread: out_31-muc = 0
+proxy/Last second packets = 0
+proxy/Last minute packets = 0
+proxy/Last hour packets = 6
+proxy/Processing threads = 1
+proxy/Packets received = 38
+proxy/Packets sent = 38
+proxy/In queue wait: SYSTEM = 0
+proxy/In queue wait: CLUSTER = 0
+proxy/In queue wait: HIGH = 0
+proxy/In queue wait: NORMAL = 0
+proxy/In queue wait: LOW = 0
+proxy/In queue wait: PRESENCE = 0
+proxy/In queue wait: LOWEST = 0
+proxy/Out queue wait: SYSTEM = 0
+proxy/Out queue wait: CLUSTER = 0
+proxy/Out queue wait: HIGH = 0
+proxy/Out queue wait: NORMAL = 0
+proxy/Out queue wait: LOW = 0
+proxy/Out queue wait: PRESENCE = 0
+proxy/Out queue wait: LOWEST = 0
+proxy/Total In queues wait = 0
+proxy/Total Out queues wait = 0
+proxy/Total queues wait = 0
+proxy/Max queue size = 932
+proxy/IN Queue overflow = 0
+proxy/OUT Queue overflow = 0
+proxy/Total queues overflow = 0
+proxy/Average processing time on last 100 runs [ms] = 1496
+proxy/IN_QUEUE processed messages = 0
+proxy/IN_QUEUE processed presences = 0
+proxy/IN_QUEUE processed cluster = 0
+proxy/IN_QUEUE processed other = 38
+proxy/IN_QUEUE processed IQ no XMLNS = 0
+proxy/IN_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 38
+proxy/IN_QUEUE processed total IQ = 38
+proxy/OUT_QUEUE processed messages = 0
+proxy/OUT_QUEUE processed presences = 0
+proxy/OUT_QUEUE processed cluster = 0
+proxy/OUT_QUEUE processed other = 38
+proxy/OUT_QUEUE processed IQ no XMLNS = 0
+proxy/OUT_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 22
+proxy/OUT_QUEUE processed IQ error = 16
+proxy/OUT_QUEUE processed total IQ = 38
+proxy/Processed packets thread: in_0-proxy = 38
+proxy/Processed packets thread: out_0-proxy = 38
+proxy/Open connections = 0
+proxy/Waiting to send = 0
+proxy/Bytes sent = 0
+proxy/Bytes received = 0
+proxy/Socket overflow = 0
+proxy/Open streams = 0
+proxy/KBytes tranferred = 0
+proxy/Transfers completed = 0
+proxy/Average transfer size in KB = 0
+pubsub/Last second packets = 0
+pubsub/Last minute packets = 0
+pubsub/Last hour packets = 3
+pubsub/Processing threads = 32
+pubsub/Packets received = 23
+pubsub/Packets sent = 23
+pubsub/In queue wait: SYSTEM = 0
+pubsub/In queue wait: CLUSTER = 0
+pubsub/In queue wait: HIGH = 0
+pubsub/In queue wait: NORMAL = 0
+pubsub/In queue wait: LOW = 0
+pubsub/In queue wait: PRESENCE = 0
+pubsub/In queue wait: LOWEST = 0
+pubsub/Out queue wait: SYSTEM = 0
+pubsub/Out queue wait: CLUSTER = 0
+pubsub/Out queue wait: HIGH = 0
+pubsub/Out queue wait: NORMAL = 0
+pubsub/Out queue wait: LOW = 0
+pubsub/Out queue wait: PRESENCE = 0
+pubsub/Out queue wait: LOWEST = 0
+pubsub/Total In queues wait = 0
+pubsub/Total Out queues wait = 0
+pubsub/Total queues wait = 0
+pubsub/Max queue size = 896
+pubsub/IN Queue overflow = 0
+pubsub/OUT Queue overflow = 0
+pubsub/Total queues overflow = 0
+pubsub/Average processing time on last 100 runs [ms] = 0
+pubsub/IN_QUEUE processed messages = 0
+pubsub/IN_QUEUE processed presences = 0
+pubsub/IN_QUEUE processed cluster = 0
+pubsub/IN_QUEUE processed other = 23
+pubsub/IN_QUEUE processed IQ no XMLNS = 0
+pubsub/IN_QUEUE processed IQ http://jabber.org/protocol/disco#info = 23
+pubsub/IN_QUEUE processed total IQ = 23
+pubsub/OUT_QUEUE processed messages = 0
+pubsub/OUT_QUEUE processed presences = 0
+pubsub/OUT_QUEUE processed cluster = 0
+pubsub/OUT_QUEUE processed other = 23
+pubsub/OUT_QUEUE processed IQ no XMLNS = 0
+pubsub/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#info = 23
+pubsub/OUT_QUEUE processed total IQ = 23
+pubsub/Processed packets thread: in_0-pubsub = 0
+pubsub/Processed packets thread: in_1-pubsub = 0
+pubsub/Processed packets thread: in_2-pubsub = 0
+pubsub/Processed packets thread: in_3-pubsub = 2
+pubsub/Processed packets thread: in_4-pubsub = 0
+pubsub/Processed packets thread: in_5-pubsub = 0
+pubsub/Processed packets thread: in_6-pubsub = 0
+pubsub/Processed packets thread: in_7-pubsub = 1
+pubsub/Processed packets thread: in_8-pubsub = 0
+pubsub/Processed packets thread: in_9-pubsub = 1
+pubsub/Processed packets thread: in_10-pubsub = 1
+pubsub/Processed packets thread: in_11-pubsub = 1
+pubsub/Processed packets thread: in_12-pubsub = 1
+pubsub/Processed packets thread: in_13-pubsub = 2
+pubsub/Processed packets thread: in_14-pubsub = 0
+pubsub/Processed packets thread: in_15-pubsub = 2
+pubsub/Processed packets thread: in_16-pubsub = 0
+pubsub/Processed packets thread: in_17-pubsub = 0
+pubsub/Processed packets thread: in_18-pubsub = 2
+pubsub/Processed packets thread: in_19-pubsub = 0
+pubsub/Processed packets thread: in_20-pubsub = 1
+pubsub/Processed packets thread: in_21-pubsub = 0
+pubsub/Processed packets thread: in_22-pubsub = 0
+pubsub/Processed packets thread: in_23-pubsub = 1
+pubsub/Processed packets thread: in_24-pubsub = 1
+pubsub/Processed packets thread: in_25-pubsub = 1
+pubsub/Processed packets thread: in_26-pubsub = 1
+pubsub/Processed packets thread: in_27-pubsub = 3
+pubsub/Processed packets thread: in_28-pubsub = 0
+pubsub/Processed packets thread: in_29-pubsub = 0
+pubsub/Processed packets thread: in_30-pubsub = 1
+pubsub/Processed packets thread: in_31-pubsub = 1
+pubsub/Processed packets thread: out_0-pubsub = 0
+pubsub/Processed packets thread: out_1-pubsub = 0
+pubsub/Processed packets thread: out_2-pubsub = 0
+pubsub/Processed packets thread: out_3-pubsub = 0
+pubsub/Processed packets thread: out_4-pubsub = 0
+pubsub/Processed packets thread: out_5-pubsub = 0
+pubsub/Processed packets thread: out_6-pubsub = 0
+pubsub/Processed packets thread: out_7-pubsub = 0
+pubsub/Processed packets thread: out_8-pubsub = 1
+pubsub/Processed packets thread: out_9-pubsub = 1
+pubsub/Processed packets thread: out_10-pubsub = 3
+pubsub/Processed packets thread: out_11-pubsub = 1
+pubsub/Processed packets thread: out_12-pubsub = 0
+pubsub/Processed packets thread: out_13-pubsub = 0
+pubsub/Processed packets thread: out_14-pubsub = 1
+pubsub/Processed packets thread: out_15-pubsub = 0
+pubsub/Processed packets thread: out_16-pubsub = 0
+pubsub/Processed packets thread: out_17-pubsub = 0
+pubsub/Processed packets thread: out_18-pubsub = 0
+pubsub/Processed packets thread: out_19-pubsub = 2
+pubsub/Processed packets thread: out_20-pubsub = 2
+pubsub/Processed packets thread: out_21-pubsub = 1
+pubsub/Processed packets thread: out_22-pubsub = 0
+pubsub/Processed packets thread: out_23-pubsub = 0
+pubsub/Processed packets thread: out_24-pubsub = 1
+pubsub/Processed packets thread: out_25-pubsub = 1
+pubsub/Processed packets thread: out_26-pubsub = 5
+pubsub/Processed packets thread: out_27-pubsub = 1
+pubsub/Processed packets thread: out_28-pubsub = 1
+pubsub/Processed packets thread: out_29-pubsub = 0
+pubsub/Processed packets thread: out_30-pubsub = 2
+pubsub/Processed packets thread: out_31-pubsub = 0
+s2s/Last second packets = 0
+s2s/Last minute packets = 0
+s2s/Last hour packets = 3
+s2s/Processing threads = 32
+s2s/Packets received = 19
+s2s/Packets sent = 19
+s2s/In queue wait: SYSTEM = 0
+s2s/In queue wait: CLUSTER = 0
+s2s/In queue wait: HIGH = 0
+s2s/In queue wait: NORMAL = 0
+s2s/In queue wait: LOW = 0
+s2s/In queue wait: PRESENCE = 0
+s2s/In queue wait: LOWEST = 0
+s2s/Out queue wait: SYSTEM = 0
+s2s/Out queue wait: CLUSTER = 0
+s2s/Out queue wait: HIGH = 0
+s2s/Out queue wait: NORMAL = 0
+s2s/Out queue wait: LOW = 0
+s2s/Out queue wait: PRESENCE = 0
+s2s/Out queue wait: LOWEST = 0
+s2s/Total In queues wait = 0
+s2s/Total Out queues wait = 0
+s2s/Total queues wait = 0
+s2s/Max queue size = 896
+s2s/IN Queue overflow = 0
+s2s/OUT Queue overflow = 0
+s2s/Total queues overflow = 0
+s2s/Average processing time on last 100 runs [ms] = 0
+s2s/IN_QUEUE processed messages = 0
+s2s/IN_QUEUE processed presences = 0
+s2s/IN_QUEUE processed cluster = 0
+s2s/IN_QUEUE processed other = 19
+s2s/IN_QUEUE processed IQ no XMLNS = 0
+s2s/IN_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 19
+s2s/IN_QUEUE processed total IQ = 19
+s2s/OUT_QUEUE processed messages = 0
+s2s/OUT_QUEUE processed presences = 0
+s2s/OUT_QUEUE processed cluster = 0
+s2s/OUT_QUEUE processed other = 19
+s2s/OUT_QUEUE processed IQ no XMLNS = 0
+s2s/OUT_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 19
+s2s/OUT_QUEUE processed total IQ = 19
+s2s/Processed packets thread: in_0-s2s = 0
+s2s/Processed packets thread: in_1-s2s = 0
+s2s/Processed packets thread: in_2-s2s = 0
+s2s/Processed packets thread: in_3-s2s = 0
+s2s/Processed packets thread: in_4-s2s = 0
+s2s/Processed packets thread: in_5-s2s = 0
+s2s/Processed packets thread: in_6-s2s = 0
+s2s/Processed packets thread: in_7-s2s = 0
+s2s/Processed packets thread: in_8-s2s = 19
+s2s/Processed packets thread: in_9-s2s = 0
+s2s/Processed packets thread: in_10-s2s = 0
+s2s/Processed packets thread: in_11-s2s = 0
+s2s/Processed packets thread: in_12-s2s = 0
+s2s/Processed packets thread: in_13-s2s = 0
+s2s/Processed packets thread: in_14-s2s = 0
+s2s/Processed packets thread: in_15-s2s = 0
+s2s/Processed packets thread: in_16-s2s = 0
+s2s/Processed packets thread: in_17-s2s = 0
+s2s/Processed packets thread: in_18-s2s = 0
+s2s/Processed packets thread: in_19-s2s = 0
+s2s/Processed packets thread: in_20-s2s = 0
+s2s/Processed packets thread: in_21-s2s = 0
+s2s/Processed packets thread: in_22-s2s = 0
+s2s/Processed packets thread: in_23-s2s = 0
+s2s/Processed packets thread: in_24-s2s = 0
+s2s/Processed packets thread: in_25-s2s = 0
+s2s/Processed packets thread: in_26-s2s = 0
+s2s/Processed packets thread: in_27-s2s = 0
+s2s/Processed packets thread: in_28-s2s = 0
+s2s/Processed packets thread: in_29-s2s = 0
+s2s/Processed packets thread: in_30-s2s = 0
+s2s/Processed packets thread: in_31-s2s = 0
+s2s/Processed packets thread: out_0-s2s = 0
+s2s/Processed packets thread: out_1-s2s = 0
+s2s/Processed packets thread: out_2-s2s = 0
+s2s/Processed packets thread: out_3-s2s = 0
+s2s/Processed packets thread: out_4-s2s = 0
+s2s/Processed packets thread: out_5-s2s = 0
+s2s/Processed packets thread: out_6-s2s = 0
+s2s/Processed packets thread: out_7-s2s = 0
+s2s/Processed packets thread: out_8-s2s = 0
+s2s/Processed packets thread: out_9-s2s = 0
+s2s/Processed packets thread: out_10-s2s = 0
+s2s/Processed packets thread: out_11-s2s = 0
+s2s/Processed packets thread: out_12-s2s = 0
+s2s/Processed packets thread: out_13-s2s = 19
+s2s/Processed packets thread: out_14-s2s = 0
+s2s/Processed packets thread: out_15-s2s = 0
+s2s/Processed packets thread: out_16-s2s = 0
+s2s/Processed packets thread: out_17-s2s = 0
+s2s/Processed packets thread: out_18-s2s = 0
+s2s/Processed packets thread: out_19-s2s = 0
+s2s/Processed packets thread: out_20-s2s = 0
+s2s/Processed packets thread: out_21-s2s = 0
+s2s/Processed packets thread: out_22-s2s = 0
+s2s/Processed packets thread: out_23-s2s = 0
+s2s/Processed packets thread: out_24-s2s = 0
+s2s/Processed packets thread: out_25-s2s = 0
+s2s/Processed packets thread: out_26-s2s = 0
+s2s/Processed packets thread: out_27-s2s = 0
+s2s/Processed packets thread: out_28-s2s = 0
+s2s/Processed packets thread: out_29-s2s = 0
+s2s/Processed packets thread: out_30-s2s = 0
+s2s/Processed packets thread: out_31-s2s = 0
+s2s/Open connections = 0
+s2s/Waiting to send = 0
+s2s/Bytes sent = 0
+s2s/Bytes received = 0
+s2s/Socket overflow = 0
+s2s/Watchdog runs = 121
+s2s/Watchdog tests = 0
+s2s/Watchdog stopped = 0
+s2s/CIDs number = 1
+s2s/Total outgoing = 0
+s2s/Total outgoing TLS = 0
+s2s/Total outgoing handshaking = 0
+s2s/Total incoming = 0
+s2s/Total incoming TLS = 0
+s2s/Total DB keys = 0
+s2s/Total waiting = 0
+s2s/Total control waiting = 0
+sess-man/Last second packets = 0
+sess-man/Last minute packets = 2
+sess-man/Last hour packets = 160
+sess-man/Processing threads = 128
+sess-man/Packets received = 2406
+sess-man/Packets sent = 2597
+sess-man/In queue wait: SYSTEM = 0
+sess-man/In queue wait: CLUSTER = 0
+sess-man/In queue wait: HIGH = 0
+sess-man/In queue wait: NORMAL = 0
+sess-man/In queue wait: LOW = 0
+sess-man/In queue wait: PRESENCE = 0
+sess-man/In queue wait: LOWEST = 0
+sess-man/Out queue wait: SYSTEM = 0
+sess-man/Out queue wait: CLUSTER = 0
+sess-man/Out queue wait: HIGH = 0
+sess-man/Out queue wait: NORMAL = 0
+sess-man/Out queue wait: LOW = 0
+sess-man/Out queue wait: PRESENCE = 0
+sess-man/Out queue wait: LOWEST = 0
+sess-man/Total In queues wait = 0
+sess-man/Total Out queues wait = 0
+sess-man/Total queues wait = 0
+sess-man/Max queue size = 9216
+sess-man/IN Queue overflow = 0
+sess-man/OUT Queue overflow = 0
+sess-man/Total queues overflow = 0
+sess-man/Average processing time on last 100 runs [ms] = 0
+sess-man/IN_QUEUE processed messages = 72
+sess-man/IN_QUEUE processed presences = 247
+sess-man/IN_QUEUE processed cluster = 0
+sess-man/IN_QUEUE processed other = 2072
+sess-man/IN_QUEUE processed IQ no XMLNS = 27
+sess-man/IN_QUEUE processed IQ http://jabber.org/protocol/disco#items = 176
+sess-man/IN_QUEUE processed IQ jabber:iq:roster = 44
+sess-man/IN_QUEUE processed IQ ping = 1102
+sess-man/IN_QUEUE processed IQ session = 34
+sess-man/IN_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 98
+sess-man/IN_QUEUE processed IQ error = 16
+sess-man/IN_QUEUE processed IQ command = 203
+sess-man/IN_QUEUE processed IQ bind = 34
+sess-man/IN_QUEUE processed IQ jabber:iq:privacy = 4
+sess-man/IN_QUEUE processed IQ disable = 11
+sess-man/IN_QUEUE processed IQ vCard = 42
+sess-man/IN_QUEUE processed IQ http://jabber.org/protocol/disco#info = 206
+sess-man/IN_QUEUE processed IQ jabber:iq:private = 1
+sess-man/IN_QUEUE processed total IQ = 1998
+sess-man/OUT_QUEUE processed messages = 72
+sess-man/OUT_QUEUE processed presences = 356
+sess-man/OUT_QUEUE processed cluster = 0
+sess-man/OUT_QUEUE processed other = 2169
+sess-man/OUT_QUEUE processed IQ no XMLNS = 1254
+sess-man/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#items = 176
+sess-man/OUT_QUEUE processed IQ bind = 34
+sess-man/OUT_QUEUE processed IQ jabber:iq:roster = 69
+sess-man/OUT_QUEUE processed IQ disable = 11
+sess-man/OUT_QUEUE processed IQ vCard = 36
+sess-man/OUT_QUEUE processed IQ http://jabber.org/protocol/bytestreams = 98
+sess-man/OUT_QUEUE processed IQ error = 16
+sess-man/OUT_QUEUE processed IQ command = 232
+sess-man/OUT_QUEUE processed IQ http://jabber.org/protocol/disco#info = 206
+sess-man/OUT_QUEUE processed IQ jabber:iq:private = 1
+sess-man/OUT_QUEUE processed total IQ = 2133
+sess-man/Processed packets thread: in_0-sess-man = 0
+sess-man/Processed packets thread: in_1-sess-man = 201
+sess-man/Processed packets thread: in_2-sess-man = 7
+sess-man/Processed packets thread: in_3-sess-man = 5
+sess-man/Processed packets thread: in_4-sess-man = 0
+sess-man/Processed packets thread: in_5-sess-man = 56
+sess-man/Processed packets thread: in_6-sess-man = 0
+sess-man/Processed packets thread: in_7-sess-man = 0
+sess-man/Processed packets thread: in_8-sess-man = 0
+sess-man/Processed packets thread: in_9-sess-man = 72
+sess-man/Processed packets thread: in_10-sess-man = 149
+sess-man/Processed packets thread: in_11-sess-man = 0
+sess-man/Processed packets thread: in_12-sess-man = 0
+sess-man/Processed packets thread: in_13-sess-man = 2
+sess-man/Processed packets thread: in_14-sess-man = 0
+sess-man/Processed packets thread: in_15-sess-man = 0
+sess-man/Processed packets thread: in_16-sess-man = 0
+sess-man/Processed packets thread: in_17-sess-man = 0
+sess-man/Processed packets thread: in_18-sess-man = 62
+sess-man/Processed packets thread: in_19-sess-man = 0
+sess-man/Processed packets thread: in_20-sess-man = 0
+sess-man/Processed packets thread: in_21-sess-man = 0
+sess-man/Processed packets thread: in_22-sess-man = 0
+sess-man/Processed packets thread: in_23-sess-man = 0
+sess-man/Processed packets thread: in_24-sess-man = 0
+sess-man/Processed packets thread: in_25-sess-man = 0
+sess-man/Processed packets thread: in_26-sess-man = 0
+sess-man/Processed packets thread: in_27-sess-man = 0
+sess-man/Processed packets thread: in_28-sess-man = 61
+sess-man/Processed packets thread: in_29-sess-man = 0
+sess-man/Processed packets thread: in_30-sess-man = 0
+sess-man/Processed packets thread: in_31-sess-man = 0
+sess-man/Processed packets thread: in_32-sess-man = 129
+sess-man/Processed packets thread: in_33-sess-man = 0
+sess-man/Processed packets thread: in_34-sess-man = 0
+sess-man/Processed packets thread: in_35-sess-man = 17
+sess-man/Processed packets thread: in_36-sess-man = 22
+sess-man/Processed packets thread: in_37-sess-man = 8
+sess-man/Processed packets thread: in_38-sess-man = 0
+sess-man/Processed packets thread: in_39-sess-man = 28
+sess-man/Processed packets thread: in_40-sess-man = 0
+sess-man/Processed packets thread: in_41-sess-man = 0
+sess-man/Processed packets thread: in_42-sess-man = 2
+sess-man/Processed packets thread: in_43-sess-man = 0
+sess-man/Processed packets thread: in_44-sess-man = 2
+sess-man/Processed packets thread: in_45-sess-man = 0
+sess-man/Processed packets thread: in_46-sess-man = 186
+sess-man/Processed packets thread: in_47-sess-man = 16
+sess-man/Processed packets thread: in_48-sess-man = 0
+sess-man/Processed packets thread: in_49-sess-man = 0
+sess-man/Processed packets thread: in_50-sess-man = 125
+sess-man/Processed packets thread: in_51-sess-man = 0
+sess-man/Processed packets thread: in_52-sess-man = 0
+sess-man/Processed packets thread: in_53-sess-man = 0
+sess-man/Processed packets thread: in_54-sess-man = 0
+sess-man/Processed packets thread: in_55-sess-man = 6
+sess-man/Processed packets thread: in_56-sess-man = 0
+sess-man/Processed packets thread: in_57-sess-man = 0
+sess-man/Processed packets thread: in_58-sess-man = 0
+sess-man/Processed packets thread: in_59-sess-man = 23
+sess-man/Processed packets thread: in_60-sess-man = 9
+sess-man/Processed packets thread: in_61-sess-man = 72
+sess-man/Processed packets thread: in_62-sess-man = 2
+sess-man/Processed packets thread: in_63-sess-man = 0
+sess-man/Processed packets thread: in_64-sess-man = 4
+sess-man/Processed packets thread: in_65-sess-man = 0
+sess-man/Processed packets thread: in_66-sess-man = 43
+sess-man/Processed packets thread: in_67-sess-man = 0
+sess-man/Processed packets thread: in_68-sess-man = 59
+sess-man/Processed packets thread: in_69-sess-man = 0
+sess-man/Processed packets thread: in_70-sess-man = 2
+sess-man/Processed packets thread: in_71-sess-man = 16
+sess-man/Processed packets thread: in_72-sess-man = 0
+sess-man/Processed packets thread: in_73-sess-man = 66
+sess-man/Processed packets thread: in_74-sess-man = 0
+sess-man/Processed packets thread: in_75-sess-man = 0
+sess-man/Processed packets thread: in_76-sess-man = 37
+sess-man/Processed packets thread: in_77-sess-man = 0
+sess-man/Processed packets thread: in_78-sess-man = 0
+sess-man/Processed packets thread: in_79-sess-man = 0
+sess-man/Processed packets thread: in_80-sess-man = 0
+sess-man/Processed packets thread: in_81-sess-man = 0
+sess-man/Processed packets thread: in_82-sess-man = 0
+sess-man/Processed packets thread: in_83-sess-man = 0
+sess-man/Processed packets thread: in_84-sess-man = 0
+sess-man/Processed packets thread: in_85-sess-man = 0
+sess-man/Processed packets thread: in_86-sess-man = 156
+sess-man/Processed packets thread: in_87-sess-man = 19
+sess-man/Processed packets thread: in_88-sess-man = 4
+sess-man/Processed packets thread: in_89-sess-man = 0
+sess-man/Processed packets thread: in_90-sess-man = 0
+sess-man/Processed packets thread: in_91-sess-man = 0
+sess-man/Processed packets thread: in_92-sess-man = 0
+sess-man/Processed packets thread: in_93-sess-man = 23
+sess-man/Processed packets thread: in_94-sess-man = 0
+sess-man/Processed packets thread: in_95-sess-man = 0
+sess-man/Processed packets thread: in_96-sess-man = 0
+sess-man/Processed packets thread: in_97-sess-man = 6
+sess-man/Processed packets thread: in_98-sess-man = 47
+sess-man/Processed packets thread: in_99-sess-man = 0
+sess-man/Processed packets thread: in_100-sess-man = 0
+sess-man/Processed packets thread: in_101-sess-man = 41
+sess-man/Processed packets thread: in_102-sess-man = 390
+sess-man/Processed packets thread: in_103-sess-man = 0
+sess-man/Processed packets thread: in_104-sess-man = 105
+sess-man/Processed packets thread: in_105-sess-man = 2
+sess-man/Processed packets thread: in_106-sess-man = 30
+sess-man/Processed packets thread: in_107-sess-man = 0
+sess-man/Processed packets thread: in_108-sess-man = 0
+sess-man/Processed packets thread: in_109-sess-man = 2
+sess-man/Processed packets thread: in_110-sess-man = 3
+sess-man/Processed packets thread: in_111-sess-man = 0
+sess-man/Processed packets thread: in_112-sess-man = 85
+sess-man/Processed packets thread: in_113-sess-man = 0
+sess-man/Processed packets thread: in_114-sess-man = 0
+sess-man/Processed packets thread: in_115-sess-man = 0
+sess-man/Processed packets thread: in_116-sess-man = 0
+sess-man/Processed packets thread: in_117-sess-man = 0
+sess-man/Processed packets thread: in_118-sess-man = 0
+sess-man/Processed packets thread: in_119-sess-man = 0
+sess-man/Processed packets thread: in_120-sess-man = 0
+sess-man/Processed packets thread: in_121-sess-man = 0
+sess-man/Processed packets thread: in_122-sess-man = 4
+sess-man/Processed packets thread: in_123-sess-man = 0
+sess-man/Processed packets thread: in_124-sess-man = 0
+sess-man/Processed packets thread: in_125-sess-man = 0
+sess-man/Processed packets thread: in_126-sess-man = 0
+sess-man/Processed packets thread: in_127-sess-man = 0
+sess-man/Processed packets thread: out_0-sess-man = 0
+sess-man/Processed packets thread: out_1-sess-man = 208
+sess-man/Processed packets thread: out_2-sess-man = 17
+sess-man/Processed packets thread: out_3-sess-man = 10
+sess-man/Processed packets thread: out_4-sess-man = 0
+sess-man/Processed packets thread: out_5-sess-man = 66
+sess-man/Processed packets thread: out_6-sess-man = 0
+sess-man/Processed packets thread: out_7-sess-man = 0
+sess-man/Processed packets thread: out_8-sess-man = 0
+sess-man/Processed packets thread: out_9-sess-man = 83
+sess-man/Processed packets thread: out_10-sess-man = 157
+sess-man/Processed packets thread: out_11-sess-man = 0
+sess-man/Processed packets thread: out_12-sess-man = 0
+sess-man/Processed packets thread: out_13-sess-man = 3
+sess-man/Processed packets thread: out_14-sess-man = 0
+sess-man/Processed packets thread: out_15-sess-man = 91
+sess-man/Processed packets thread: out_16-sess-man = 0
+sess-man/Processed packets thread: out_17-sess-man = 0
+sess-man/Processed packets thread: out_18-sess-man = 0
+sess-man/Processed packets thread: out_19-sess-man = 0
+sess-man/Processed packets thread: out_20-sess-man = 0
+sess-man/Processed packets thread: out_21-sess-man = 0
+sess-man/Processed packets thread: out_22-sess-man = 0
+sess-man/Processed packets thread: out_23-sess-man = 0
+sess-man/Processed packets thread: out_24-sess-man = 0
+sess-man/Processed packets thread: out_25-sess-man = 0
+sess-man/Processed packets thread: out_26-sess-man = 0
+sess-man/Processed packets thread: out_27-sess-man = 0
+sess-man/Processed packets thread: out_28-sess-man = 0
+sess-man/Processed packets thread: out_29-sess-man = 0
+sess-man/Processed packets thread: out_30-sess-man = 0
+sess-man/Processed packets thread: out_31-sess-man = 0
+sess-man/Processed packets thread: out_32-sess-man = 129
+sess-man/Processed packets thread: out_33-sess-man = 0
+sess-man/Processed packets thread: out_34-sess-man = 0
+sess-man/Processed packets thread: out_35-sess-man = 22
+sess-man/Processed packets thread: out_36-sess-man = 22
+sess-man/Processed packets thread: out_37-sess-man = 13
+sess-man/Processed packets thread: out_38-sess-man = 0
+sess-man/Processed packets thread: out_39-sess-man = 32
+sess-man/Processed packets thread: out_40-sess-man = 0
+sess-man/Processed packets thread: out_41-sess-man = 0
+sess-man/Processed packets thread: out_42-sess-man = 3
+sess-man/Processed packets thread: out_43-sess-man = 0
+sess-man/Processed packets thread: out_44-sess-man = 3
+sess-man/Processed packets thread: out_45-sess-man = 0
+sess-man/Processed packets thread: out_46-sess-man = 172
+sess-man/Processed packets thread: out_47-sess-man = 51
+sess-man/Processed packets thread: out_48-sess-man = 0
+sess-man/Processed packets thread: out_49-sess-man = 0
+sess-man/Processed packets thread: out_50-sess-man = 125
+sess-man/Processed packets thread: out_51-sess-man = 0
+sess-man/Processed packets thread: out_52-sess-man = 0
+sess-man/Processed packets thread: out_53-sess-man = 0
+sess-man/Processed packets thread: out_54-sess-man = 0
+sess-man/Processed packets thread: out_55-sess-man = 10
+sess-man/Processed packets thread: out_56-sess-man = 16
+sess-man/Processed packets thread: out_57-sess-man = 0
+sess-man/Processed packets thread: out_58-sess-man = 0
+sess-man/Processed packets thread: out_59-sess-man = 61
+sess-man/Processed packets thread: out_60-sess-man = 20
+sess-man/Processed packets thread: out_61-sess-man = 76
+sess-man/Processed packets thread: out_62-sess-man = 3
+sess-man/Processed packets thread: out_63-sess-man = 0
+sess-man/Processed packets thread: out_64-sess-man = 7
+sess-man/Processed packets thread: out_65-sess-man = 0
+sess-man/Processed packets thread: out_66-sess-man = 47
+sess-man/Processed packets thread: out_67-sess-man = 0
+sess-man/Processed packets thread: out_68-sess-man = 63
+sess-man/Processed packets thread: out_69-sess-man = 0
+sess-man/Processed packets thread: out_70-sess-man = 26
+sess-man/Processed packets thread: out_71-sess-man = 19
+sess-man/Processed packets thread: out_72-sess-man = 0
+sess-man/Processed packets thread: out_73-sess-man = 75
+sess-man/Processed packets thread: out_74-sess-man = 0
+sess-man/Processed packets thread: out_75-sess-man = 0
+sess-man/Processed packets thread: out_76-sess-man = 41
+sess-man/Processed packets thread: out_77-sess-man = 62
+sess-man/Processed packets thread: out_78-sess-man = 0
+sess-man/Processed packets thread: out_79-sess-man = 0
+sess-man/Processed packets thread: out_80-sess-man = 0
+sess-man/Processed packets thread: out_81-sess-man = 0
+sess-man/Processed packets thread: out_82-sess-man = 0
+sess-man/Processed packets thread: out_83-sess-man = 0
+sess-man/Processed packets thread: out_84-sess-man = 0
+sess-man/Processed packets thread: out_85-sess-man = 0
+sess-man/Processed packets thread: out_86-sess-man = 0
+sess-man/Processed packets thread: out_87-sess-man = 0
+sess-man/Processed packets thread: out_88-sess-man = 7
+sess-man/Processed packets thread: out_89-sess-man = 0
+sess-man/Processed packets thread: out_90-sess-man = 0
+sess-man/Processed packets thread: out_91-sess-man = 0
+sess-man/Processed packets thread: out_92-sess-man = 0
+sess-man/Processed packets thread: out_93-sess-man = 0
+sess-man/Processed packets thread: out_94-sess-man = 23
+sess-man/Processed packets thread: out_95-sess-man = 0
+sess-man/Processed packets thread: out_96-sess-man = 0
+sess-man/Processed packets thread: out_97-sess-man = 11
+sess-man/Processed packets thread: out_98-sess-man = 84
+sess-man/Processed packets thread: out_99-sess-man = 0
+sess-man/Processed packets thread: out_100-sess-man = 0
+sess-man/Processed packets thread: out_101-sess-man = 46
+sess-man/Processed packets thread: out_102-sess-man = 399
+sess-man/Processed packets thread: out_103-sess-man = 0
+sess-man/Processed packets thread: out_104-sess-man = 128
+sess-man/Processed packets thread: out_105-sess-man = 3
+sess-man/Processed packets thread: out_106-sess-man = 57
+sess-man/Processed packets thread: out_107-sess-man = 0
+sess-man/Processed packets thread: out_108-sess-man = 0
+sess-man/Processed packets thread: out_109-sess-man = 3
+sess-man/Processed packets thread: out_110-sess-man = 5
+sess-man/Processed packets thread: out_111-sess-man = 0
+sess-man/Processed packets thread: out_112-sess-man = 91
+sess-man/Processed packets thread: out_113-sess-man = 0
+sess-man/Processed packets thread: out_114-sess-man = 0
+sess-man/Processed packets thread: out_115-sess-man = 0
+sess-man/Processed packets thread: out_116-sess-man = 0
+sess-man/Processed packets thread: out_117-sess-man = 0
+sess-man/Processed packets thread: out_118-sess-man = 0
+sess-man/Processed packets thread: out_119-sess-man = 0
+sess-man/Processed packets thread: out_120-sess-man = 0
+sess-man/Processed packets thread: out_121-sess-man = 0
+sess-man/Processed packets thread: out_122-sess-man = 7
+sess-man/Processed packets thread: out_123-sess-man = 0
+sess-man/Processed packets thread: out_124-sess-man = 0
+sess-man/Processed packets thread: out_125-sess-man = 0
+sess-man/Processed packets thread: out_126-sess-man = 0
+sess-man/Processed packets thread: out_127-sess-man = 0
+sess-man/Registered accounts = 7
+sess-man/Open user connections = 0
+sess-man/Maximum user connections = 3
+sess-man/Total user connections = 47
+sess-man/Closed user connections = 32
+sess-man/Open user sessions = 1
+sess-man/Maximum user sessions = 3
+sess-man/Total user sessions = 21
+sess-man/Active user connections = 2
+sess-man/Authentication timouts = 1
+sess-man/Processor: message-carbons = , Queue: 0, AvTime: 1, Runs: 83, Lost: 0
+sess-man/Processor: http://jabber.org/protocol/stats = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: jabber:iq:auth = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: vcard-temp = , Queue: 0, AvTime: 36, Runs: 42, Lost: 0
+sess-man/Processor: amp = , Queue: 0, AvTime: 18, Runs: 319, Lost: 0
+sess-man/Processor: disco = , Queue: 0, AvTime: 2, Runs: 382, Lost: 0
+sess-man/Processor: urn:xmpp:ping = , Queue: 0, AvTime: 1, Runs: 1102, Lost: 0
+sess-man/Processor: jabber:iq:register = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: urn:ietf:params:xml:ns:xmpp-sasl = , Queue: 0, AvTime: 47, Runs: 36, Lost: 0
+sess-man/Processor: presence = , Queue: 0, AvTime: 10, Runs: 247, Lost: 0
+sess-man/Processor: message-archive-xep-0136 = , Queue: 0, AvTime: 1, Runs: 72, Lost: 0
+sess-man/Processor: default-handler = , Queue: 0, AvTime: 2, Runs: 141, Lost: 0
+sess-man/Processor: jabber:iq:roster = , Queue: 0, AvTime: 61, Runs: 44, Lost: 0
+sess-man/Processor: starttls = , Queue: 0, AvTime: 1, Runs: 39, Lost: 0
+sess-man/Processor: jabber:iq:version = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: zlib = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: session-open = , Queue: 0, AvTime: 1, Runs: 47, Lost: 0
+sess-man/Processor: jabber:iq:privacy = , Queue: 0, AvTime: 16, Runs: 4, Lost: 0
+sess-man/Processor: urn:ietf:params:xml:ns:xmpp-bind = , Queue: 0, AvTime: 1, Runs: 34, Lost: 0
+sess-man/Processor: http://jabber.org/protocol/commands = , Queue: 0, AvTime: 0, Runs: 0, Lost: 0
+sess-man/Processor: session-close = , Queue: 0, AvTime: 23, Runs: 47, Lost: 0
+sess-man/Processor: urn:ietf:params:xml:ns:xmpp-session = , Queue: 0, AvTime: 0, Runs: 34, Lost: 0
+sess-man/Processor: jabber:iq:private = , Queue: 0, AvTime: 1, Runs: 1, Lost: 0
+sess-man/Average amp on last 100 runs [ms] = 0
+sess-man/Maximum user sessions today = 3
+sess-man/Maximum user sessions yesterday = 3
+default-handler/Registered users = 0
+default-handler/Invalid registrations = 0
+presence/Users status changes = 81
+cluster-strat/Connected nodes = 0
+ws2s/Last second packets = 0
+ws2s/Last minute packets = 0
+ws2s/Last hour packets = 0
+ws2s/Processing threads = 32
+ws2s/Packets received = 101
+ws2s/Packets sent = 67
+ws2s/In queue wait: SYSTEM = 0
+ws2s/In queue wait: CLUSTER = 0
+ws2s/In queue wait: HIGH = 0
+ws2s/In queue wait: NORMAL = 0
+ws2s/In queue wait: LOW = 0
+ws2s/In queue wait: PRESENCE = 0
+ws2s/In queue wait: LOWEST = 0
+ws2s/Out queue wait: SYSTEM = 0
+ws2s/Out queue wait: CLUSTER = 0
+ws2s/Out queue wait: HIGH = 0
+ws2s/Out queue wait: NORMAL = 0
+ws2s/Out queue wait: LOW = 0
+ws2s/Out queue wait: PRESENCE = 0
+ws2s/Out queue wait: LOWEST = 0
+ws2s/Total In queues wait = 0
+ws2s/Total Out queues wait = 0
+ws2s/Total queues wait = 0
+ws2s/Max queue size = 9280
+ws2s/IN Queue overflow = 0
+ws2s/OUT Queue overflow = 0
+ws2s/Total queues overflow = 0
+ws2s/Average processing time on last 100 runs [ms] = 0
+ws2s/IN_QUEUE processed messages = 0
+ws2s/IN_QUEUE processed presences = 22
+ws2s/IN_QUEUE processed cluster = 0
+ws2s/IN_QUEUE processed other = 63
+ws2s/IN_QUEUE processed IQ no XMLNS = 8
+ws2s/IN_QUEUE processed IQ bind = 8
+ws2s/IN_QUEUE processed IQ jabber:iq:roster = 4
+ws2s/IN_QUEUE processed IQ command = 35
+ws2s/IN_QUEUE processed total IQ = 55
+ws2s/OUT_QUEUE processed messages = 0
+ws2s/OUT_QUEUE processed presences = 4
+ws2s/OUT_QUEUE processed cluster = 0
+ws2s/OUT_QUEUE processed other = 63
+ws2s/OUT_QUEUE processed IQ no XMLNS = 3
+ws2s/OUT_QUEUE processed IQ bind = 8
+ws2s/OUT_QUEUE processed IQ jabber:iq:roster = 4
+ws2s/OUT_QUEUE processed IQ session = 8
+ws2s/OUT_QUEUE processed IQ command = 32
+ws2s/OUT_QUEUE processed total IQ = 55
+ws2s/Processed packets thread: in_0-ws2s = 9
+ws2s/Processed packets thread: in_1-ws2s = 13
+ws2s/Processed packets thread: in_2-ws2s = 19
+ws2s/Processed packets thread: in_3-ws2s = 12
+ws2s/Processed packets thread: in_4-ws2s = 0
+ws2s/Processed packets thread: in_5-ws2s = 0
+ws2s/Processed packets thread: in_6-ws2s = 0
+ws2s/Processed packets thread: in_7-ws2s = 0
+ws2s/Processed packets thread: in_8-ws2s = 0
+ws2s/Processed packets thread: in_9-ws2s = 0
+ws2s/Processed packets thread: in_10-ws2s = 0
+ws2s/Processed packets thread: in_11-ws2s = 0
+ws2s/Processed packets thread: in_12-ws2s = 0
+ws2s/Processed packets thread: in_13-ws2s = 0
+ws2s/Processed packets thread: in_14-ws2s = 0
+ws2s/Processed packets thread: in_15-ws2s = 0
+ws2s/Processed packets thread: in_16-ws2s = 0
+ws2s/Processed packets thread: in_17-ws2s = 0
+ws2s/Processed packets thread: in_18-ws2s = 0
+ws2s/Processed packets thread: in_19-ws2s = 0
+ws2s/Processed packets thread: in_20-ws2s = 0
+ws2s/Processed packets thread: in_21-ws2s = 0
+ws2s/Processed packets thread: in_22-ws2s = 0
+ws2s/Processed packets thread: in_23-ws2s = 12
+ws2s/Processed packets thread: in_24-ws2s = 9
+ws2s/Processed packets thread: in_25-ws2s = 0
+ws2s/Processed packets thread: in_26-ws2s = 9
+ws2s/Processed packets thread: in_27-ws2s = 0
+ws2s/Processed packets thread: in_28-ws2s = 18
+ws2s/Processed packets thread: in_29-ws2s = 0
+ws2s/Processed packets thread: in_30-ws2s = 0
+ws2s/Processed packets thread: in_31-ws2s = 0
+ws2s/Processed packets thread: out_0-ws2s = 4
+ws2s/Processed packets thread: out_1-ws2s = 6
+ws2s/Processed packets thread: out_2-ws2s = 7
+ws2s/Processed packets thread: out_3-ws2s = 5
+ws2s/Processed packets thread: out_4-ws2s = 0
+ws2s/Processed packets thread: out_5-ws2s = 0
+ws2s/Processed packets thread: out_6-ws2s = 0
+ws2s/Processed packets thread: out_7-ws2s = 0
+ws2s/Processed packets thread: out_8-ws2s = 0
+ws2s/Processed packets thread: out_9-ws2s = 0
+ws2s/Processed packets thread: out_10-ws2s = 0
+ws2s/Processed packets thread: out_11-ws2s = 0
+ws2s/Processed packets thread: out_12-ws2s = 0
+ws2s/Processed packets thread: out_13-ws2s = 0
+ws2s/Processed packets thread: out_14-ws2s = 0
+ws2s/Processed packets thread: out_15-ws2s = 0
+ws2s/Processed packets thread: out_16-ws2s = 0
+ws2s/Processed packets thread: out_17-ws2s = 0
+ws2s/Processed packets thread: out_18-ws2s = 0
+ws2s/Processed packets thread: out_19-ws2s = 0
+ws2s/Processed packets thread: out_20-ws2s = 0
+ws2s/Processed packets thread: out_21-ws2s = 0
+ws2s/Processed packets thread: out_22-ws2s = 0
+ws2s/Processed packets thread: out_23-ws2s = 30
+ws2s/Processed packets thread: out_24-ws2s = 4
+ws2s/Processed packets thread: out_25-ws2s = 0
+ws2s/Processed packets thread: out_26-ws2s = 4
+ws2s/Processed packets thread: out_27-ws2s = 0
+ws2s/Processed packets thread: out_28-ws2s = 7
+ws2s/Processed packets thread: out_29-ws2s = 0
+ws2s/Processed packets thread: out_30-ws2s = 0
+ws2s/Processed packets thread: out_31-ws2s = 0
+ws2s/Open connections = 0
+ws2s/Waiting to send = 0
+ws2s/Bytes sent = 23231
+ws2s/Bytes received = 7219
+ws2s/Socket overflow = 0
+ws2s/Watchdog runs = 121
+ws2s/Watchdog tests = 4
+ws2s/Watchdog stopped = 0
+total/Total queues wait = 0
+total/Total queues overflow = 0
+
+Total number of threads: 1230
+No locked threads.
+
+ShutdownThread finished...

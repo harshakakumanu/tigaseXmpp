@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      
+      <title>Connect to the Web Installer -  - Tigase Administration Guide</title>
+      <meta name="generator" content="DocBook XSL Stylesheets V1.78.1" />
+      <link rel="home" href="index.html" title="Tigase Administration Guide" />
+      <link rel="up" href="_installation_using_web_installer.html" title="Installation Using Web Installer" />
+      <link rel="prev" href="_verify_tigase_is_running.html" title="Verify Tigase is Running" />
+      <link rel="next" href="_step_through_the_installation_process.html" title="Step Through the Installation Process" />
+      <meta name="Section-title" content="Connect to the Web Installer" /><script type="text/javascript">
+            //The id for tree cookie
+            var treeCookieId = "treeview-8462";
+            var language = "en";
+            var w = new Object();
+            //Localization
+            txt_filesfound = 'Results';
+            txt_enter_at_least_1_char = "You must enter at least one character.";
+            txt_browser_not_supported = "JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.";
+            txt_please_wait = "Please wait. Search in progress...";
+            txt_results_for = "Results for: ";
+        </script><link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="common/css/positioning.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/theme-redmond/jquery-ui-1.8.2.custom.css" />
+      <link rel="stylesheet" type="text/css" href="common/jquery/treeview/jquery.treeview.css" /><style type="text/css">
+
+#noscript{
+    font-weight:bold;
+	background-color: #55AA55;
+    font-weight: bold;
+    height: 25spx;
+    z-index: 3000;
+	top:0px;
+	width:100%;
+	position: relative;
+	border-bottom: solid 5px black;
+	text-align:center;
+	color: white;
+}
+
+input {
+    margin-bottom: 5px;
+    margin-top: 2px;
+}
+.folder {
+    display: block;
+    height: 22px;
+    padding-left: 20px;
+    background: transparent url(common/jquery/treeview/images/folder.gif) 0 0px no-repeat;
+}
+span.contentsTab {
+    padding-left: 20px;
+    background: url(common/images/toc-icon.png) no-repeat 0 center;
+}
+span.searchTab {
+    padding-left: 20px;
+    background: url(common/images/search-icon.png) no-repeat 0 center;
+}
+
+/* Overide jquery treeview's defaults for ul. */
+.treeview ul {
+    background-color: transparent;
+    margin-top: 4px;
+}		
+#webhelp-currentid {
+    background-color: #D8D8D8 !important;
+}
+.treeview .hover { color: black; }
+.filetree li span a { text-decoration: none; font-size: 12px; color: #517291; }
+
+/* Override jquery-ui's default css customizations. These are supposed to take precedence over those.*/
+.ui-widget-content {
+    border: 0px; 
+    background: none; 
+    color: none;     
+}
+.ui-widget-header {
+    color: #e9e8e9;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    border-bottom: 1px solid #bbc4c5;
+    border-top: 4px solid #e5e5e5;
+    border: medium none;
+    background: #F4F4F4; /* old browsers */
+    background: -moz-linear-gradient(top, #F4F4F4 0%, #E6E4E5 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F4F4F4), color-stop(100%,#E6E4E5)); /* webkit */    
+    font-weight: none;
+}
+.ui-widget-header a { color: none; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
+border: none; background: none; font-weight: none; color: none; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: black; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: none; background: none; font-weight: none; color: none; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: none; background: none; font-weight: none; color: none; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { 
+    color: black; text-decoration: none; 	
+    background: #C6C6C6; /* old browsers */
+    background: -moz-linear-gradient(top, #C6C6C6 0%, #D8D8D8 100%); /* firefox */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#C6C6C6), color-stop(100%,#D8D8D8)); /* webkit */
+    -webkit-border-radius:15px; -moz-border-radius:10px;
+    border: 1px solid #f1f1f1;
+}    
+.ui-corner-all { border-radius: 0 0 0 0; }
+
+.ui-tabs { padding: .2em;}
+.ui-tabs .ui-tabs-nav li { top: 0px; margin: -2px 0 1px; text-transform: uppercase; font-size: 10.5px;}
+.ui-tabs .ui-tabs-nav li a { padding: .25em 2em .25em 1em; margin: .5em; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+       /**
+	 *	Basic Layout Theme
+	 * 
+	 *	This theme uses the default layout class-names for all classes
+	 *	Add any 'custom class-names', from options: paneClass, resizerClass, togglerClass
+	 */
+
+	.ui-layout-pane { /* all 'panes' */ 
+		background: #FFF; 
+		border: 1px solid #BBB; 
+		padding: 05x; 
+		overflow: auto;
+	} 
+        
+	.ui-layout-resizer { /* all 'resizer-bars' */ 
+		background: #DDD; 
+                top:100px
+	} 
+
+	.ui-layout-toggler { /* all 'toggler-buttons' */ 
+		background: #AAA; 
+	} 
+    
+       </style>
+      <!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="../common/css/ie.css"/>
+	<![endif]--><script type="text/javascript" src="common/browserDetect.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery-1.7.2.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.ui.all.js">
+         <!----></script><script type="text/javascript" src="common/jquery/jquery.cookie.js">
+         <!----></script><script type="text/javascript" src="common/jquery/treeview/jquery.treeview.min.js">
+         <!----></script><script type="text/javascript" src="common/jquery/layout/jquery.layout.js">
+         <!----></script><script type="text/javascript" src="search/l10n.js">
+         <!----></script><script type="text/javascript" src="search/htmlFileInfoList.js">
+         <!----></script><script type="text/javascript" src="search/nwSearchFnt.js">
+         <!----></script><script type="text/javascript" src="search/stemmers/en_stemmer.js">
+         <!--//make this scalable to other languages as well.--></script><script type="text/javascript" src="search/index-1.js">
+         <!----></script><script type="text/javascript" src="search/index-2.js">
+         <!----></script><script type="text/javascript" src="search/index-3.js">
+         <!----></script></head>
+   <body>
+      <noscript>
+         <div id="noscript">JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site.</div>
+      </noscript>
+      <div id="header"><a href="index.html"><img style="margin-right: 2px; height: 59px; padding-right: 25px; padding-top: 8px" align="right" src="common/images/logo.png" alt=" Documentation" /></a><h1>Tigase Administration Guide<br />Installation Using Web Installer
+         </h1>
+         <div id="navheader">
+            <!---->
+            <table class="navLinks">
+               <tr>
+                  <td><a id="showHideButton" href="#" onclick="myLayout.toggle('west')" class="pointLeft" tabindex="5" title="Hide TOC tree">Sidebar
+                                                    </a></td>
+                  <td><a accesskey="p" class="navLinkPrevious" tabindex="5" href="_verify_tigase_is_running.html">Prev</a>
+                                                             |
+                                                             <a accesskey="u" class="navLinkUp" tabindex="5" href="_installation_using_web_installer.html">Up</a>
+                                                         |
+                                                         <a accesskey="n" class="navLinkNext" tabindex="5" href="_step_through_the_installation_process.html">Next</a></td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="content">
+         <!---->
+         <div class="section">
+            <div xmlns="" class="titlepage">
+               <div>
+                  <div>
+                     <h2 xmlns="http://www.w3.org/1999/xhtml" class="title" style="clear: both"><a id="_connect_to_the_web_installer"></a>Connect to the Web Installer
+                     </h2>
+                  </div>
+               </div>
+            </div>
+            <p>Some points before you can connect:</p>
+            <div class="orderedlist">
+               <ol class="orderedlist" type="1">
+                  <li class="listitem">If AuthRepository is not configured then access is allowed (initial installation).</li>
+                  <li class="listitem">If it is accessed on localhost then access is allowed.</li>
+                  <li class="listitem">If user is authenticated by jid and password as user from admins of Tigase XMPP Server then access is allowed.</li>
+                  <li class="listitem">In other case access is denied.</li>
+               </ol>
+            </div>
+            <p>Point your browser to <span class="strong"><strong><a class="link" href="http://localhost:8080/setup/" target="_top">http://localhost:8080/setup/</a></strong></span> unless you are working remotely. Then you can use the domain name, or IP address. I used <a class="link" href="http://tpub.xmpp-test.net:8080/setup/" target="_top">http://tpub.xmpp-test.net:8080/setup/</a> for this guide.
+            </p>
+         </div><script type="text/javascript" src="common/main.js">
+            <!----></script><script type="text/javascript" src="common/splitterInit.js">
+            <!----></script><div class="navfooter">
+            <hr />
+            <table width="100%" summary="Navigation footer">
+               <tr>
+                  <td width="40%" align="left"><a accesskey="p" href="_verify_tigase_is_running.html">Prev</a> 
+                  </td>
+                  <td width="20%" align="center"><a accesskey="u" href="_installation_using_web_installer.html">Up</a></td>
+                  <td width="40%" align="right"> <a accesskey="n" href="_step_through_the_installation_process.html">Next</a></td>
+               </tr>
+               <tr>
+                  <td width="40%" align="left" valign="top"> </td>
+                  <td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td>
+                  <td width="40%" align="right" valign="top"> </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      <div id="sidebar">
+         <div id="leftnavigation" style="padding-top:3px;">
+            <div id="tabs">
+               <ul>
+                  <li><a href="#treeDiv" style="outline:0;" tabindex="1"><span class="contentsTab">Contents</span></a></li>
+                  <li><a href="#searchDiv" style="outline:0;" tabindex="1" onclick="doSearch()"><span class="searchTab">Search</span></a></li>
+               </ul>
+               <div id="treeDiv"><img src="common/images/loading.gif" alt="loading table of contents..." id="tocLoading" style="display:block;" /><div id="ulTreeDiv" style="display:none">
+                     <ul id="tree" class="filetree">
+                        <li><span class="file"><a href="_scripting_support_in_tigase.html" tabindex="1">Scripting support in Tigase</a></span></li>
+                        <li><span class="file"><a href="_scripting_introduction_hello_world.html" tabindex="1">Scripting Introduction - Hello World!</a></span><ul>
+                              <li><span class="file"><a href="_loading_script_at_run_time.html" tabindex="1">Loading Script at Run Time</a></span></li>
+                              <li><span class="file"><a href="_executing_script.html" tabindex="1">Executing Script</a></span></li>
+                              <li><span class="file"><a href="_interaction_in_scripts.html" tabindex="1">Interaction in Scripts</a></span></li>
+                              <li><span class="file"><a href="_automatic_scripts_loading_at_startup_time.html" tabindex="1">Automatic Scripts Loading at Startup Time</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_scripting_version_4_4_x_update_for_administrators.html" tabindex="1">Tigase Scripting Version 4.4.x Update for Administrators</a></span></li>
+                        <li><span class="file"><a href="_tigase_and_python.html" tabindex="1">Tigase and Python</a></span><ul>
+                              <li><span class="file"><a href="_installation.html" tabindex="1">Installation</a></span></li>
+                              <li><span class="file"><a href="_writing_python_scripts.html" tabindex="1">Writing Python Scripts</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_about_tigase_jabber_xmpp_server.html" tabindex="1">About Tigase Jabber/XMPP Server</a></span><ul>
+                              <li><span class="file"><a href="_security.html" tabindex="1">Security</a></span></li>
+                              <li><span class="file"><a href="_flexibility.html" tabindex="1">Flexibility</a></span></li>
+                              <li><span class="file"><a href="_easy.html" tabindex="1">Easy</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_quick_start.html" tabindex="1">Quick Start</a></span></li>
+                        <li><span class="file"><a href="_installation_using_gui_installer.html" tabindex="1">Installation Using GUI Installer</a></span><ul>
+                              <li><span class="file"><a href="_prerequisites.html" tabindex="1">Prerequisites</a></span></li>
+                              <li><span class="file"><a href="_download_the_installer.html" tabindex="1">Download the Installer</a></span></li>
+                              <li><span class="file"><a href="_run_the_jar_file.html" tabindex="1">Run the jar File</a></span></li>
+                              <li><span class="file"><a href="_starting_the_installation.html" tabindex="1">Starting the Installation</a></span><ul>
+                                    <li><span class="file"><a href="_jdk_selection.html" tabindex="1">JDK Selection</a></span></li>
+                                    <li><span class="file"><a href="_installation_type_selection.html" tabindex="1">Installation Type Selection</a></span></li>
+                                    <li><span class="file"><a href="_introduction_to_the_server.html" tabindex="1">Introduction To the Server</a></span></li>
+                                    <li><span class="file"><a href="_choice_of_base_directory.html" tabindex="1">Choice of Base Directory</a></span></li>
+                                    <li><span class="file"><a href="_packages_selection.html" tabindex="1">Packages selection</a></span></li>
+                                    <li><span class="file"><a href="_basic_server_configuration.html" tabindex="1">Basic Server Configuration</a></span></li>
+                                    <li><span class="file"><a href="_verification_of_database_connection_and_performing_db_tasks.html" tabindex="1">Verification of Database Connection and Performing DB Tasks</a></span></li>
+                                    <li><span class="file"><a href="_finishing_installation.html" tabindex="1">Finishing Installation</a></span></li>
+                                    <li><span class="file"><a href="_running_the_server.html" tabindex="1">Running the Server</a></span></li>
+                                    <li><span class="file"><a href="_installation_as_a_service.html" tabindex="1">Installation as a Service</a></span></li>
+                                    <li><span class="file"><a href="_how_to_check_if_the_server_is_running.html" tabindex="1">How to Check if the Server is Running</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_installing_using_console_installer.html" tabindex="1">Installing Using Console Installer</a></span><ul>
+                              <li><span class="file"><a href="_installation_using_the_text_mode_installer.html" tabindex="1">Installation Using the text-mode Installer</a></span><ul>
+                                    <li><span class="file"><a href="_requirements_and_important_notice.html" tabindex="1">Requirements and Important Notice</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_download_the_installer_2.html" tabindex="1">Download the Installer</a></span></li>
+                              <li><span class="file"><a href="_run_the_jar_file_2.html" tabindex="1">Run the jar File</a></span></li>
+                              <li><span class="file"><a href="_installation_steps.html" tabindex="1">Installation Steps</a></span><ul>
+                                    <li><span class="file"><a href="_initial_screen.html" tabindex="1">Initial Screen</a></span></li>
+                                    <li><span class="file"><a href="_jdk_selection_2.html" tabindex="1">JDK Selection</a></span></li>
+                                    <li><span class="file"><a href="_actions_selection.html" tabindex="1">Actions Selection</a></span></li>
+                                    <li><span class="file"><a href="_installer_info.html" tabindex="1">Installer Info</a></span></li>
+                                    <li><span class="file"><a href="_server_info.html" tabindex="1">Server Info</a></span></li>
+                                    <li><span class="file"><a href="_server_licence.html" tabindex="1">Server Licence</a></span></li>
+                                    <li><span class="file"><a href="_server_location_selection.html" tabindex="1">Server Location Selection</a></span></li>
+                                    <li><span class="file"><a href="_selection_of_packs_to_be_installed.html" tabindex="1">Selection of Packs to be Installed</a></span></li>
+                                    <li><span class="file"><a href="_installation_2.html" tabindex="1">Installation</a></span></li>
+                                    <li><span class="file"><a href="_basic_configuration.html" tabindex="1">Basic Configuration</a></span></li>
+                                    <li><span class="file"><a href="_advanced_configuration.html" tabindex="1">Advanced Configuration</a></span></li>
+                                    <li><span class="file"><a href="_database_configuration.html" tabindex="1">Database Configuration</a></span></li>
+                                    <li><span class="file"><a href="_database_checking_and_preparation.html" tabindex="1">Database Checking and Preparation</a></span></li>
+                                    <li><span class="file"><a href="_installation_complete.html" tabindex="1">Installation Complete</a></span></li>
+                                    <li><span class="file"><a href="_running_the_sever.html" tabindex="1">Running the Sever</a></span></li>
+                                    <li><span class="file"><a href="_how_to_check_if_the_server_is_running_2.html" tabindex="1">How to Check if the Server is Running</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_manual_installation_in_console_mode.html" tabindex="1">Manual Installation in Console Mode</a></span><ul>
+                              <li><span class="file"><a href="_get_the_binary_package.html" tabindex="1">Get the Binary Package</a></span></li>
+                              <li><span class="file"><a href="_unpack_the_package.html" tabindex="1">Unpack the Package</a></span></li>
+                              <li><span class="file"><a href="_prepare_configuration.html" tabindex="1">Prepare Configuration</a></span></li>
+                              <li><span class="file"><a href="_prepare_database.html" tabindex="1">Prepare Database</a></span></li>
+                              <li><span class="file"><a href="_start_the_server.html" tabindex="1">Start the Server</a></span></li>
+                              <li><span class="file"><a href="_check_if_it_is_working.html" tabindex="1">Check if it is Working</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_server_binary_updates.html" tabindex="1">Tigase Server Binary Updates</a></span></li>
+                        <li><span class="file"><a href="_installation_using_web_installer.html" tabindex="1">Installation Using Web Installer</a></span><ul>
+                              <li><span class="file"><a href="_download_and_extract.html" tabindex="1">Download and Extract</a></span></li>
+                              <li><span class="file"><a href="_start_the_server_2.html" tabindex="1">Start the Server</a></span></li>
+                              <li><span class="file"><a href="_verify_tigase_is_running.html" tabindex="1">Verify Tigase is Running</a></span></li>
+                              <li id="webhelp-currentid"><span class="file"><a href="_connect_to_the_web_installer.html" tabindex="1">Connect to the Web Installer</a></span></li>
+                              <li><span class="file"><a href="_step_through_the_installation_process.html" tabindex="1">Step Through the Installation Process</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_server_and_multiple_databases.html" tabindex="1">Tigase Server and Multiple Databases</a></span></li>
+                        <li><span class="file"><a href="_basic_system_checks.html" tabindex="1">Basic System Checks</a></span></li>
+                        <li><span class="file"><a href="_linux_settings_for_high_load_systems.html" tabindex="1">Linux Settings for High Load Systems</a></span><ul>
+                              <li><span class="file"><a href="_fs_file_max.html" tabindex="1">fs.file-max</a></span></li>
+                              <li><span class="file"><a href="_net_ipv4_ip_local_port_range.html" tabindex="1">net.ipv4.ip_local_port_range</a></span></li>
+                              <li><span class="file"><a href="_tcp_keepalive.html" tabindex="1">TCP_keepalive</a></span></li>
+                              <li><span class="file"><a href="__etc_sysctl_conf.html" tabindex="1">/etc/sysctl.conf</a></span></li>
+                              <li><span class="file"><a href="_nofile.html" tabindex="1">nofile</a></span></li>
+                              <li><span class="file"><a href="_su_and_init_script.html" tabindex="1">su and init script</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_generic_documents_applying_to_all_tigase_server_versions.html" tabindex="1">Generic Documents - Applying to All Tigase Server Versions</a></span></li>
+                        <li><span class="file"><a href="_configuration.html" tabindex="1">Configuration</a></span></li>
+                        <li><span class="file"><a href="_tigase_xmpp_server_configuration_properties.html" tabindex="1">Tigase XMPP Server Configuration Properties</a></span></li>
+                        <li><span class="file"><a href="_init_properties.html" tabindex="1">init.properties</a></span></li>
+                        <li><span class="file"><a href="_xml_configuration_file_description.html" tabindex="1">XML Configuration File Description</a></span></li>
+                        <li><span class="file"><a href="_old_way_editing_configuration_file_manually.html" tabindex="1">Old Way - Editing Configuration File Manually</a></span><ul>
+                              <li><span class="file"><a href="_admin_accounts.html" tabindex="1">Admin Accounts</a></span></li>
+                              <li><span class="file"><a href="_hostnames.html" tabindex="1">Hostnames</a></span></li>
+                              <li><span class="file"><a href="_logs.html" tabindex="1">Logs</a></span><ul>
+                                    <li><span class="file"><a href="_each_line_explained.html" tabindex="1">Each Line Explained:</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_startup_file_for_tigase_sh_tigase_conf.html" tabindex="1">Startup File for tigase.sh - tigase.conf</a></span></li>
+                        <li><span class="file"><a href="_server_certificates.html" tabindex="1">Server Certificates</a></span><ul>
+                              <li><span class="file"><a href="_documents_describing_how_to_obtain_and_manage_server_certificates.html" tabindex="1">Documents Describing How To Obtain and Manage Server Certificates</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_creating_and_loading_the_server_certificate_in_pem_files.html" tabindex="1">Creating and Loading the Server Certificate in pem Files</a></span><ul>
+                              <li><span class="file"><a href="_server_certificate.html" tabindex="1">Server Certificate</a></span><ul>
+                                    <li><span class="file"><a href="_certificate_request.html" tabindex="1">Certificate Request</a></span></li>
+                                    <li><span class="file"><a href="_certificate_from_other_providers.html" tabindex="1">Certificate From Other Providers</a></span></li>
+                                    <li><span class="file"><a href="_self_signed_certificate.html" tabindex="1">Self-Signed Certificate</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_installing_loading_certificate_to_the_tigase_server.html" tabindex="1">Installing/Loading Certificate To the Tigase Server</a></span><ul>
+                                    <li><span class="file"><a href="_pem_file.html" tabindex="1">PEM File</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_tigase_server_configuration.html" tabindex="1">Tigase Server Configuration</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_installing_startcom_certificate_in_your_linux_system.html" tabindex="1">Installing StartCom Certificate in Your Linux System</a></span><ul>
+                              <li><span class="file"><a href="_gentoo_linux.html" tabindex="1">Gentoo Linux</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_server_certificate_using_keytool_and_keystore.html" tabindex="1">Server Certificate Using Keytool and Keystore</a></span><ul>
+                              <li><span class="file"><a href="_self_signed_certificate_2.html" tabindex="1">Self Signed Certificate</a></span></li>
+                              <li><span class="file"><a href="_cerificate_from_ca.html" tabindex="1">Cerificate from CA</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_and_pymsn_t_transport.html" tabindex="1">Tigase and PyMSN-t Transport</a></span><ul>
+                              <li><span class="file"><a href="_pymsn_t_etc_jabber_pymsn_t_xml_file.html" tabindex="1">PyMSN-t - /etc/jabber/pymsn-t.xml file</a></span></li>
+                              <li><span class="file"><a href="_pymsn_t_run_command.html" tabindex="1">PyMSN-t - run command</a></span></li>
+                              <li><span class="file"><a href="_pymsn_t_expected_output.html" tabindex="1">PyMSN-t - expected output</a></span></li>
+                              <li><span class="file"><a href="_tigase_etc_tigase_conf_file.html" tabindex="1">Tigase - etc/tigase.conf file</a></span></li>
+                              <li><span class="file"><a href="_tigase_run_command.html" tabindex="1">Tigase - run command</a></span></li>
+                              <li><span class="file"><a href="_tigase_expected_output.html" tabindex="1">Tigase - expected output</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_two_or_more_sessionmanagers.html" tabindex="1">Two or More SessionManagers</a></span></li>
+                        <li><span class="file"><a href="_database_preparation.html" tabindex="1">Database Preparation</a></span></li>
+                        <li><span class="file"><a href="_prepare_the_mysql_database_for_the_tigase_server.html" tabindex="1">Prepare the MySQL Database for the Tigase Server</a></span><ul>
+                              <li><span class="file"><a href="_basic_setup.html" tabindex="1">Basic Setup</a></span><ul>
+                                    <li><span class="file"><a href="_configuring_from_mysql_command_line_tool.html" tabindex="1">Configuring from MySQL command line tool</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_configuring_from_the_linux_shell_command_line.html" tabindex="1">Configuring From the Linux Shell Command Line</a></span></li>
+                              <li><span class="file"><a href="_configuring_mysql_for_utf_8_support.html" tabindex="1">Configuring MySQL for UTF-8 Support</a></span></li>
+                              <li><span class="file"><a href="_other_mysql_setting_worth_considering.html" tabindex="1">Other MySQL Setting Worth Considering</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_hashed_user_passwords_in_database.html" tabindex="1">Hashed User Passwords in Database</a></span><ul>
+                              <li><span class="file"><a href="_shortcut.html" tabindex="1">Shortcut</a></span></li>
+                              <li><span class="file"><a href="_full_route.html" tabindex="1">Full Route</a></span><ul>
+                                    <li><span class="file"><a href="_create_a_test_user_account.html" tabindex="1">Create a Test User Account</a></span></li>
+                                    <li><span class="file"><a href="_test_user_authentication.html" tabindex="1">Test User Authentication</a></span></li>
+                                    <li><span class="file"><a href="_password_encoding_check.html" tabindex="1">Password Encoding Check</a></span></li>
+                                    <li><span class="file"><a href="_password_encoding_change.html" tabindex="1">Password Encoding Change</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_prepare_the_derby_database_for_the_tigase_server.html" tabindex="1">Prepare the Derby Database for the Tigase Server</a></span><ul>
+                              <li><span class="file"><a href="_basic_setup_2.html" tabindex="1">Basic Setup</a></span><ul>
+                                    <li><span class="file"><a href="_general_approach.html" tabindex="1">General Approach</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_prepare_the_ms_sql_server_database_for_the_tigase_server.html" tabindex="1">Prepare the MS SQL Server Database for the Tigase Server</a></span><ul>
+                              <li><span class="file"><a href="_basic_setup_3.html" tabindex="1">Basic Setup</a></span></li>
+                              <li><span class="file"><a href="_preparing_sql_server_instance.html" tabindex="1">Preparing SQL Server Instance</a></span></li>
+                              <li><span class="file"><a href="_configuring_using_sql_server_management_studio.html" tabindex="1">Configuring using SQL Server Management Studio</a></span><ul>
+                                    <li><span class="file"><a href="_using_wizards.html" tabindex="1">Using Wizards</a></span></li>
+                                    <li><span class="file"><a href="_using_queries.html" tabindex="1">Using Queries</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_import_schema.html" tabindex="1">Import Schema</a></span></li>
+                              <li><span class="file"><a href="_configuring_from_command_line_tool.html" tabindex="1">Configuring from command line tool</a></span></li>
+                              <li><span class="file"><a href="_tigase_configuration_init_properties.html" tabindex="1">Tigase configuration - init.properties</a></span></li>
+                              <li><span class="file"><a href="_jdbc_jtds_vs_ms_jdbc_driver.html" tabindex="1">JDBC: jTDS vs MS JDBC driver</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_prepare_the_postgresql_database_for_the_tigase_server.html" tabindex="1">Prepare the PostgreSQL Database for the Tigase Server</a></span><ul>
+                              <li><span class="file"><a href="_basic_setup_4.html" tabindex="1">Basic Setup</a></span><ul>
+                                    <li><span class="file"><a href="_configuring_from_postgresql_command_line_tool.html" tabindex="1">Configuring from PostgreSQL Command Line Tool</a></span></li>
+                                    <li><span class="file"><a href="_configuring_from_the_linux_shell_command_line_2.html" tabindex="1">Configuring From the Linux Shell Command Line</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_database_minor_but_useful_schema_change_in_version_5_1_0.html" tabindex="1">Tigase Database Minor but Useful Schema Change in Version 5.1.0</a></span></li>
+                        <li><span class="file"><a href="_tigase_load_balancing.html" tabindex="1">Tigase Load Balancing</a></span><ul>
+                              <li><span class="file"><a href="_available_implementations.html" tabindex="1">Available Implementations</a></span></li>
+                              <li><span class="file"><a href="_configuration_options.html" tabindex="1">Configuration Options</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_stanzasender.html" tabindex="1">StanzaSender</a></span><ul>
+                              <li><span class="file"><a href="_how_it_works.html" tabindex="1">How it Works</a></span><ul>
+                                    <li><span class="file"><a href="_filetask.html" tabindex="1">FileTask</a></span></li>
+                                    <li><span class="file"><a href="_jdbctask.html" tabindex="1">JDBCTask</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_configuration_2.html" tabindex="1">Configuration</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_debuging_tigase.html" tabindex="1">Debuging Tigase</a></span><ul>
+                              <li><span class="file"><a href="_the_easy_way_init_properties_file.html" tabindex="1">The easy way - init.properties file</a></span></li>
+                              <li><span class="file"><a href="_the_more_difficult_but_more_powerful_tigase_xml_file_only_applicable_to_versions_before_5_0_0.html" tabindex="1">The more difficult but more powerful - tigase.xml file (only applicable to versions before 5.0.0)</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_importing_user_data.html" tabindex="1">Importing User Data</a></span></li>
+                        <li><span class="file"><a href="_drupal_authentication_added.html" tabindex="1">Drupal Authentication Added</a></span></li>
+                        <li><span class="file"><a href="_tigase_services.html" tabindex="1">Tigase Services</a></span></li>
+                        <li><span class="file"><a href="_add_and_manage_domain.html" tabindex="1">Add and Manage Domain</a></span><ul>
+                              <li><span class="file"><a href="_adding_a_new_domain.html" tabindex="1">Adding a New Domain</a></span></li>
+                              <li><span class="file"><a href="_adding_a_new_user.html" tabindex="1">Adding a New User</a></span></li>
+                              <li><span class="file"><a href="_what_else.html" tabindex="1">What Else?</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_presence_forwarding.html" tabindex="1">Presence Forwarding</a></span></li>
+                        <li><span class="file"><a href="_register_own_xmpp_domain.html" tabindex="1">Register Own XMPP Domain</a></span></li>
+                        <li><span class="file"><a href="_server_monitoring.html" tabindex="1">Server Monitoring</a></span><ul>
+                              <li><span class="file"><a href="setUpRemoteMonitoring.html" tabindex="1">Setting Up Remote Monitoring in the Server</a></span><ul>
+                                    <li><span class="file"><a href="_what_you_need.html" tabindex="1">What You Need.</a></span></li>
+                                    <li><span class="file"><a href="monitoring_activation.html" tabindex="1">Activation</a></span></li>
+                                    <li><span class="file"><a href="_security_2.html" tabindex="1">Security</a></span><ul>
+                                          <li><span class="file"><a href="monitoring_jmx.html" tabindex="1">JMX</a></span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="file"><a href="_snmp.html" tabindex="1">SNMP</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="RetrievingStatisticsFromTheServer.html" tabindex="1">Retrieving statistics from the server</a></span><ul>
+                                    <li><span class="file"><a href="_retrieving_statistics_using_xmpp.html" tabindex="1">Retrieving statistics using XMPP</a></span><ul>
+                                          <li><span class="file"><a href="_psi_xmpp_client.html" tabindex="1">Psi XMPP Client</a></span></li>
+                                       </ul>
+                                    </li>
+                                    <li><span class="file"><a href="_retrieving_statistics_using_jmx.html" tabindex="1">Retrieving statistics using JMX</a></span><ul>
+                                          <li><span class="file"><a href="_jconsole.html" tabindex="1">JConsole</a></span></li>
+                                          <li><span class="file"><a href="_statsdumper_groovy.html" tabindex="1">StatsDumper.groovy</a></span></li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="TipsAndTricks.html" tabindex="1">Tips and Tricks</a></span><ul>
+                              <li><span class="file"><a href="_tigase_tip_checking_the_runtime_environment.html" tabindex="1">Tigase Tip: Checking the Runtime Environment</a></span></li>
+                              <li><span class="file"><a href="_tigase_tip_checking_cluster_connections.html" tabindex="1">Tigase Tip: Checking Cluster Connections</a></span><ul>
+                                    <li><span class="file"><a href="_established_connections.html" tabindex="1">Established connections</a></span></li>
+                                    <li><span class="file"><a href="_cluster_nodes_connected_using_xmpp.html" tabindex="1">Cluster nodes connected (using XMPP)</a></span><ul>
+                                          <li><span class="file"><a href="_psi_xmpp_client_2.html" tabindex="1">Psi XMPP Client</a></span></li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_server_version_5_x.html" tabindex="1">Tigase Server version 5.x</a></span></li>
+                        <li><span class="file"><a href="_tigase_5_1_database_schema_upgrade.html" tabindex="1">Tigase 5.1 Database Schema Upgrade</a></span></li>
+                        <li><span class="file"><a href="_derby_database_schema_upgrade_for_tigase_5_1.html" tabindex="1">Derby Database Schema Upgrade for Tigase 5.1</a></span></li>
+                        <li><span class="file"><a href="_mysql_database_schema_upgrade_for_tigase_5_1.html" tabindex="1">MySQL Database Schema Upgrade for Tigase 5.1</a></span></li>
+                        <li><span class="file"><a href="_postgresql_database_schema_upgrade_for_tigase_5_1.html" tabindex="1">PostgreSQL Database Schema Upgrade for Tigase 5.1</a></span></li>
+                        <li><span class="file"><a href="_server_configuration_5_x.html" tabindex="1">Server Configuration 5.x</a></span></li>
+                        <li><span class="file"><a href="_configuration_changes_in_the_tigase_server_5_x.html" tabindex="1">Configuration Changes in the Tigase Server 5.x</a></span><ul>
+                              <li><span class="file"><a href="_reverting_to_the_old_behaviour.html" tabindex="1">Reverting To the Old Behaviour</a></span></li>
+                              <li><span class="file"><a href="_default_behaviour.html" tabindex="1">Default Behaviour</a></span></li>
+                              <li><span class="file"><a href="_storing_configuration_in_sql_database.html" tabindex="1">Storing Configuration in SQL Database</a></span></li>
+                              <li><span class="file"><a href="_going_further.html" tabindex="1">Going Further</a></span></li>
+                              <li><span class="file"><a href="_message_router_implementation_is_configurable_too.html" tabindex="1">Message Router Implementation is Configurable Too</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_advanced_message_processing_amp_xep_0079.html" tabindex="1">Advanced Message Processing - AMP XEP-0079</a></span></li>
+                        <li><span class="file"><a href="_configuration_sasl_external.html" tabindex="1">Configuration SASL EXTERNAL</a></span></li>
+                        <li><span class="file"><a href="_server_to_server_protocol_settings.html" tabindex="1">Server to Server Protocol Settings</a></span><ul>
+                              <li><span class="file"><a href="_number_of_concurrent_connections.html" tabindex="1">Number of Concurrent Connections</a></span></li>
+                              <li><span class="file"><a href="_connection_throughput.html" tabindex="1">Connection Throughput</a></span></li>
+                              <li><span class="file"><a href="_maximum_packet_waiting_time_and_connection_inactivity_time.html" tabindex="1">Maximum Packet Waiting Time and Connection Inactivity Time</a></span></li>
+                              <li><span class="file"><a href="_custom_plugin_selecting_s2s_connection.html" tabindex="1">Custom Plugin Selecting s2s Connection</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_server_version_4_x.html" tabindex="1">Tigase Server Version 4.x</a></span></li>
+                        <li><span class="file"><a href="_mysql_database_schema_upgrade_for_tigase_4_0.html" tabindex="1">MySQL Database Schema Upgrade for Tigase 4.0</a></span></li>
+                        <li><span class="file"><a href="_virtual_components_for_the_cluster_mode.html" tabindex="1">Virtual Components for the Cluster Mode</a></span></li>
+                        <li><span class="file"><a href="_external_component_configuration.html" tabindex="1">External Component Configuration</a></span></li>
+                        <li><span class="file"><a href="_basic_configuration_options_external_component.html" tabindex="1">Basic Configuration Options (External Component)</a></span><ul>
+                              <li><span class="file"><a href="_simple_case.html" tabindex="1">Simple Case</a></span></li>
+                              <li><span class="file"><a href="_more_external_components_domains.html" tabindex="1">More External Components/Domains</a></span></li>
+                              <li><span class="file"><a href="_more_tcp_ip_ports.html" tabindex="1">More TCP/IP Ports</a></span></li>
+                              <li><span class="file"><a href="_outgoing_connections.html" tabindex="1">Outgoing Connections</a></span></li>
+                              <li><span class="file"><a href="_specifying_protocol.html" tabindex="1">Specifying Protocol</a></span></li>
+                              <li><span class="file"><a href="_load_balancer_plugin.html" tabindex="1">Load Balancer Plugin</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_tigase_as_external_component.html" tabindex="1">Tigase as External Component</a></span><ul>
+                              <li><span class="file"><a href="_a_simple_case_muc_as_an_external_component.html" tabindex="1">A Simple Case - MUC as an External Component</a></span></li>
+                              <li><span class="file"><a href="_more_components.html" tabindex="1">More Components</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_load_balancing_external_components_in_cluster_mode.html" tabindex="1">Load Balancing External Components in Cluster Mode</a></span><ul>
+                              <li><span class="file"><a href="_load_balancing_external_component.html" tabindex="1">Load Balancing External Component</a></span></li>
+                              <li><span class="file"><a href="_external_component_and_cluster.html" tabindex="1">External Component and Cluster</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_packet_filtering.html" tabindex="1">Packet Filtering</a></span><ul>
+                              <li><span class="file"><a href="_domain_based_packet_filtering.html" tabindex="1">Domain Based Packet Filtering</a></span><ul>
+                                    <li><span class="file"><a href="_introduction.html" tabindex="1">Introduction</a></span></li>
+                                    <li><span class="file"><a href="_configuration_3.html" tabindex="1">Configuration</a></span></li>
+                                    <li><span class="file"><a href="_administration_rules_management.html" tabindex="1">Administration, Rules Management</a></span></li>
+                                    <li><span class="file"><a href="_implementation.html" tabindex="1">Implementation</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_virtual_hosts_in_the_tigase_server.html" tabindex="1">Virtual Hosts in the Tigase Server</a></span></li>
+                        <li><span class="file"><a href="_specification_for_ad_hoc_commands_used_to_manage_virtual_domains.html" tabindex="1">Specification for ad-hoc Commands Used to Manage Virtual Domains</a></span><ul>
+                              <li><span class="file"><a href="_reloading_the_domains_list_from_the_database.html" tabindex="1">Reloading the Domains List from the Database</a></span></li>
+                              <li><span class="file"><a href="_adding_a_new_domain_or_updating_existing_one.html" tabindex="1">Adding a New Domain or Updating Existing One</a></span></li>
+                              <li><span class="file"><a href="_removing_a_virtual_domain_from_the_server.html" tabindex="1">Removing a Virtual Domain From the Server</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_configuration_4.html" tabindex="1">Configuration</a></span></li>
+                        <li><span class="file"><a href="_configuring_the_tigase_server_to_load_a_component.html" tabindex="1">Configuring the Tigase Server to Load a Component</a></span></li>
+                        <li><span class="file"><a href="_custom_authentication_connectors.html" tabindex="1">Custom Authentication Connectors</a></span></li>
+                        <li><span class="file"><a href="_tigase_custom_auth_connector.html" tabindex="1">Tigase Custom Auth Connector</a></span></li>
+                        <li><span class="file"><a href="_ldap_authentication_connector.html" tabindex="1">LDAP Authentication Connector</a></span></li>
+                        <li><span class="file"><a href="_tigase_auth_connector.html" tabindex="1">Tigase Auth Connector</a></span></li>
+                        <li><span class="file"><a href="_tigase_server_version_3_x.html" tabindex="1">Tigase Server Version 3.x</a></span></li>
+                        <li><span class="file"><a href="_connecting_the_tigase_server_to_mysql_database.html" tabindex="1">Connecting the Tigase Server to MySQL Database</a></span></li>
+                        <li><span class="file"><a href="_integrating_tigase_server_with_drupal.html" tabindex="1">Integrating Tigase Server with Drupal</a></span><ul>
+                              <li><span class="file"><a href="_connecting_to_drupal_database.html" tabindex="1">Connecting to Drupal Database</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_integrating_tigase_server_with_libresource.html" tabindex="1">Integrating Tigase Server With LibreSource</a></span><ul>
+                              <li><span class="file"><a href="_short_introduction.html" tabindex="1">Short Introduction.</a></span></li>
+                              <li><span class="file"><a href="_how_to_set_tigase_up.html" tabindex="1">How to set Tigase up.</a></span></li>
+                              <li><span class="file"><a href="_migration_from_old_tigase_installation_to_libresource.html" tabindex="1">Migration From old Tigase Installation to LibreSource</a></span><ul>
+                                    <li><span class="file"><a href="_data_migration.html" tabindex="1">Data Migration</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_windows_installation.html" tabindex="1">Windows Installation</a></span><ul>
+                              <li><span class="file"><a href="_mysql_database_installation.html" tabindex="1">MySQL Database Installation</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_configuration_5.html" tabindex="1">Configuration</a></span></li>
+                        <li><span class="file"><a href="_configuration_wizards.html" tabindex="1">Configuration Wizards</a></span></li>
+                        <li><span class="file"><a href="_tigase_server_version_2_x.html" tabindex="1">Tigase Server version 2.x</a></span></li>
+                        <li><span class="file"><a href="_installation_3.html" tabindex="1">Installation</a></span></li>
+                        <li><span class="file"><a href="_mysql_database_use.html" tabindex="1">MySQL Database Use</a></span><ul>
+                              <li><span class="file"><a href="_mysql_database_preparation.html" tabindex="1">MySQL Database Preparation</a></span></li>
+                              <li><span class="file"><a href="_server_configuration.html" tabindex="1">Server Configuration</a></span></li>
+                              <li><span class="file"><a href="_user_data_import.html" tabindex="1">User Data Import</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_postgresql_database_use.html" tabindex="1">PostgreSQL Database Use</a></span><ul>
+                              <li><span class="file"><a href="_postgresql_database_preparation.html" tabindex="1">PostgreSQL Database Preparation</a></span></li>
+                              <li><span class="file"><a href="_server_configuration_2.html" tabindex="1">Server Configuration</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_configuration_6.html" tabindex="1">Configuration</a></span></li>
+                        <li><span class="file"><a href="_short_configuration_guide.html" tabindex="1">Short Configuration Guide</a></span><ul>
+                              <li><span class="file"><a href="_admin_accounts_2.html" tabindex="1">Admin Accounts</a></span></li>
+                              <li><span class="file"><a href="_hostnames_2.html" tabindex="1">Hostnames</a></span></li>
+                           </ul>
+                        </li>
+                        <li><span class="file"><a href="_command_line_admin_tools.html" tabindex="1">Command Line Admin Tools</a></span></li>
+                        <li><span class="file"><a href="_configuration_management_tool.html" tabindex="1">Configuration Management Tool</a></span></li>
+                        <li><span class="file"><a href="_best_practices_for_connecting_from_web_browser_to_tigase_xmpp_server.html" tabindex="1">Best Practices for Connecting From Web Browser to Tigase XMPP Server</a></span><ul>
+                              <li><span class="file"><a href="_bosh.html" tabindex="1">BOSH</a></span><ul>
+                                    <li><span class="file"><a href="_tip_1_bosh_in_cluster_mode_without_load_balancer.html" tabindex="1">Tip #1 - BOSH in Cluster Mode Without Load Balancer</a></span></li>
+                                 </ul>
+                              </li>
+                              <li><span class="file"><a href="_websocket.html" tabindex="1">WebSocket</a></span><ul>
+                                    <li><span class="file"><a href="_tip_1_encrypted_websocket_connection.html" tabindex="1">Tip #1 - Encrypted WebSocket Connection</a></span></li>
+                                    <li><span class="file"><a href="_tip_2_encrypted_websocket_connection_dealing_with_multiple_vhosts.html" tabindex="1">Tip #2 - Encrypted WebSocket Connection - Dealing With Multiple VHosts</a></span></li>
+                                 </ul>
+                              </li>
+                           </ul>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div id="searchDiv">
+                  <div id="search">
+                     <form onsubmit="Verifie(searchForm);return false" name="searchForm" class="searchForm">
+                        <div><input id="textToSearch" name="textToSearch" type="search" placeholder="Search" class="searchText" tabindex="1" /> &nbsp; <input onclick="Verifie(searchForm)" type="button" class="searchButton" value="Go" id="doSearch" tabindex="1" /></div>
+                     </form>
+                  </div>
+                  <div id="searchResults">
+                     <center></center>
+                  </div>
+                  <p class="searchHighlight"><a href="#" onclick="toggleHighlight()">Search Highlighter (On/Off)</a></p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
