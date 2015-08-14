@@ -1,0 +1,27 @@
+{
+	"name": "json-rpc",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/VidaoMessenger/json-rpc.git"
+	},
+	"author": "Ashton Fedler <ashton@vidao.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/VidaoMessenger/json-rpc/issues"
+	},
+	"homepage": "https://github.com/VidaoMessenger/json-rpc",
+	"dependencies": {
+		"bluebird": "^2.9.12",
+		"ws": "^0.7.1"
+	},
+	"devDependencies": {
+		"express": "^4.11.2"
+	}
+}

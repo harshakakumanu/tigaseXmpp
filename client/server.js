@@ -1,34 +1,78 @@
-/**
- * Created by harshavardhan on 15-08-12.
- */
-var XMPP = require('stanza.io'); // if using browserify
+// Test JSON-RPC Server and Client
 
-var client = XMPP.createClient({
-	jid: 'selva@rtc.harsha.com',
-	password: 'selva',
+var express = require("express");
+var jsonrpc = require("./json-rpc");
+var Promise = require("bluebird");
 
-	// If you have a .well-known/host-meta.json file for your
-	// domain, the connection transport config can be skipped.
 
-	transport: 'websocket',
-	wsURL: 'ws://192.168.1.101:5290'
-	// (or `boshURL` if using 'bosh' as the transport)
+var api = {
+	"toLowerCase": function() {
+		var params = Array.prototype.slice.call(arguments);
+		var results = [];
+		
+		return new Promise(function(good, bad) {
+			params.forEach(function(param) {
+				if(typeof param === "string") {
+					results.push(param.toLowerCase());
+				} else {
+					bad(Error(param+" is not a string"));
+					return;
+				}
+			});
+			good(results);
+		});
+	},
+	"toUpperCase": function() {
+		var params = Array.prototype.slice.call(arguments);
+		var results = [];
+
+		return new Promise(function(good, bad) {
+			params.forEach(function(param) {
+				if(typeof param === "string") {
+					results.push(param.toUpperCase());
+				} else {
+					bad(Error(params+" is not a string"));
+					return;
+				}
+			});
+			good(results);
+		});
+	},
+	"testNotify": function(message) {
+		return new Promise(function (good) {
+			console.log("testNotify", message);
+			good();
+		})
+	},
+	"noargTest": function() {
+		return new Promise(function (good) {
+			good("Awesome String");
+		});
+	},
+	"namedConcat": function(args) {
+		return new Promise(function (good, bad) {
+			if(args.first && args.second) {
+				good(args.first+args.second);				
+			} else {
+				bad("must provide named arguments: first and last");
+			}
+		})		
+	}
+};
+
+var ws = jsonrpc.createServer({port:3000}, api);
+var httpServer = express();
+
+httpServer.get("/", function(req, res) {
+	res.sendFile(__dirname+"/demo-client.html");
 });
 
-client.on('session:started', function () {
-	client.getRoster();
-	client.sendPresence();
+httpServer.get("/bluebird.js", function(req, res) {
+	res.sendFile(__dirname+"/node_modules/bluebird/js/browser/bluebird.js");
 });
 
-client.on('chat', function (msg) {
-	client.sendMessage({
-		to: msg.from,
-		body: 'You sent: ' + msg.body
-	});
+httpServer.get("/json-rpc.js", function(req, res) {
+	res.sendFile(__dirname+"/json-rpc.js");
 });
 
-client.on('connected',function(){
-	console.log("successfully connected");
-});
-
-client.connect();
+httpServer.listen(8080);

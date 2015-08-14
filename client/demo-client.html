@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<script src="/bluebird.js"></script>
+<script src="/json-rpc.js"></script>
+<script>
+	var ws = jsonrpc.createClient("ws://localhost:3000");
+	
+	ws.onopen = function() {
+		// Try a batch job
+		ws.requestAll([
+			{"method":"toLowerCase","params":["This", "iS"]},
+			{"method":"toUpperCase","params":["a", "tESt"]}
+		]);
+		
+		
+		// Single Requests are Then-able!
+		ws.request("toLowerCase", ["This", "iS", "A", "teSt"]).then(function good(result){
+			console.log("Result", result);			
+		}, function bad(error) {
+			console.error("Rejected", error);
+		});
+
+		// Single Requests with named arguments
+		ws.request("namedConcat", { first:"Hello ", second:"World!"}).then(function good(result){
+			console.log("Result", result);
+		}, function bad(error) {
+			console.error("Rejected", error);
+		});
+
+		// Single Requests with no arguments
+		ws.request("noargTest").then(function good(result){
+			console.log("Result", result);
+		}, function bad(error) {
+			console.error("Rejected", error);
+		});
+
+		ws.notify("testNotify", "SampleMessage");
+	};
+	
+	// Batches require a callback handler
+	ws.onBatchResult = function(result) {
+		console.log(result);
+	}
+</script>
